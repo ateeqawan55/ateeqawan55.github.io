@@ -6,237 +6,102 @@
     <title>Ateeq Awan - Portfolio</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --primary: #1a3c6e;
-            --orange: #f97316;
-        }
+        :root { --primary: #1a3c6e; --orange: #f97316; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Segoe UI', sans-serif; background: #f8fafc; }
+        body { font-family: 'Poppins', sans-serif; background: #f8fafc; }
 
         /* Navbar */
-        .navbar { background: var(--primary); padding: 15px 0; position: sticky; top: 0; z-index: 999; }
-        .navbar-brand { color: white !important; font-weight: bold; font-size: 22px; }
+        .navbar { background: var(--primary); padding: 15px 0; position: sticky; top: 0; z-index: 999; transition: all 0.3s; }
+        .navbar.scrolled { box-shadow: 0 4px 30px rgba(0,0,0,0.3); }
+        .navbar-brand { color: white !important; font-weight: 800; font-size: 22px; }
         .navbar-brand span { color: var(--orange); }
-        .nav-link { color: rgba(255,255,255,0.8) !important; margin: 0 5px; }
+        .nav-link { color: rgba(255,255,255,0.8) !important; margin: 0 5px; font-weight: 500; font-size: 14px; transition: all 0.3s; position: relative; }
+        .nav-link::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 2px; background: var(--orange); transition: width 0.3s; }
+        .nav-link:hover::after { width: 100%; }
         .nav-link:hover { color: var(--orange) !important; }
 
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, var(--primary) 0%, #0d2447 100%);
-            color: white;
-            padding: 100px 0;
-            position: relative;
-            overflow: hidden;
-        }
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -10%;
-            width: 600px;
-            height: 600px;
-            background: var(--orange);
-            border-radius: 50%;
-            opacity: 0.05;
-        }
-        .hero h1 { font-size: 50px; font-weight: bold; }
+        /* Hero */
+        .hero { background: linear-gradient(135deg, var(--primary) 0%, #0d2447 100%); color: white; padding: 110px 0; position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; top: -50%; right: -10%; width: 600px; height: 600px; background: var(--orange); border-radius: 50%; opacity: 0.05; animation: pulse-bg 4s ease-in-out infinite; }
+        .hero::after { content: ''; position: absolute; bottom: -20%; left: -5%; width: 400px; height: 400px; background: var(--primary); border-radius: 50%; opacity: 0.3; }
+        @keyframes pulse-bg { 0%,100% { transform: scale(1); } 50% { transform: scale(1.1); } }
+        .hero h1 { font-size: 52px; font-weight: 800; line-height: 1.2; }
         .hero h1 span { color: var(--orange); }
-        .hero p { font-size: 20px; color: rgba(255,255,255,0.8); margin: 15px 0; }
-        .hero-badge {
-            display: inline-block;
-            background: rgba(249,115,22,0.2);
-            border: 1px solid var(--orange);
-            color: var(--orange);
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 14px;
-            margin: 5px;
-        }
-        .btn-hero {
-            background: var(--orange);
-            color: white;
-            padding: 12px 30px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: bold;
-            margin: 5px;
-            display: inline-block;
-            border: none;
-        }
-        .btn-hero-outline {
-            background: transparent;
-            color: white;
-            padding: 12px 30px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: bold;
-            margin: 5px;
-            display: inline-block;
-            border: 2px solid white;
-        }
-        .btn-hero:hover { background: #ea6c0a; color: white; }
-        .btn-hero-outline:hover { background: white; color: var(--primary); }
+        .hero-sub { font-size: 16px; color: rgba(255,255,255,0.75); margin: 12px 0; font-weight: 400; }
+        .hero-badge { display: inline-block; background: rgba(249,115,22,0.15); border: 1px solid rgba(249,115,22,0.4); color: var(--orange); padding: 5px 14px; border-radius: 20px; font-size: 13px; margin: 4px; transition: all 0.3s; font-weight: 500; }
+        .hero-badge:hover { background: var(--orange); color: white; transform: translateY(-3px); box-shadow: 0 5px 15px rgba(249,115,22,0.4); }
+        .btn-hero { background: var(--orange); color: white; padding: 13px 32px; border-radius: 10px; text-decoration: none; font-weight: 700; margin: 5px; display: inline-block; border: none; transition: all 0.3s; font-size: 14px; }
+        .btn-hero:hover { background: #ea6c0a; color: white; transform: translateY(-3px); box-shadow: 0 8px 25px rgba(249,115,22,0.4); }
+        .btn-hero-outline { background: transparent; color: white; padding: 13px 32px; border-radius: 10px; text-decoration: none; font-weight: 700; margin: 5px; display: inline-block; border: 2px solid rgba(255,255,255,0.6); transition: all 0.3s; font-size: 14px; }
+        .btn-hero-outline:hover { background: white; color: var(--primary); transform: translateY(-3px); }
+        @keyframes float { 0%,100% { transform: translateY(0px); } 50% { transform: translateY(-15px); } }
+        @keyframes rotate-border { 0%,100% { box-shadow: 0 0 0 4px var(--orange), 0 0 20px rgba(249,115,22,0.3); } 50% { box-shadow: 0 0 0 4px #f97316, 0 0 40px rgba(249,115,22,0.6); } }
+        .profile-img { animation: float 3s ease-in-out infinite, rotate-border 2s ease-in-out infinite; }
 
         /* Stats */
-        .stats { background: var(--orange); padding: 30px 0; }
+        .stats { background: linear-gradient(135deg, var(--orange), #ea580c); padding: 35px 0; }
         .stat-item { text-align: center; color: white; }
-        .stat-item h3 { font-size: 36px; font-weight: bold; }
-        .stat-item p { font-size: 14px; opacity: 0.9; }
+        .stat-item h3 { font-size: 38px; font-weight: 800; }
+        .stat-item p { font-size: 13px; opacity: 0.9; font-weight: 500; }
 
-        /* About */
-        .section { padding: 80px 0; }
-        .section-title { font-size: 36px; font-weight: bold; color: var(--primary); margin-bottom: 10px; }
+        /* Sections */
+        .section { padding: 90px 0; }
+        .section-title { font-size: 38px; font-weight: 800; color: var(--primary); margin-bottom: 10px; }
         .section-title span { color: var(--orange); }
-        .section-line { width: 60px; height: 4px; background: var(--orange); border-radius: 2px; margin-bottom: 40px; }
+        .section-line { width: 0; height: 4px; background: linear-gradient(90deg, var(--orange), #ea580c); border-radius: 2px; margin-bottom: 40px; transition: width 0.8s ease; }
+        .section-line.visible { width: 60px; }
+        .section-subtitle { color: #888; font-size: 15px; margin-bottom: 40px; }
 
         /* Skills */
-        .skill-card {
-            background: white;
-            border-radius: 12px;
-            padding: 25px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-            margin-bottom: 20px;
-            border-left: 4px solid var(--orange);
-        }
-        .skill-bar { background: #e2e8f0; border-radius: 10px; height: 8px; margin-top: 8px; }
-        .skill-fill { background: linear-gradient(90deg, var(--primary), var(--orange)); border-radius: 10px; height: 8px; }
+        .skill-card { background: white; border-radius: 14px; padding: 22px 25px; box-shadow: 0 4px 20px rgba(0,0,0,0.06); margin-bottom: 18px; border-left: 4px solid var(--orange); transition: all 0.3s; }
+        .skill-card:hover { transform: translateX(6px); box-shadow: 0 8px 30px rgba(249,115,22,0.15); }
+        .skill-bar { background: #e2e8f0; border-radius: 10px; height: 7px; margin-top: 10px; }
+        .skill-fill { background: linear-gradient(90deg, var(--primary), var(--orange)); border-radius: 10px; height: 7px; width: 0; transition: width 1.5s ease-in-out; }
 
-        /* Projects */
-        .project-card {
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-            margin-bottom: 25px;
-            transition: transform 0.3s;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-        .project-card:hover { transform: translateY(-5px); }
-        .project-body {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-        .project-header {
-            background: linear-gradient(135deg, var(--primary), #2d6abf);
-            padding: 30px;
-            color: white;
-        }
+        /* Project Cards */
+        .project-card { background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.08); margin-bottom: 25px; transition: all 0.3s; height: 100%; display: flex; flex-direction: column; }
+        .project-card:hover { transform: translateY(-8px); box-shadow: 0 15px 40px rgba(249,115,22,0.2); }
+        .project-header { padding: 30px; color: white; position: relative; overflow: hidden; }
+        .project-header::after { content: ''; position: absolute; bottom: -20px; right: -20px; width: 80px; height: 80px; background: rgba(255,255,255,0.08); border-radius: 50%; }
+        .project-header.blue { background: linear-gradient(135deg, #1a3c6e, #2d6abf); }
         .project-header.orange { background: linear-gradient(135deg, #f97316, #ef4444); }
         .project-header.green { background: linear-gradient(135deg, #059669, #0891b2); }
-        .project-body { padding: 25px; }
-        .project-tag {
-            display: inline-block;
-            background: #f0f4f8;
-            color: var(--primary);
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 12px;
-            margin: 3px;
-        }
+        .project-header.purple { background: linear-gradient(135deg, #7c3aed, #4f46e5); }
+        .project-body { padding: 22px; flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
+        .project-tag { display: inline-block; background: #f0f4f8; color: var(--primary); padding: 4px 12px; border-radius: 20px; font-size: 11px; margin: 3px; font-weight: 600; }
         .project-tag.orange { background: #fff3e0; color: #f97316; }
+        .visit-btn { display: inline-flex; align-items: center; gap: 6px; background: var(--primary); color: white; padding: 9px 20px; border-radius: 8px; text-decoration: none; font-size: 13px; font-weight: 600; margin-top: 15px; transition: all 0.3s; }
+        .visit-btn:hover { background: var(--orange); color: white; transform: translateX(3px); }
 
-        /* ERP Highlight */
-        .erp-section {
-            background: linear-gradient(135deg, var(--primary) 0%, #0d2447 100%);
-            padding: 80px 0;
-            color: white;
-        }
-        .erp-feature {
-            background: rgba(255,255,255,0.1);
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 15px;
-            border-left: 3px solid var(--orange);
-        }
-
-        /* LMS Section */
-        .lms-section {
-            background: linear-gradient(135deg, #0d2447 0%, #1a3c6e 100%);
-            padding: 80px 0;
-            color: white;
-        }
-        .lms-feature {
-            background: rgba(255,255,255,0.08);
-            border-radius: 10px;
-            padding: 18px 20px;
-            margin-bottom: 15px;
-            border-left: 3px solid #f97316;
-            transition: all 0.3s;
-        }
-        .lms-feature:hover {
-            background: rgba(249,115,22,0.2);
-            transform: translateX(8px);
-        }
-        .lms-badge {
-            display: inline-block;
-            background: rgba(249,115,22,0.2);
-            border: 1px solid var(--orange);
-            color: var(--orange);
-            padding: 4px 14px;
-            border-radius: 20px;
-            font-size: 12px;
-            margin: 4px;
-        }
-        .lms-stats-box {
-            background: rgba(255,255,255,0.1);
-            border-radius: 12px;
-            padding: 20px;
-            text-align: center;
-            margin-bottom: 15px;
-            border: 1px solid rgba(249,115,22,0.3);
-        }
-        .lms-stats-box h4 {
-            font-size: 28px;
-            font-weight: bold;
-            color: var(--orange);
-            margin: 0;
-        }
-        .lms-stats-box p {
-            font-size: 13px;
-            color: rgba(255,255,255,0.7);
-            margin: 5px 0 0;
-        }
+        /* Systems Section */
+        .systems-section { background: linear-gradient(135deg, #0d1b3e 0%, #1a2b5f 100%); padding: 90px 0; color: white; position: relative; overflow: hidden; }
+        .systems-section::before { content: ''; position: absolute; top: -100px; right: -100px; width: 400px; height: 400px; background: rgba(249,115,22,0.05); border-radius: 50%; }
+        .system-card { background: rgba(255,255,255,0.06); border-radius: 18px; overflow: hidden; border: 1px solid rgba(249,115,22,0.2); transition: all 0.3s; }
+        .system-card:hover { transform: translateY(-5px); box-shadow: 0 20px 50px rgba(0,0,0,0.3); border-color: rgba(249,115,22,0.5); }
+        .system-header { padding: 30px; text-align: center; }
+        .system-icon { width: 72px; height: 72px; background: rgba(249,115,22,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; border: 2px solid rgba(249,115,22,0.5); }
+        .sys-tag { background: rgba(249,115,22,0.15); color: var(--orange); padding: 3px 10px; border-radius: 20px; font-size: 11px; margin: 2px; display: inline-block; font-weight: 600; border: 1px solid rgba(249,115,22,0.3); }
+        .feature-tag { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.85); padding: 5px 10px; border-radius: 6px; font-size: 11px; font-weight: 500; }
+        .detail-item { background: rgba(255,255,255,0.04); border-radius: 10px; padding: 13px; margin-bottom: 8px; border-left: 3px solid var(--orange); }
+        .detail-item p { color: rgba(255,255,255,0.55); font-size: 12px; margin: 4px 0 0; }
+        .toggle-btn { width: 100%; background: linear-gradient(135deg, var(--orange), #ea580c); color: white; border: none; padding: 11px; border-radius: 10px; font-weight: 700; font-size: 13px; cursor: pointer; transition: all 0.3s; }
+        .toggle-btn:hover { opacity: 0.9; transform: scale(0.99); }
 
         /* Contact */
-        .contact-card {
-            background: white;
-            border-radius: 12px;
-            padding: 30px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-            text-align: center;
-            margin-bottom: 20px;
-            transition: transform 0.3s;
-        }
-        .contact-card:hover { transform: translateY(-5px); }
-        .contact-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, var(--primary), var(--orange));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 15px;
-            color: white;
-            font-size: 22px;
-        }
+        .contact-card { background: white; border-radius: 16px; padding: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); text-align: center; margin-bottom: 20px; transition: all 0.3s; }
+        .contact-card:hover { transform: translateY(-6px); box-shadow: 0 15px 40px rgba(26,60,110,0.15); }
+        .contact-icon { width: 62px; height: 62px; background: linear-gradient(135deg, var(--primary), var(--orange)); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; color: white; font-size: 22px; }
 
         /* Footer */
-        footer {
-            background: var(--primary);
-            color: white;
-            padding: 30px 0;
-            text-align: center;
-        }
+        footer { background: linear-gradient(135deg, #0d1b3e, var(--primary)); color: white; padding: 40px 0; text-align: center; }
         footer span { color: var(--orange); }
+        .footer-links a { color: rgba(255,255,255,0.6); text-decoration: none; margin: 0 10px; font-size: 13px; transition: color 0.3s; }
+        .footer-links a:hover { color: var(--orange); }
 
         /* Animations */
-        .fade-in { opacity: 0; transform: translateY(30px); transition: all 0.6s; }
+        .fade-in { opacity: 0; transform: translateY(30px); transition: all 0.7s ease; }
         .fade-in.visible { opacity: 1; transform: translateY(0); }
         .slide-left { opacity: 0; transform: translateX(-50px); transition: all 0.8s ease; }
         .slide-left.visible { opacity: 1; transform: translateX(0); }
@@ -244,23 +109,15 @@
         .slide-right.visible { opacity: 1; transform: translateX(0); }
         .zoom-in { opacity: 0; transform: scale(0.8); transition: all 0.6s ease; }
         .zoom-in.visible { opacity: 1; transform: scale(1); }
-        .skill-fill { width: 0 !important; transition: width 1.5s ease-in-out; }
-        .skill-fill.animate { width: var(--target-width) !important; }
-        .project-card:hover { box-shadow: 0 10px 40px rgba(249,115,22,0.3); }
-        .contact-card:hover { box-shadow: 0 10px 40px rgba(26,60,110,0.2); }
-        .skill-card:hover { box-shadow: 0 10px 40px rgba(249,115,22,0.2); transform: translateX(5px); transition: all 0.3s; }
-        .erp-feature { transition: all 0.3s; }
-        .erp-feature:hover { background: rgba(249,115,22,0.2); transform: translateX(8px); }
-        .navbar.scrolled { box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
-        .hero-badge { transition: all 0.3s; }
-        .hero-badge:hover { background: var(--orange); color: white; transform: translateY(-3px); }
-        @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-15px); } 100% { transform: translateY(0px); } }
-        @keyframes rotate-border { 0% { box-shadow: 0 0 0 4px var(--orange), 0 0 20px rgba(249,115,22,0.3); } 50% { box-shadow: 0 0 0 4px #f97316, 0 0 40px rgba(249,115,22,0.6); } 100% { box-shadow: 0 0 0 4px var(--orange), 0 0 20px rgba(249,115,22,0.3); } }
-        .profile-img { animation: float 3s ease-in-out infinite, rotate-border 2s ease-in-out infinite; }
-        @keyframes pulse-orange { 0% { box-shadow: 0 0 0 0 rgba(249,115,22,0.4); } 70% { box-shadow: 0 0 0 10px rgba(249,115,22,0); } 100% { box-shadow: 0 0 0 0 rgba(249,115,22,0); } }
-        .btn-hero { animation: pulse-orange 2s infinite; }
-        .section-line { transition: width 0.8s ease; width: 0; }
-        .section-line.visible { width: 60px; }
+
+        /* Typing cursor */
+        .typed-cursor { color: var(--orange); animation: blink 0.7s infinite; }
+        @keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0; } }
+
+        /* Scroll top btn */
+        .scroll-top { position: fixed; bottom: 25px; right: 25px; width: 44px; height: 44px; background: var(--orange); color: white; border: none; border-radius: 50%; cursor: pointer; font-size: 16px; display: none; align-items: center; justify-content: center; z-index: 999; box-shadow: 0 5px 15px rgba(249,115,22,0.4); transition: all 0.3s; }
+        .scroll-top:hover { transform: translateY(-3px); }
+        .scroll-top.show { display: flex; }
     </style>
 </head>
 <body>
@@ -270,7 +127,7 @@
     <div class="container">
         <a class="navbar-brand" href="#"><span>Ateeq</span> Awan</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
-            <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
+            <span class="navbar-toggler-icon" style="filter:invert(1);"></span>
         </button>
         <div class="collapse navbar-collapse" id="navMenu">
             <ul class="navbar-nav ms-auto">
@@ -286,40 +143,51 @@
 
 <!-- Hero -->
 <section class="hero">
-    <div class="container">
+    <div class="container" style="position:relative;z-index:1;">
         <div class="row align-items-center">
-            <div class="col-lg-8 slide-left">
-                <p style="color: var(--orange); font-size: 18px; margin-bottom: 10px;">
-                    <i class="fas fa-hand-wave"></i> Hello, I'm
+            <div class="col-lg-7 slide-left">
+                <p style="color:var(--orange);font-size:16px;margin-bottom:8px;font-weight:600;">
+                    <i class="fas fa-hand-sparkles me-2"></i>Hello, I'm
                 </p>
                 <h1>Ateeq <span>Awan</span></h1>
-                <p>WordPress Developer | Digital Marketer | Laravel ERP, LMS & SMM Panel Developer</p>
+                <p class="hero-sub">WordPress Developer &nbsp;|&nbsp; Digital Marketer &nbsp;|&nbsp; Laravel Developer</p>
                 <div class="my-3">
-                    <span class="hero-badge"><i class="fab fa-wordpress me-1"></i> WordPress Dev</span>
-                    <span class="hero-badge"><i class="fas fa-search me-1"></i> SEO Expert</span>
-                    <span class="hero-badge"><i class="fas fa-bullhorn me-1"></i> Digital Marketing</span>
-                    <span class="hero-badge"><i class="fab fa-laravel me-1"></i> Laravel Dev</span>
-                    <span class="hero-badge"><i class="fas fa-database me-1"></i> MySQL</span>
-                    <span class="hero-badge"><i class="fas fa-book me-1"></i> LMS Developer</span>
-                    <span class="hero-badge"><i class="fas fa-share-nodes me-1"></i> SMM Panel Dev</span>
+                    <span class="hero-badge"><i class="fab fa-wordpress me-1"></i>WordPress</span>
+                    <span class="hero-badge"><i class="fas fa-search me-1"></i>SEO</span>
+                    <span class="hero-badge"><i class="fas fa-bullhorn me-1"></i>Digital Marketing</span>
+                    <span class="hero-badge"><i class="fab fa-laravel me-1"></i>Laravel</span>
+                    <span class="hero-badge"><i class="fas fa-database me-1"></i>MySQL</span>
+                    <span class="hero-badge"><i class="fas fa-shopping-cart me-1"></i>WooCommerce</span>
                 </div>
                 <div class="mt-4">
                     <a href="#projects" class="btn-hero"><i class="fas fa-eye me-2"></i>View My Work</a>
-                    <a href="#contact" class="btn-hero-outline"><i class="fas fa-envelope me-2"></i>Hire Me</a>
+                    <a href="#contact" class="btn-hero-outline"><i class="fas fa-paper-plane me-2"></i>Hire Me</a>
                 </div>
             </div>
-            <div class="col-lg-4 text-center mt-4 mt-lg-0 slide-right">
-                <div class="profile-img" style="width: 220px; height: 220px; border-radius: 50%; margin: 0 auto; border: 4px solid var(--orange); overflow: hidden; box-shadow: 0 0 30px rgba(249,115,22,0.4);">
-                    <img src="ateeq.jpg" alt="Ateeq Awan" style="width: 100%; height: 100%; object-fit: cover; object-position: top;">
+            <div class="col-lg-5 text-center mt-5 mt-lg-0 slide-right">
+                <div class="profile-img" style="width:210px;height:210px;border-radius:50%;margin:0 auto;border:4px solid var(--orange);overflow:hidden;">
+                    <img src="ateeq.jpg" alt="Ateeq Awan" style="width:100%;height:100%;object-fit:cover;object-position:top;">
+                </div>
+                <div class="mt-4" style="display:flex;flex-wrap:wrap;justify-content:center;gap:10px;">
+                    <div style="background:rgba(255,255,255,0.1);border-radius:10px;padding:12px 20px;text-align:center;border:1px solid rgba(255,255,255,0.1);">
+                        <div style="font-size:22px;font-weight:800;color:var(--orange);">2+</div>
+                        <div style="font-size:11px;color:rgba(255,255,255,0.7);">Years Exp</div>
+                    </div>
+                    <div style="background:rgba(255,255,255,0.1);border-radius:10px;padding:12px 20px;text-align:center;border:1px solid rgba(255,255,255,0.1);">
+                        <div style="font-size:22px;font-weight:800;color:var(--orange);">10+</div>
+                        <div style="font-size:11px;color:rgba(255,255,255,0.7);">Projects</div>
+                    </div>
+                    <div style="background:rgba(255,255,255,0.1);border-radius:10px;padding:12px 20px;text-align:center;border:1px solid rgba(255,255,255,0.1);">
+                        <div style="font-size:22px;font-weight:800;color:var(--orange);">3</div>
+                        <div style="font-size:11px;color:rgba(255,255,255,0.7);">Systems</div>
+                    </div>
                 </div>
                 <div class="mt-3">
-                    <p style="color: rgba(255,255,255,0.7); font-size: 14px;">
-                        <i class="fas fa-map-marker-alt me-1" style="color: var(--orange);"></i>
-                        Margalla Town, Islamabad
+                    <p style="color:rgba(255,255,255,0.65);font-size:13px;">
+                        <i class="fas fa-map-marker-alt me-1" style="color:var(--orange);"></i>Margalla Town, Islamabad
                     </p>
-                    <p style="color: rgba(255,255,255,0.7); font-size: 14px;">
-                        <i class="fas fa-graduation-cap me-1" style="color: var(--orange);"></i>
-                        BS Computer Science (4th Semester)
+                    <p style="color:rgba(255,255,255,0.65);font-size:13px;">
+                        <i class="fas fa-graduation-cap me-1" style="color:var(--orange);"></i>BS Computer Science (4th Semester)
                     </p>
                 </div>
             </div>
@@ -331,30 +199,10 @@
 <section class="stats">
     <div class="container">
         <div class="row">
-            <div class="col-6 col-md-3">
-                <div class="stat-item zoom-in">
-                    <h3>2+</h3>
-                    <p>Years Experience</p>
-                </div>
-            </div>
-            <div class="col-6 col-md-3">
-                <div class="stat-item zoom-in">
-                    <h3>10+</h3>
-                    <p>Projects Completed</p>
-                </div>
-            </div>
-            <div class="col-6 col-md-3">
-                <div class="stat-item zoom-in">
-                    <h3>3</h3>
-                    <p>Full Systems Built</p>
-                </div>
-            </div>
-            <div class="col-6 col-md-3">
-                <div class="stat-item zoom-in">
-                    <h3>100%</h3>
-                    <p>Client Satisfaction</p>
-                </div>
-            </div>
+            <div class="col-6 col-md-3"><div class="stat-item zoom-in"><h3>2+</h3><p>Years Experience</p></div></div>
+            <div class="col-6 col-md-3"><div class="stat-item zoom-in"><h3>10+</h3><p>Projects Completed</p></div></div>
+            <div class="col-6 col-md-3"><div class="stat-item zoom-in"><h3>3</h3><p>Full Systems Built</p></div></div>
+            <div class="col-6 col-md-3"><div class="stat-item zoom-in"><h3>100%</h3><p>Client Satisfaction</p></div></div>
         </div>
     </div>
 </section>
@@ -363,58 +211,57 @@
 <section class="section" id="about">
     <div class="container">
         <div class="row">
-            <div class="col-lg-6">
+            <div class="col-lg-6 slide-left">
                 <h2 class="section-title">About <span>Me</span></h2>
                 <div class="section-line"></div>
-                <p style="color: #555; line-height: 1.8; font-size: 16px;">
+                <p style="color:#555;line-height:1.9;font-size:15px;">
                     I am <strong>Ateeq Awan</strong>, a passionate web developer and digital marketer from Islamabad, Pakistan.
                     Currently pursuing BS Computer Science (4th Semester), I have hands-on experience in WordPress Development,
                     Digital Marketing, SEO, and Laravel development.
                 </p>
-                <p style="color: #555; line-height: 1.8; font-size: 16px; margin-top: 15px;">
+                <p style="color:#555;line-height:1.9;font-size:15px;margin-top:15px;">
                     I have 2 years of experience in WordPress Development and worked at <strong>Karwan Solution</strong>
-                    IT company in Mansehra. I recently built a complete <strong>ERP System</strong>, a professional
-                    <strong>Library Management System (LMS)</strong>, and a full-featured <strong>SMM Panel</strong> using Laravel & MySQL.
-                </p>
-                <p style="color: #555; line-height: 1.8; font-size: 16px; margin-top: 15px;">
-                    I also have strong experience in <strong>Social Media Marketing</strong>, including running
-                    Facebook & Instagram Ads, and managing large-scale marketing campaigns. I successfully
-                    shared client promotional content across <strong>200+ Facebook Groups</strong>, generating
-                    significant reach and leads for my clients.
+                    IT company in Mansehra. I have built complete <strong>ERP System</strong>, <strong>Library Management System</strong>,
+                    <strong>SMM Panel</strong> and multiple <strong>WordPress & WooCommerce</strong> websites using Laravel & MySQL.
                 </p>
                 <div class="row mt-4">
                     <div class="col-6">
-                        <p><i class="fas fa-user me-2" style="color: var(--orange);"></i><strong>Name:</strong> Ateeq Awan</p>
-                        <p><i class="fas fa-phone me-2" style="color: var(--orange);"></i><strong>Phone:</strong> 0334-0970941</p>
-                        <p><i class="fas fa-map-marker-alt me-2" style="color: var(--orange);"></i><strong>City:</strong> Islamabad</p>
+                        <p style="margin-bottom:10px;font-size:14px;"><i class="fas fa-user me-2" style="color:var(--orange);"></i><strong>Name:</strong> Ateeq Awan</p>
+                        <p style="margin-bottom:10px;font-size:14px;"><i class="fas fa-phone me-2" style="color:var(--orange);"></i><strong>Phone:</strong> 0334-0970941</p>
+                        <p style="margin-bottom:10px;font-size:14px;"><i class="fas fa-map-marker-alt me-2" style="color:var(--orange);"></i><strong>City:</strong> Islamabad</p>
                     </div>
                     <div class="col-6">
-                        <p><i class="fas fa-envelope me-2" style="color: var(--orange);"></i><strong>Email:</strong> ateeqawan744@gmail.com</p>
-                        <p><i class="fas fa-graduation-cap me-2" style="color: var(--orange);"></i><strong>Degree:</strong> BS CS</p>
-                        <p><i class="fas fa-briefcase me-2" style="color: var(--orange);"></i><strong>Status:</strong> Available</p>
+                        <p style="margin-bottom:10px;font-size:14px;"><i class="fas fa-envelope me-2" style="color:var(--orange);"></i><strong>Email:</strong> ateeqawan744@gmail.com</p>
+                        <p style="margin-bottom:10px;font-size:14px;"><i class="fas fa-graduation-cap me-2" style="color:var(--orange);"></i><strong>Degree:</strong> BS CS</p>
+                        <p style="margin-bottom:10px;font-size:14px;"><i class="fas fa-circle me-2" style="color:#22c55e;font-size:10px;"></i><strong>Status:</strong> Available</p>
                     </div>
                 </div>
-                <a href="mailto:ateeqawan744@gmail.com" class="btn-hero mt-3" style="display: inline-block;">
-                    <i class="fas fa-envelope me-2"></i>Hire Me
+                <a href="mailto:ateeqawan744@gmail.com" class="btn-hero mt-3" style="display:inline-block;">
+                    <i class="fas fa-paper-plane me-2"></i>Hire Me
                 </a>
             </div>
-            <div class="col-lg-6 mt-4 mt-lg-0">
-                <h4 style="color: var(--primary); font-weight: bold; margin-bottom: 20px;">Education</h4>
-                <div style="border-left: 3px solid var(--orange); padding-left: 20px;">
-                    <div class="mb-4">
-                        <span style="background: var(--orange); color: white; padding: 3px 10px; border-radius: 20px; font-size: 12px;">Continue</span>
-                        <h5 style="margin-top: 8px; color: var(--primary);">BS Computer Science</h5>
-                        <p style="color: #888;">4th Semester | Currently Studying</p>
+            <div class="col-lg-6 mt-5 mt-lg-0 slide-right">
+                <h4 style="color:var(--primary);font-weight:700;margin-bottom:25px;">Education & Experience</h4>
+                <div style="border-left:3px solid var(--orange);padding-left:25px;">
+                    <div class="mb-4 fade-in">
+                        <span style="background:var(--orange);color:white;padding:3px 12px;border-radius:20px;font-size:11px;font-weight:600;">Ongoing</span>
+                        <h6 style="margin-top:10px;color:var(--primary);font-weight:700;">BS Computer Science</h6>
+                        <p style="color:#888;font-size:13px;">4th Semester | Currently Studying</p>
                     </div>
-                    <div class="mb-4">
-                        <span style="background: var(--primary); color: white; padding: 3px 10px; border-radius: 20px; font-size: 12px;">2023</span>
-                        <h5 style="margin-top: 8px; color: var(--primary);">FSC Pre-Engineering</h5>
-                        <p style="color: #888;">BISE Abbottabad</p>
+                    <div class="mb-4 fade-in">
+                        <span style="background:var(--primary);color:white;padding:3px 12px;border-radius:20px;font-size:11px;font-weight:600;">2023-2024</span>
+                        <h6 style="margin-top:10px;color:var(--primary);font-weight:700;">WordPress Developer</h6>
+                        <p style="color:#888;font-size:13px;">Karwan Solution IT Company, Mansehra</p>
                     </div>
-                    <div class="mb-4">
-                        <span style="background: #059669; color: white; padding: 3px 10px; border-radius: 20px; font-size: 12px;">2021</span>
-                        <h5 style="margin-top: 8px; color: var(--primary);">SSC (Matric)</h5>
-                        <p style="color: #888;">BISE Abbottabad</p>
+                    <div class="mb-4 fade-in">
+                        <span style="background:#2d6abf;color:white;padding:3px 12px;border-radius:20px;font-size:11px;font-weight:600;">2023</span>
+                        <h6 style="margin-top:10px;color:var(--primary);font-weight:700;">FSC Pre-Engineering</h6>
+                        <p style="color:#888;font-size:13px;">BISE Abbottabad</p>
+                    </div>
+                    <div class="fade-in">
+                        <span style="background:#059669;color:white;padding:3px 12px;border-radius:20px;font-size:11px;font-weight:600;">2021</span>
+                        <h6 style="margin-top:10px;color:var(--primary);font-weight:700;">SSC (Matric)</h6>
+                        <p style="color:#888;font-size:13px;">BISE Abbottabad</p>
                     </div>
                 </div>
             </div>
@@ -423,69 +270,69 @@
 </section>
 
 <!-- Skills -->
-<section class="section" id="skills" style="background: #f0f4f8;">
+<section class="section" id="skills" style="background:#f0f4f8;">
     <div class="container">
         <h2 class="section-title text-center">My <span>Skills</span></h2>
         <div class="section-line mx-auto"></div>
         <div class="row">
             <div class="col-md-6">
                 <div class="skill-card fade-in">
-                    <div class="d-flex justify-content-between">
-                        <span><i class="fab fa-wordpress me-2" style="color: var(--orange);"></i>WordPress Development</span>
-                        <span style="color: var(--orange);">90%</span>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span style="font-weight:600;font-size:14px;"><i class="fab fa-wordpress me-2" style="color:var(--orange);"></i>WordPress Development</span>
+                        <span style="color:var(--orange);font-weight:700;">90%</span>
                     </div>
-                    <div class="skill-bar"><div class="skill-fill" style="--target-width: 90%;" data-width="90%"></div></div>
+                    <div class="skill-bar"><div class="skill-fill" data-width="90%"></div></div>
                 </div>
                 <div class="skill-card fade-in">
-                    <div class="d-flex justify-content-between">
-                        <span><i class="fas fa-search me-2" style="color: var(--orange);"></i>Off Page SEO</span>
-                        <span style="color: var(--orange);">80%</span>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span style="font-weight:600;font-size:14px;"><i class="fas fa-search me-2" style="color:var(--orange);"></i>Off Page SEO</span>
+                        <span style="color:var(--orange);font-weight:700;">80%</span>
                     </div>
-                    <div class="skill-bar"><div class="skill-fill" style="--target-width: 80%;" data-width="80%"></div></div>
+                    <div class="skill-bar"><div class="skill-fill" data-width="80%"></div></div>
                 </div>
                 <div class="skill-card fade-in">
-                    <div class="d-flex justify-content-between">
-                        <span><i class="fas fa-bullhorn me-2" style="color: var(--orange);"></i>Digital Marketing</span>
-                        <span style="color: var(--orange);">85%</span>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span style="font-weight:600;font-size:14px;"><i class="fas fa-bullhorn me-2" style="color:var(--orange);"></i>Digital Marketing</span>
+                        <span style="color:var(--orange);font-weight:700;">85%</span>
                     </div>
-                    <div class="skill-bar"><div class="skill-fill" style="--target-width: 85%;" data-width="85%"></div></div>
+                    <div class="skill-bar"><div class="skill-fill" data-width="85%"></div></div>
                 </div>
                 <div class="skill-card fade-in">
-                    <div class="d-flex justify-content-between">
-                        <span><i class="fas fa-share-alt me-2" style="color: var(--orange);"></i>Social Media Marketing</span>
-                        <span style="color: var(--orange);">85%</span>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span style="font-weight:600;font-size:14px;"><i class="fas fa-share-alt me-2" style="color:var(--orange);"></i>Social Media Marketing</span>
+                        <span style="color:var(--orange);font-weight:700;">85%</span>
                     </div>
-                    <div class="skill-bar"><div class="skill-fill" style="--target-width: 85%;" data-width="85%"></div></div>
+                    <div class="skill-bar"><div class="skill-fill" data-width="85%"></div></div>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="skill-card fade-in">
-                    <div class="d-flex justify-content-between">
-                        <span><i class="fab fa-html5 me-2" style="color: var(--orange);"></i>HTML & CSS</span>
-                        <span style="color: var(--orange);">75%</span>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span style="font-weight:600;font-size:14px;"><i class="fab fa-html5 me-2" style="color:var(--orange);"></i>HTML & CSS</span>
+                        <span style="color:var(--orange);font-weight:700;">75%</span>
                     </div>
-                    <div class="skill-bar"><div class="skill-fill" style="--target-width: 75%;" data-width="75%"></div></div>
+                    <div class="skill-bar"><div class="skill-fill" data-width="75%"></div></div>
                 </div>
                 <div class="skill-card fade-in">
-                    <div class="d-flex justify-content-between">
-                        <span><i class="fab fa-bootstrap me-2" style="color: var(--orange);"></i>Bootstrap & jQuery</span>
-                        <span style="color: var(--orange);">70%</span>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span style="font-weight:600;font-size:14px;"><i class="fab fa-bootstrap me-2" style="color:var(--orange);"></i>Bootstrap & jQuery</span>
+                        <span style="color:var(--orange);font-weight:700;">70%</span>
                     </div>
-                    <div class="skill-bar"><div class="skill-fill" style="--target-width: 70%;" data-width="70%"></div></div>
+                    <div class="skill-bar"><div class="skill-fill" data-width="70%"></div></div>
                 </div>
                 <div class="skill-card fade-in">
-                    <div class="d-flex justify-content-between">
-                        <span><i class="fab fa-php me-2" style="color: var(--orange);"></i>PHP & Laravel</span>
-                        <span style="color: var(--orange);">65%</span>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span style="font-weight:600;font-size:14px;"><i class="fab fa-php me-2" style="color:var(--orange);"></i>PHP & Laravel</span>
+                        <span style="color:var(--orange);font-weight:700;">65%</span>
                     </div>
-                    <div class="skill-bar"><div class="skill-fill" style="--target-width: 65%;" data-width="65%"></div></div>
+                    <div class="skill-bar"><div class="skill-fill" data-width="65%"></div></div>
                 </div>
                 <div class="skill-card fade-in">
-                    <div class="d-flex justify-content-between">
-                        <span><i class="fas fa-database me-2" style="color: var(--orange);"></i>MySQL Database</span>
-                        <span style="color: var(--orange);">70%</span>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span style="font-weight:600;font-size:14px;"><i class="fas fa-database me-2" style="color:var(--orange);"></i>MySQL Database</span>
+                        <span style="color:var(--orange);font-weight:700;">70%</span>
                     </div>
-                    <div class="skill-bar"><div class="skill-fill" style="--target-width: 70%;" data-width="70%"></div></div>
+                    <div class="skill-bar"><div class="skill-fill" data-width="70%"></div></div>
                 </div>
             </div>
         </div>
@@ -497,289 +344,246 @@
     <div class="container">
         <h2 class="section-title text-center">My <span>Projects</span></h2>
         <div class="section-line mx-auto"></div>
+        <p class="text-center section-subtitle">Live websites I have built for clients</p>
         <div class="row align-items-stretch">
+
+            <!-- eMarketing -->
             <div class="col-md-4">
                 <div class="project-card fade-in">
-                    <div class="project-header">
+                    <div class="project-header blue">
                         <i class="fas fa-globe fa-2x mb-3"></i>
-                        <h5>eMarketing Solution</h5>
-                        <p style="opacity: 0.8; font-size: 13px;">Digital Marketing Agency Website</p>
+                        <h5 style="font-weight:700;">eMarketing Solution</h5>
+                        <p style="opacity:0.8;font-size:13px;">Digital Marketing Agency</p>
                     </div>
                     <div class="project-body">
-                        <p style="color: #666; font-size: 14px;">Professional digital marketing agency website built with WordPress.</p>
-                        <div class="mt-3">
-                            <span class="project-tag">WordPress</span>
-                            <span class="project-tag">SEO</span>
-                            <span class="project-tag">Digital Marketing</span>
+                        <div>
+                            <p style="color:#666;font-size:14px;line-height:1.7;">Professional digital marketing agency website built with WordPress. Clean, fast and SEO optimized.</p>
+                            <div class="mt-3">
+                                <span class="project-tag">WordPress</span>
+                                <span class="project-tag">Elementor</span>
+                                <span class="project-tag">SEO</span>
+                                <span class="project-tag orange">Live Site</span>
+                            </div>
                         </div>
-                        <a href="https://emarkingsolution.com/" target="_blank" class="btn-hero mt-3" style="display: inline-block; font-size: 13px; padding: 8px 20px;">
-                            <i class="fas fa-external-link-alt me-1"></i> Visit Site
+                        <a href="https://emarkingsolution.com/" target="_blank" class="visit-btn">
+                            <i class="fas fa-external-link-alt"></i> Visit Site
                         </a>
                     </div>
                 </div>
             </div>
+
+            <!-- Urwatulemaan -->
             <div class="col-md-4">
                 <div class="project-card fade-in">
                     <div class="project-header orange">
                         <i class="fas fa-moon fa-2x mb-3"></i>
-                        <h5>Urwatulemaan</h5>
-                        <p style="opacity: 0.8; font-size: 13px;">Islamic/Religious Website</p>
+                        <h5 style="font-weight:700;">Urwatulemaan</h5>
+                        <p style="opacity:0.8;font-size:13px;">Islamic / Religious Website</p>
                     </div>
                     <div class="project-body">
-                        <p style="color: #666; font-size: 14px;">Professional Islamic website built with WordPress for religious content and community.</p>
-                        <div class="mt-3">
-                            <span class="project-tag">WordPress</span>
-                            <span class="project-tag orange">Islamic</span>
-                            <span class="project-tag">Web Design</span>
+                        <div>
+                            <p style="color:#666;font-size:14px;line-height:1.7;">Professional Islamic website built with WordPress for religious content, articles and community engagement.</p>
+                            <div class="mt-3">
+                                <span class="project-tag">WordPress</span>
+                                <span class="project-tag">Web Design</span>
+                                <span class="project-tag orange">Islamic</span>
+                                <span class="project-tag orange">Live Site</span>
+                            </div>
                         </div>
-                        <a href="https://urwatulemaan.com/" target="_blank" class="btn-hero mt-3" style="display: inline-block; font-size: 13px; padding: 8px 20px;">
-                            <i class="fas fa-external-link-alt me-1"></i> Visit Site
+                        <a href="https://urwatulemaan.com/" target="_blank" class="visit-btn">
+                            <i class="fas fa-external-link-alt"></i> Visit Site
                         </a>
                     </div>
                 </div>
             </div>
+
+            <!-- Al Sibgha Hub -->
             <div class="col-md-4">
                 <div class="project-card fade-in">
                     <div class="project-header green">
-                        <i class="fas fa-share-alt fa-2x mb-3"></i>
-                        <h5>Social Media Marketing Campaign</h5>
-                        <p style="opacity: 0.8; font-size: 13px;">Client Marketing Campaign</p>
+                        <i class="fas fa-shopping-bag fa-2x mb-3"></i>
+                        <h5 style="font-weight:700;">Al Sibgha Hub</h5>
+                        <p style="opacity:0.8;font-size:13px;">Herbal Products eCommerce Store</p>
                     </div>
                     <div class="project-body">
-                        <p style="color: #666; font-size: 14px;">Managed client social media campaign across <strong>200+ Facebook Groups</strong>, generating massive reach and leads.</p>
-                        <div class="mt-3">
-                            <span class="project-tag">Facebook Marketing</span>
-                            <span class="project-tag orange">200+ Groups</span>
-                            <span class="project-tag">Lead Generation</span>
-                            <span class="project-tag">Social Media</span>
+                        <div>
+                            <p style="color:#666;font-size:14px;line-height:1.7;">Complete WooCommerce online store for herbal products — Hair Oil, Honey, Soaps & more. Full eCommerce with product management.</p>
+                            <div class="mt-3">
+                                <span class="project-tag">WordPress</span>
+                                <span class="project-tag">WooCommerce</span>
+                                <span class="project-tag orange">eCommerce</span>
+                                <span class="project-tag orange">Live Site</span>
+                            </div>
                         </div>
+                        <a href="https://alsibghahub.com/" target="_blank" class="visit-btn">
+                            <i class="fas fa-external-link-alt"></i> Visit Site
+                        </a>
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 </section>
 
-<!-- My Systems Section -->
-<section id="systems" style="background: linear-gradient(135deg, #1a2b5f 0%, #0d2447 100%); padding: 80px 0; color: white;">
-<div class="container">
-    <h2 class="section-title text-center" style="color:white;">My <span>Systems</span></h2>
-    <div class="section-line mx-auto"></div>
-    <p class="text-center mb-5" style="color:rgba(255,255,255,0.7); font-size:15px;">Click on any system to see full details</p>
+<!-- My Systems -->
+<section class="systems-section" id="systems">
+    <div class="container" style="position:relative;z-index:1;">
+        <h2 class="section-title text-center" style="color:white;">My <span>Systems</span></h2>
+        <div class="section-line mx-auto"></div>
+        <p class="text-center mb-5" style="color:rgba(255,255,255,0.6);font-size:15px;">Complete systems built from scratch using Laravel & MySQL</p>
 
-    <div class="row g-4">
+        <div class="row g-4">
 
-        <!-- ERP Card -->
-        <div class="col-md-4">
-            <div style="background:rgba(255,255,255,0.07); border-radius:16px; overflow:hidden; border:1px solid rgba(249,115,22,0.2); transition:all 0.3s;" class="system-card">
-                <div style="background:linear-gradient(135deg,#1a3c6e,#2d6abf); padding:30px; text-align:center;">
-                    <div style="width:70px;height:70px;background:rgba(249,115,22,0.2);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 15px;border:2px solid var(--orange);">
-                        <i class="fas fa-building fa-2x" style="color:var(--orange);"></i>
+            <!-- ERP -->
+            <div class="col-md-4">
+                <div class="system-card fade-in">
+                    <div class="system-header" style="background:linear-gradient(135deg,#1a3c6e,#2d6abf);">
+                        <div class="system-icon"><i class="fas fa-building fa-2x" style="color:var(--orange);"></i></div>
+                        <h5 style="color:white;font-weight:700;margin:0;">ERP System</h5>
+                        <p style="color:rgba(255,255,255,0.55);font-size:12px;margin:6px 0 12px;">Enterprise Resource Planning</p>
+                        <span class="sys-tag">Laravel</span>
+                        <span class="sys-tag">MySQL</span>
+                        <span class="sys-tag">Bootstrap 5</span>
                     </div>
-                    <h5 style="color:white;font-weight:700;margin:0;">ERP System</h5>
-                    <p style="color:rgba(255,255,255,0.6);font-size:12px;margin:8px 0 0;">Enterprise Resource Planning</p>
-                    <div class="mt-3">
-                        <span style="background:rgba(249,115,22,0.2);color:var(--orange);padding:3px 10px;border-radius:20px;font-size:11px;margin:2px;display:inline-block;">Laravel</span>
-                        <span style="background:rgba(249,115,22,0.2);color:var(--orange);padding:3px 10px;border-radius:20px;font-size:11px;margin:2px;display:inline-block;">MySQL</span>
-                        <span style="background:rgba(249,115,22,0.2);color:var(--orange);padding:3px 10px;border-radius:20px;font-size:11px;margin:2px;display:inline-block;">Bootstrap 5</span>
+                    <div style="padding:18px;">
+                        <div style="display:flex;flex-wrap:wrap;gap:7px;margin-bottom:15px;">
+                            <span class="feature-tag"><i class="fas fa-box me-1" style="color:var(--orange);"></i>Inventory</span>
+                            <span class="feature-tag"><i class="fas fa-users me-1" style="color:var(--orange);"></i>HR & Payroll</span>
+                            <span class="feature-tag"><i class="fas fa-cash-register me-1" style="color:var(--orange);"></i>POS</span>
+                            <span class="feature-tag"><i class="fas fa-file-invoice-dollar me-1" style="color:var(--orange);"></i>Invoices</span>
+                            <span class="feature-tag"><i class="fas fa-chart-bar me-1" style="color:var(--orange);"></i>Reports</span>
+                            <span class="feature-tag"><i class="fas fa-clock me-1" style="color:var(--orange);"></i>Attendance</span>
+                        </div>
+                        <button onclick="toggleDetail('erp-detail','erp-icon')" class="toggle-btn">
+                            <i class="fas fa-eye me-2"></i>View Full Details <i class="fas fa-chevron-down ms-1" id="erp-icon"></i>
+                        </button>
                     </div>
-                </div>
-                <div style="padding:20px;">
-                    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:15px;">
-                        <span style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.8);padding:4px 10px;border-radius:6px;font-size:12px;"><i class="fas fa-box me-1" style="color:var(--orange);"></i>Inventory</span>
-                        <span style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.8);padding:4px 10px;border-radius:6px;font-size:12px;"><i class="fas fa-users me-1" style="color:var(--orange);"></i>HR & Payroll</span>
-                        <span style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.8);padding:4px 10px;border-radius:6px;font-size:12px;"><i class="fas fa-cash-register me-1" style="color:var(--orange);"></i>POS</span>
-                        <span style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.8);padding:4px 10px;border-radius:6px;font-size:12px;"><i class="fas fa-file-invoice-dollar me-1" style="color:var(--orange);"></i>Invoices</span>
-                        <span style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.8);padding:4px 10px;border-radius:6px;font-size:12px;"><i class="fas fa-chart-bar me-1" style="color:var(--orange);"></i>Reports</span>
-                        <span style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.8);padding:4px 10px;border-radius:6px;font-size:12px;"><i class="fas fa-clock me-1" style="color:var(--orange);"></i>Attendance</span>
-                    </div>
-                    <button onclick="toggleDetail('erp-detail')" style="width:100%;background:var(--orange);color:white;border:none;padding:10px;border-radius:8px;font-weight:600;font-size:13px;cursor:pointer;">
-                        <i class="fas fa-eye me-2"></i>View Full Details <i class="fas fa-chevron-down ms-1" id="erp-icon"></i>
-                    </button>
-                </div>
-                <!-- ERP Detail -->
-                <div id="erp-detail" style="display:none;padding:0 20px 20px;">
-                    <div style="border-top:1px solid rgba(255,255,255,0.1);padding-top:15px;">
-                        <div style="background:rgba(255,255,255,0.05);border-radius:8px;padding:12px;margin-bottom:8px;border-left:3px solid var(--orange);">
-                            <i class="fas fa-box me-2" style="color:var(--orange);"></i><strong>Inventory Management</strong>
-                            <p style="color:rgba(255,255,255,0.6);font-size:12px;margin:4px 0 0;">Stock tracking with low stock alerts & categories</p>
-                        </div>
-                        <div style="background:rgba(255,255,255,0.05);border-radius:8px;padding:12px;margin-bottom:8px;border-left:3px solid var(--orange);">
-                            <i class="fas fa-users me-2" style="color:var(--orange);"></i><strong>HR & Employee Management</strong>
-                            <p style="color:rgba(255,255,255,0.6);font-size:12px;margin:4px 0 0;">Complete employee records, attendance, salary slips PDF</p>
-                        </div>
-                        <div style="background:rgba(255,255,255,0.05);border-radius:8px;padding:12px;margin-bottom:8px;border-left:3px solid var(--orange);">
-                            <i class="fas fa-cash-register me-2" style="color:var(--orange);"></i><strong>POS & Sales System</strong>
-                            <p style="color:rgba(255,255,255,0.6);font-size:12px;margin:4px 0 0;">Point of sale, orders, invoices PDF, purchase orders</p>
-                        </div>
-                        <div style="background:rgba(255,255,255,0.05);border-radius:8px;padding:12px;margin-bottom:8px;border-left:3px solid var(--orange);">
-                            <i class="fas fa-funnel-dollar me-2" style="color:var(--orange);"></i><strong>CRM & Project Management</strong>
-                            <p style="color:rgba(255,255,255,0.6);font-size:12px;margin:4px 0 0;">Lead tracking, project budgets, notifications</p>
-                        </div>
-                        <div style="background:rgba(255,255,255,0.05);border-radius:8px;padding:12px;border-left:3px solid var(--orange);">
-                            <i class="fas fa-chart-bar me-2" style="color:var(--orange);"></i><strong>Reports & Analytics</strong>
-                            <p style="color:rgba(255,255,255,0.6);font-size:12px;margin:4px 0 0;">Business analytics, PDF reports, charts dashboard</p>
+                    <div id="erp-detail" style="display:none;padding:0 18px 18px;">
+                        <div style="border-top:1px solid rgba(255,255,255,0.08);padding-top:15px;">
+                            <div class="detail-item"><i class="fas fa-box me-2" style="color:var(--orange);"></i><strong>Inventory Management</strong><p>Stock tracking, low stock alerts, categories</p></div>
+                            <div class="detail-item"><i class="fas fa-users me-2" style="color:var(--orange);"></i><strong>HR & Employee Management</strong><p>Employee records, attendance, salary slips PDF</p></div>
+                            <div class="detail-item"><i class="fas fa-cash-register me-2" style="color:var(--orange);"></i><strong>POS & Sales System</strong><p>Point of sale, orders, invoices PDF, purchases</p></div>
+                            <div class="detail-item"><i class="fas fa-funnel-dollar me-2" style="color:var(--orange);"></i><strong>CRM & Project Management</strong><p>Lead tracking, project budgets, notifications</p></div>
+                            <div class="detail-item"><i class="fas fa-chart-bar me-2" style="color:var(--orange);"></i><strong>Reports & Analytics</strong><p>Business analytics, PDF reports, charts</p></div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- LMS Card -->
-        <div class="col-md-4">
-            <div style="background:rgba(255,255,255,0.07); border-radius:16px; overflow:hidden; border:1px solid rgba(249,115,22,0.2); transition:all 0.3s;" class="system-card">
-                <div style="background:linear-gradient(135deg,#0d2447,#1a3c6e); padding:30px; text-align:center;">
-                    <div style="width:70px;height:70px;background:rgba(249,115,22,0.2);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 15px;border:2px solid var(--orange);">
-                        <i class="fas fa-book-open fa-2x" style="color:var(--orange);"></i>
+            <!-- LMS -->
+            <div class="col-md-4">
+                <div class="system-card fade-in">
+                    <div class="system-header" style="background:linear-gradient(135deg,#0d2447,#1a3c6e);">
+                        <div class="system-icon"><i class="fas fa-book-open fa-2x" style="color:var(--orange);"></i></div>
+                        <h5 style="color:white;font-weight:700;margin:0;">Library Management</h5>
+                        <p style="color:rgba(255,255,255,0.55);font-size:12px;margin:6px 0 12px;">LMS System — Laravel 12</p>
+                        <span class="sys-tag">Laravel 12</span>
+                        <span class="sys-tag">MySQL</span>
+                        <span class="sys-tag">DataTables</span>
                     </div>
-                    <h5 style="color:white;font-weight:700;margin:0;">Library Management</h5>
-                    <p style="color:rgba(255,255,255,0.6);font-size:12px;margin:8px 0 0;">LMS System — Laravel 12</p>
-                    <div class="mt-3">
-                        <span style="background:rgba(249,115,22,0.2);color:var(--orange);padding:3px 10px;border-radius:20px;font-size:11px;margin:2px;display:inline-block;">Laravel 12</span>
-                        <span style="background:rgba(249,115,22,0.2);color:var(--orange);padding:3px 10px;border-radius:20px;font-size:11px;margin:2px;display:inline-block;">MySQL</span>
-                        <span style="background:rgba(249,115,22,0.2);color:var(--orange);padding:3px 10px;border-radius:20px;font-size:11px;margin:2px;display:inline-block;">DataTables</span>
+                    <div style="padding:18px;">
+                        <div style="display:flex;flex-wrap:wrap;gap:7px;margin-bottom:15px;">
+                            <span class="feature-tag"><i class="fas fa-book me-1" style="color:var(--orange);"></i>Books</span>
+                            <span class="feature-tag"><i class="fas fa-user-graduate me-1" style="color:var(--orange);"></i>Students</span>
+                            <span class="feature-tag"><i class="fas fa-hand-holding-heart me-1" style="color:var(--orange);"></i>Issue/Return</span>
+                            <span class="feature-tag"><i class="fas fa-receipt me-1" style="color:var(--orange);"></i>Auto Fines</span>
+                            <span class="feature-tag"><i class="fas fa-calendar-check me-1" style="color:var(--orange);"></i>Reservations</span>
+                            <span class="feature-tag"><i class="fas fa-chart-bar me-1" style="color:var(--orange);"></i>Reports</span>
+                        </div>
+                        <button onclick="toggleDetail('lms-detail','lms-icon')" class="toggle-btn">
+                            <i class="fas fa-eye me-2"></i>View Full Details <i class="fas fa-chevron-down ms-1" id="lms-icon"></i>
+                        </button>
                     </div>
-                </div>
-                <div style="padding:20px;">
-                    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:15px;">
-                        <span style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.8);padding:4px 10px;border-radius:6px;font-size:12px;"><i class="fas fa-book me-1" style="color:var(--orange);"></i>Books</span>
-                        <span style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.8);padding:4px 10px;border-radius:6px;font-size:12px;"><i class="fas fa-user-graduate me-1" style="color:var(--orange);"></i>Students</span>
-                        <span style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.8);padding:4px 10px;border-radius:6px;font-size:12px;"><i class="fas fa-hand-holding-heart me-1" style="color:var(--orange);"></i>Issue/Return</span>
-                        <span style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.8);padding:4px 10px;border-radius:6px;font-size:12px;"><i class="fas fa-receipt me-1" style="color:var(--orange);"></i>Auto Fines</span>
-                        <span style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.8);padding:4px 10px;border-radius:6px;font-size:12px;"><i class="fas fa-calendar-check me-1" style="color:var(--orange);"></i>Reservations</span>
-                        <span style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.8);padding:4px 10px;border-radius:6px;font-size:12px;"><i class="fas fa-chart-bar me-1" style="color:var(--orange);"></i>Reports</span>
-                    </div>
-                    <button onclick="toggleDetail('lms-detail')" style="width:100%;background:var(--orange);color:white;border:none;padding:10px;border-radius:8px;font-weight:600;font-size:13px;cursor:pointer;">
-                        <i class="fas fa-eye me-2"></i>View Full Details <i class="fas fa-chevron-down ms-1" id="lms-icon"></i>
-                    </button>
-                </div>
-                <!-- LMS Detail -->
-                <div id="lms-detail" style="display:none;padding:0 20px 20px;">
-                    <div style="border-top:1px solid rgba(255,255,255,0.1);padding-top:15px;">
-                        <div style="background:rgba(255,255,255,0.05);border-radius:8px;padding:12px;margin-bottom:8px;border-left:3px solid var(--orange);">
-                            <i class="fas fa-book me-2" style="color:var(--orange);"></i><strong>Complete Book Management</strong>
-                            <p style="color:rgba(255,255,255,0.6);font-size:12px;margin:4px 0 0;">Add/edit books with image, PDF, ISBN, barcode, rack location</p>
-                        </div>
-                        <div style="background:rgba(255,255,255,0.05);border-radius:8px;padding:12px;margin-bottom:8px;border-left:3px solid var(--orange);">
-                            <i class="fas fa-user-graduate me-2" style="color:var(--orange);"></i><strong>Student Management</strong>
-                            <p style="color:rgba(255,255,255,0.6);font-size:12px;margin:4px 0 0;">Auto ID generation, membership, profile photo, history</p>
-                        </div>
-                        <div style="background:rgba(255,255,255,0.05);border-radius:8px;padding:12px;margin-bottom:8px;border-left:3px solid var(--orange);">
-                            <i class="fas fa-hand-holding-heart me-2" style="color:var(--orange);"></i><strong>Issue & Return System</strong>
-                            <p style="color:rgba(255,255,255,0.6);font-size:12px;margin:4px 0 0;">One-click issue/return, due date tracking, auto quantity</p>
-                        </div>
-                        <div style="background:rgba(255,255,255,0.05);border-radius:8px;padding:12px;margin-bottom:8px;border-left:3px solid var(--orange);">
-                            <i class="fas fa-receipt me-2" style="color:var(--orange);"></i><strong>Automatic Fine System</strong>
-                            <p style="color:rgba(255,255,255,0.6);font-size:12px;margin:4px 0 0;">Rs.10/day auto fine, paid/unpaid tracking, fine reports</p>
-                        </div>
-                        <div style="background:rgba(255,255,255,0.05);border-radius:8px;padding:12px;border-left:3px solid var(--orange);">
-                            <i class="fas fa-calendar-check me-2" style="color:var(--orange);"></i><strong>Reservation & Reports</strong>
-                            <p style="color:rgba(255,255,255,0.6);font-size:12px;margin:4px 0 0;">Book reservations, approve/cancel, 4 types of reports</p>
+                    <div id="lms-detail" style="display:none;padding:0 18px 18px;">
+                        <div style="border-top:1px solid rgba(255,255,255,0.08);padding-top:15px;">
+                            <div class="detail-item"><i class="fas fa-book me-2" style="color:var(--orange);"></i><strong>Complete Book Management</strong><p>Add/edit books, image, PDF, ISBN, rack location</p></div>
+                            <div class="detail-item"><i class="fas fa-user-graduate me-2" style="color:var(--orange);"></i><strong>Student Management</strong><p>Auto ID generation, membership, profile, history</p></div>
+                            <div class="detail-item"><i class="fas fa-hand-holding-heart me-2" style="color:var(--orange);"></i><strong>Issue & Return System</strong><p>One-click issue/return, due date, auto quantity</p></div>
+                            <div class="detail-item"><i class="fas fa-receipt me-2" style="color:var(--orange);"></i><strong>Automatic Fine System</strong><p>Rs.10/day auto fine, paid/unpaid, fine reports</p></div>
+                            <div class="detail-item"><i class="fas fa-calendar-check me-2" style="color:var(--orange);"></i><strong>Reservation & Reports</strong><p>Book reservations, approve/cancel, 4 reports</p></div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- SMM Card -->
-        <div class="col-md-4">
-            <div style="background:rgba(255,255,255,0.07); border-radius:16px; overflow:hidden; border:1px solid rgba(249,115,22,0.2); transition:all 0.3s;" class="system-card">
-                <div style="background:linear-gradient(135deg,#0a1628,#1a2b5f); padding:30px; text-align:center;">
-                    <div style="width:70px;height:70px;background:rgba(249,115,22,0.2);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 15px;border:2px solid var(--orange);">
-                        <i class="fas fa-share-alt fa-2x" style="color:var(--orange);"></i>
+            <!-- SMM -->
+            <div class="col-md-4">
+                <div class="system-card fade-in">
+                    <div class="system-header" style="background:linear-gradient(135deg,#0a1628,#1a2b5f);">
+                        <div class="system-icon"><i class="fas fa-share-alt fa-2x" style="color:var(--orange);"></i></div>
+                        <h5 style="color:white;font-weight:700;margin:0;">SMM Panel</h5>
+                        <p style="color:rgba(255,255,255,0.55);font-size:12px;margin:6px 0 12px;">Social Media Marketing Panel</p>
+                        <span class="sys-tag">Laravel</span>
+                        <span class="sys-tag">REST API</span>
+                        <span class="sys-tag">MySQL</span>
                     </div>
-                    <h5 style="color:white;font-weight:700;margin:0;">SMM Panel</h5>
-                    <p style="color:rgba(255,255,255,0.6);font-size:12px;margin:8px 0 0;">Social Media Marketing Panel</p>
-                    <div class="mt-3">
-                        <span style="background:rgba(249,115,22,0.2);color:var(--orange);padding:3px 10px;border-radius:20px;font-size:11px;margin:2px;display:inline-block;">Laravel</span>
-                        <span style="background:rgba(249,115,22,0.2);color:var(--orange);padding:3px 10px;border-radius:20px;font-size:11px;margin:2px;display:inline-block;">API</span>
-                        <span style="background:rgba(249,115,22,0.2);color:var(--orange);padding:3px 10px;border-radius:20px;font-size:11px;margin:2px;display:inline-block;">MySQL</span>
+                    <div style="padding:18px;">
+                        <div style="display:flex;flex-wrap:wrap;gap:7px;margin-bottom:15px;">
+                            <span class="feature-tag"><i class="fab fa-facebook me-1" style="color:#5b9cf6;"></i>Facebook</span>
+                            <span class="feature-tag"><i class="fab fa-instagram me-1" style="color:#f472b6;"></i>Instagram</span>
+                            <span class="feature-tag"><i class="fab fa-youtube me-1" style="color:#f87171;"></i>YouTube</span>
+                            <span class="feature-tag"><i class="fab fa-tiktok me-1" style="color:white;"></i>TikTok</span>
+                            <span class="feature-tag"><i class="fas fa-wallet me-1" style="color:var(--orange);"></i>Wallet</span>
+                            <span class="feature-tag"><i class="fas fa-plug me-1" style="color:var(--orange);"></i>API</span>
+                        </div>
+                        <button onclick="toggleDetail('smm-detail','smm-icon')" class="toggle-btn">
+                            <i class="fas fa-eye me-2"></i>View Full Details <i class="fas fa-chevron-down ms-1" id="smm-icon"></i>
+                        </button>
                     </div>
-                </div>
-                <div style="padding:20px;">
-                    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:15px;">
-                        <span style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.8);padding:4px 10px;border-radius:6px;font-size:12px;"><i class="fab fa-facebook me-1" style="color:#5b9cf6;"></i>Facebook</span>
-                        <span style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.8);padding:4px 10px;border-radius:6px;font-size:12px;"><i class="fab fa-instagram me-1" style="color:#f472b6;"></i>Instagram</span>
-                        <span style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.8);padding:4px 10px;border-radius:6px;font-size:12px;"><i class="fab fa-youtube me-1" style="color:#f87171;"></i>YouTube</span>
-                        <span style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.8);padding:4px 10px;border-radius:6px;font-size:12px;"><i class="fab fa-tiktok me-1" style="color:white;"></i>TikTok</span>
-                        <span style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.8);padding:4px 10px;border-radius:6px;font-size:12px;"><i class="fas fa-wallet me-1" style="color:var(--orange);"></i>Wallet</span>
-                        <span style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.8);padding:4px 10px;border-radius:6px;font-size:12px;"><i class="fas fa-plug me-1" style="color:var(--orange);"></i>API</span>
-                    </div>
-                    <button onclick="toggleDetail('smm-detail')" style="width:100%;background:var(--orange);color:white;border:none;padding:10px;border-radius:8px;font-weight:600;font-size:13px;cursor:pointer;">
-                        <i class="fas fa-eye me-2"></i>View Full Details <i class="fas fa-chevron-down ms-1" id="smm-icon"></i>
-                    </button>
-                </div>
-                <!-- SMM Detail -->
-                <div id="smm-detail" style="display:none;padding:0 20px 20px;">
-                    <div style="border-top:1px solid rgba(255,255,255,0.1);padding-top:15px;">
-                        <div style="background:rgba(255,255,255,0.05);border-radius:8px;padding:12px;margin-bottom:8px;border-left:3px solid var(--orange);">
-                            <i class="fas fa-share-alt me-2" style="color:var(--orange);"></i><strong>SMM Services</strong>
-                            <p style="color:rgba(255,255,255,0.6);font-size:12px;margin:4px 0 0;">Followers, Likes, Views for Facebook, Instagram, YouTube, TikTok</p>
-                        </div>
-                        <div style="background:rgba(255,255,255,0.05);border-radius:8px;padding:12px;margin-bottom:8px;border-left:3px solid var(--orange);">
-                            <i class="fas fa-shopping-cart me-2" style="color:var(--orange);"></i><strong>Order Management</strong>
-                            <p style="color:rgba(255,255,255,0.6);font-size:12px;margin:4px 0 0;">Place orders, live tracking — Pending, Processing, Completed</p>
-                        </div>
-                        <div style="background:rgba(255,255,255,0.05);border-radius:8px;padding:12px;margin-bottom:8px;border-left:3px solid var(--orange);">
-                            <i class="fas fa-wallet me-2" style="color:var(--orange);"></i><strong>Wallet & Payment</strong>
-                            <p style="color:rgba(255,255,255,0.6);font-size:12px;margin:4px 0 0;">User wallet, add funds, auto-deduct on orders, transaction history</p>
-                        </div>
-                        <div style="background:rgba(255,255,255,0.05);border-radius:8px;padding:12px;margin-bottom:8px;border-left:3px solid var(--orange);">
-                            <i class="fas fa-plug me-2" style="color:var(--orange);"></i><strong>API Integration</strong>
-                            <p style="color:rgba(255,255,255,0.6);font-size:12px;margin:4px 0 0;">External provider API, auto-process orders, reseller API support</p>
-                        </div>
-                        <div style="background:rgba(255,255,255,0.05);border-radius:8px;padding:12px;border-left:3px solid var(--orange);">
-                            <i class="fas fa-chart-line me-2" style="color:var(--orange);"></i><strong>Admin Dashboard & Reports</strong>
-                            <p style="color:rgba(255,255,255,0.6);font-size:12px;margin:4px 0 0;">Total orders, revenue, users, sales analytics, export data</p>
+                    <div id="smm-detail" style="display:none;padding:0 18px 18px;">
+                        <div style="border-top:1px solid rgba(255,255,255,0.08);padding-top:15px;">
+                            <div class="detail-item"><i class="fas fa-share-alt me-2" style="color:var(--orange);"></i><strong>SMM Services</strong><p>Followers, Likes, Views — Facebook, Instagram, YouTube, TikTok</p></div>
+                            <div class="detail-item"><i class="fas fa-shopping-cart me-2" style="color:var(--orange);"></i><strong>Order Management</strong><p>Place orders, live tracking — Pending, Processing, Completed</p></div>
+                            <div class="detail-item"><i class="fas fa-wallet me-2" style="color:var(--orange);"></i><strong>Wallet & Payment</strong><p>User wallet, add funds, auto-deduct, transaction history</p></div>
+                            <div class="detail-item"><i class="fas fa-plug me-2" style="color:var(--orange);"></i><strong>API Integration</strong><p>External provider API, auto-process, reseller support</p></div>
+                            <div class="detail-item"><i class="fas fa-chart-line me-2" style="color:var(--orange);"></i><strong>Admin Dashboard</strong><p>Total orders, revenue, users, sales analytics</p></div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
+        </div>
     </div>
-</div>
 </section>
 
 <!-- Contact -->
-<section class="section" id="contact" style="background: #f0f4f8;">
+<section class="section" id="contact" style="background:#f0f4f8;">
     <div class="container">
         <h2 class="section-title text-center">Get In <span>Touch</span></h2>
         <div class="section-line mx-auto"></div>
-        <p class="text-center mb-5" style="color: #666;">
-            Want to hire me or need a custom ERP / LMS / SMM Panel? Feel free to contact me!
-        </p>
+        <p class="text-center section-subtitle">Need a website, ERP, LMS or SMM Panel? Let's talk!</p>
         <div class="row justify-content-center">
             <div class="col-md-3">
                 <div class="contact-card fade-in">
                     <div class="contact-icon"><i class="fas fa-phone"></i></div>
-                    <h5 style="color: var(--primary);">Phone</h5>
-                    <p style="color: #666;">0334-0970941</p>
-                    <a href="tel:03340970941" class="btn-hero" style="font-size: 13px; padding: 8px 20px;">Call Now</a>
+                    <h6 style="color:var(--primary);font-weight:700;">Phone</h6>
+                    <p style="color:#666;font-size:14px;">0334-0970941</p>
+                    <a href="tel:03340970941" class="btn-hero" style="font-size:13px;padding:8px 20px;">Call Now</a>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="contact-card fade-in">
                     <div class="contact-icon"><i class="fas fa-envelope"></i></div>
-                    <h5 style="color: var(--primary);">Email</h5>
-                    <p style="color: #666; font-size: 13px;">ateeqawan744@gmail.com</p>
-                    <a href="mailto:ateeqawan744@gmail.com" class="btn-hero" style="font-size: 13px; padding: 8px 20px;">Email Me</a>
+                    <h6 style="color:var(--primary);font-weight:700;">Email</h6>
+                    <p style="color:#666;font-size:13px;">ateeqawan744@gmail.com</p>
+                    <a href="mailto:ateeqawan744@gmail.com" class="btn-hero" style="font-size:13px;padding:8px 20px;">Email Me</a>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="contact-card fade-in">
                     <div class="contact-icon"><i class="fab fa-whatsapp"></i></div>
-                    <h5 style="color: var(--primary);">WhatsApp</h5>
-                    <p style="color: #666;">0334-0970941</p>
-                    <a href="https://wa.me/923340970941" target="_blank" class="btn-hero" style="font-size: 13px; padding: 8px 20px;">WhatsApp</a>
+                    <h6 style="color:var(--primary);font-weight:700;">WhatsApp</h6>
+                    <p style="color:#666;font-size:14px;">0334-0970941</p>
+                    <a href="https://wa.me/923340970941" target="_blank" class="btn-hero" style="font-size:13px;padding:8px 20px;">WhatsApp</a>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="contact-card fade-in">
                     <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
-                    <h5 style="color: var(--primary);">Location</h5>
-                    <p style="color: #666;">Margalla Town, Islamabad</p>
-                    <a href="#" class="btn-hero" style="font-size: 13px; padding: 8px 20px;">View Map</a>
+                    <h6 style="color:var(--primary);font-weight:700;">Location</h6>
+                    <p style="color:#666;font-size:14px;">Margalla Town, Islamabad</p>
+                    <a href="https://maps.google.com/?q=Margalla+Town+Islamabad" target="_blank" class="btn-hero" style="font-size:13px;padding:8px 20px;">View Map</a>
                 </div>
             </div>
         </div>
@@ -789,92 +593,91 @@
 <!-- Footer -->
 <footer>
     <div class="container">
-        <h4><span>Ateeq</span> Awan</h4>
-        <p style="color: rgba(255,255,255,0.7); margin: 10px 0;">WordPress Developer | Digital Marketer | Laravel ERP, LMS & SMM Panel Developer</p>
-        <p style="color: rgba(255,255,255,0.5); font-size: 13px;">
-            &copy; 2026 Ateeq Awan. All Rights Reserved. Made with <span>♥</span> in Pakistan
-        </p>
+        <h4 style="font-weight:800;font-size:22px;"><span>Ateeq</span> Awan</h4>
+        <p style="color:rgba(255,255,255,0.6);margin:10px 0;font-size:13px;">WordPress Developer &nbsp;|&nbsp; Digital Marketer &nbsp;|&nbsp; Laravel Developer</p>
+        <div class="footer-links my-3">
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#systems">Systems</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <p style="color:rgba(255,255,255,0.35);font-size:12px;">&copy; 2026 Ateeq Awan. All Rights Reserved. Made with <span>♥</span> in Pakistan</p>
     </div>
 </footer>
 
+<!-- Scroll Top -->
+<button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    <i class="fas fa-arrow-up"></i>
+</button>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
+// Intersection Observer
 const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('visible');
-    });
+    entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('visible'); });
 }, { threshold: 0.1 });
+document.querySelectorAll('.fade-in,.slide-left,.slide-right,.zoom-in,.section-line').forEach(el => observer.observe(el));
 
-document.querySelectorAll('.fade-in, .slide-left, .slide-right, .zoom-in, .section-line').forEach(el => observer.observe(el));
-
+// Skill bars
 const skillObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-        if (entry.isIntersecting) {
+        if(entry.isIntersecting) {
             entry.target.querySelectorAll('.skill-fill').forEach(bar => {
                 bar.style.width = bar.getAttribute('data-width');
-                bar.classList.add('animate');
             });
         }
     });
 }, { threshold: 0.3 });
-
 document.querySelectorAll('.skill-card').forEach(el => skillObserver.observe(el));
 
+// Navbar scroll
 window.addEventListener('scroll', () => {
     document.querySelector('.navbar').classList.toggle('scrolled', window.scrollY > 50);
+    document.getElementById('scrollTop').classList.toggle('show', window.scrollY > 300);
 });
 
+// Counter animation
 const counterObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-        if (entry.isIntersecting) {
+        if(entry.isIntersecting) {
             entry.target.querySelectorAll('h3').forEach(counter => {
-                const target = counter.innerText.replace('+', '').replace('%', '');
-                const suffix = counter.innerText.includes('+') ? '+' : counter.innerText.includes('%') ? '%' : '';
+                const text = counter.innerText;
+                const target = parseFloat(text.replace(/[^0-9.]/g,''));
+                const suffix = text.includes('+') ? '+' : text.includes('%') ? '%' : '';
                 let count = 0;
-                const increment = target / 30;
+                const inc = target / 40;
                 const timer = setInterval(() => {
-                    count += increment;
-                    if (count >= target) { counter.innerText = target + suffix; clearInterval(timer); }
+                    count += inc;
+                    if(count >= target) { counter.innerText = target + suffix; clearInterval(timer); }
                     else counter.innerText = Math.floor(count) + suffix;
-                }, 50);
+                }, 40);
             });
         }
     });
 }, { threshold: 0.5 });
+const stats = document.querySelector('.stats');
+if(stats) counterObserver.observe(stats);
 
-const statsSection = document.querySelector('.stats');
-if (statsSection) counterObserver.observe(statsSection);
-
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', function(e) {
         e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        const t = document.querySelector(this.getAttribute('href'));
+        if(t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
 });
 
-// Toggle detail function
-function toggleDetail(id) {
+// Toggle detail
+function toggleDetail(id, iconId) {
     const detail = document.getElementById(id);
-    const iconMap = { 'erp-detail': 'erp-icon', 'lms-detail': 'lms-icon', 'smm-detail': 'smm-icon' };
-    const icon = document.getElementById(iconMap[id]);
-
-    if (detail.style.display === 'none') {
-        detail.style.display = 'block';
-        if (icon) { icon.classList.remove('fa-chevron-down'); icon.classList.add('fa-chevron-up'); }
-    } else {
-        detail.style.display = 'none';
-        if (icon) { icon.classList.remove('fa-chevron-up'); icon.classList.add('fa-chevron-down'); }
+    const icon = document.getElementById(iconId);
+    const isOpen = detail.style.display !== 'none';
+    detail.style.display = isOpen ? 'none' : 'block';
+    if(icon) {
+        icon.className = isOpen ? 'fas fa-chevron-down ms-1' : 'fas fa-chevron-up ms-1';
     }
 }
-
-// Hide old sections
-document.addEventListener('DOMContentLoaded', function() {
-    ['erp','lms','smm'].forEach(id => {
-        const el = document.getElementById(id);
-        if (el && el.style.display === 'none') el.remove();
-    });
-});
 </script>
 </body>
 </html>
