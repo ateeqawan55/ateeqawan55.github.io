@@ -1,724 +1,691 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ateeq Awan — Web Developer</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-<style>
-  :root{
-    --bg:#0A0B14;
-    --bg-soft:#10121F;
-    --card:#141728;
-    --card-2:#1B1E33;
-    --line:rgba(255,255,255,0.08);
-    --line-soft:rgba(255,255,255,0.05);
-    --text:#EDEDF3;
-    --text-dim:#9498B3;
-    --text-faint:#5D6180;
-    --violet:#6D5BF9;
-    --violet-soft:#8B7BFB;
-    --pink:#C9A6FF;
-    --green:#3DD68C;
-    --amber:#F5B94D;
-  }
-  *{margin:0;padding:0;box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{
-    font-family:'Inter',sans-serif;
-    background:var(--bg);
-    color:var(--text);
-    font-size:16px;
-    line-height:1.65;
-  }
-  h1,h2,h3,h4{font-family:'Sora',sans-serif;}
-  .mono{font-family:'JetBrains Mono',monospace;}
-  a{color:inherit;text-decoration:none;}
-  img{max-width:100%;display:block;}
-  .wrap{max-width:1180px;margin:0 auto;padding:0 32px;}
-  ::selection{background:var(--violet);color:#fff;}
-  a:focus-visible, button:focus-visible{outline:2px solid var(--violet-soft);outline-offset:3px;}
-  @media (prefers-reduced-motion: reduce){ *{animation:none !important; transition:none !important;} }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ateeq Awan - Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root { --primary: #1a3c6e; --orange: #f97316; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Poppins', sans-serif; background: #f8fafc; }
 
-  /* ---------- NAV ---------- */
-  header{
-    position:sticky; top:0; z-index:50;
-    background:rgba(10,11,20,0.82);
-    backdrop-filter:blur(12px);
-    border-bottom:1px solid var(--line-soft);
-  }
-  .nav{display:flex; align-items:center; justify-content:space-between; height:76px;}
-  .brand{display:flex; align-items:center; gap:11px; font-weight:700; font-size:17px; font-family:'Sora',sans-serif;}
-  .brand .mark{
-    width:36px; height:36px; border-radius:10px;
-    background:linear-gradient(135deg,var(--violet),#4534C4);
-    color:#fff; display:flex; align-items:center; justify-content:center;
-    font-family:'Sora',sans-serif; font-size:14px; font-weight:700;
-  }
-  nav.links{display:flex; align-items:center; gap:34px;}
-  nav.links a{font-size:14.5px; color:var(--text-dim); font-weight:500; position:relative; padding:6px 0;}
-  nav.links a:hover{color:var(--text);}
-  nav.links a::after{content:'';position:absolute;left:0;bottom:0;width:0;height:2px;background:var(--violet-soft);transition:width .25s;}
-  nav.links a:hover::after{width:100%;}
-  .resume-btn{
-    background:var(--violet); color:#fff; padding:10px 20px; border-radius:8px;
-    font-size:13.5px; font-weight:600; display:flex; align-items:center; gap:8px;
-    border:1px solid var(--violet);
-  }
-  .resume-btn:hover{background:#5847E0; border-color:#5847E0;}
-  .burger{display:none; font-size:20px; background:none; border:none; color:var(--text); cursor:pointer;}
-  .mobile-links{display:none; flex-direction:column; gap:2px; padding:10px 0 18px; border-top:1px solid var(--line-soft);}
-  .mobile-links.open{display:flex;}
-  .mobile-links a{padding:12px 4px; font-size:15px; color:var(--text-dim); border-bottom:1px solid var(--line-soft);}
+        /* Navbar */
+        .navbar { background: var(--primary); padding: 15px 0; position: sticky; top: 0; z-index: 999; transition: all 0.3s; }
+        .navbar.scrolled { box-shadow: 0 4px 30px rgba(0,0,0,0.3); }
+        .navbar-brand { color: white !important; font-weight: 800; font-size: 22px; }
+        .navbar-brand span { color: var(--orange); }
+        .nav-link { color: rgba(255,255,255,0.8) !important; margin: 0 5px; font-weight: 500; font-size: 14px; transition: all 0.3s; position: relative; }
+        .nav-link::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 2px; background: var(--orange); transition: width 0.3s; }
+        .nav-link:hover::after { width: 100%; }
+        .nav-link:hover { color: var(--orange) !important; }
 
-  /* ---------- HERO ---------- */
-  .hero{padding:88px 0 100px; position:relative; overflow:hidden;}
-  .hero-grid{display:grid; grid-template-columns:1.05fr 0.95fr; gap:60px; align-items:center; position:relative; z-index:2;}
-  .kicker{
-    display:inline-flex; align-items:center; gap:9px;
-    font-size:12.5px; font-weight:600; color:var(--violet-soft);
-    background:rgba(109,91,249,0.1); border:1px solid rgba(109,91,249,0.25);
-    padding:7px 14px; border-radius:20px; margin-bottom:26px;
-  }
-  .kicker .dot{width:6px;height:6px;border-radius:50%;background:var(--green); box-shadow:0 0 0 3px rgba(61,214,140,0.18);}
-  .hero h1{
-    font-size:52px; font-weight:700; line-height:1.12; letter-spacing:-0.01em; color:#fff;
-  }
-  .hero h1 .accent{color:var(--violet-soft);}
-  .hero p.lead{font-size:16.5px; color:var(--text-dim); max-width:48ch; margin:24px 0 34px; line-height:1.8;}
-  .hero-cta{display:flex; gap:14px; flex-wrap:wrap; margin-bottom:44px;}
-  .btn-primary{
-    background:var(--violet); color:#fff; padding:14px 26px; border-radius:9px;
-    font-weight:600; font-size:14px; display:inline-flex; align-items:center; gap:9px;
-    border:1px solid var(--violet);
-  }
-  .btn-primary:hover{background:#5847E0; border-color:#5847E0;}
-  .btn-ghost{
-    padding:14px 26px; border-radius:9px; font-weight:600; font-size:14px;
-    border:1px solid var(--line); color:var(--text); display:inline-flex; align-items:center; gap:9px;
-  }
-  .btn-ghost:hover{border-color:var(--violet-soft); color:var(--violet-soft);}
-  .stack-label{font-size:12px; color:var(--text-faint); font-weight:600; letter-spacing:.02em; margin-bottom:14px;}
-  .stack-icons{display:flex; gap:12px; flex-wrap:wrap;}
-  .stack-icons span{
-    width:42px; height:42px; border-radius:9px; background:var(--card); border:1px solid var(--line);
-    display:flex; align-items:center; justify-content:center; font-size:16px; color:var(--text-dim);
-  }
+        /* Hero */
+        .hero { background: linear-gradient(135deg, var(--primary) 0%, #0d2447 100%); color: white; padding: 110px 0; position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; top: -50%; right: -10%; width: 600px; height: 600px; background: var(--orange); border-radius: 50%; opacity: 0.05; animation: pulse-bg 4s ease-in-out infinite; }
+        .hero::after { content: ''; position: absolute; bottom: -20%; left: -5%; width: 400px; height: 400px; background: var(--primary); border-radius: 50%; opacity: 0.3; }
+        @keyframes pulse-bg { 0%,100% { transform: scale(1); } 50% { transform: scale(1.1); } }
+        .hero h1 { font-size: 52px; font-weight: 800; line-height: 1.2; }
+        .hero h1 span { color: var(--orange); }
+        .hero-sub { font-size: 16px; color: rgba(255,255,255,0.75); margin: 12px 0; font-weight: 400; }
+        .hero-badge { display: inline-block; background: rgba(249,115,22,0.15); border: 1px solid rgba(249,115,22,0.4); color: var(--orange); padding: 5px 14px; border-radius: 20px; font-size: 13px; margin: 4px; transition: all 0.3s; font-weight: 500; }
+        .hero-badge:hover { background: var(--orange); color: white; transform: translateY(-3px); box-shadow: 0 5px 15px rgba(249,115,22,0.4); }
+        .btn-hero { background: var(--orange); color: white; padding: 13px 32px; border-radius: 10px; text-decoration: none; font-weight: 700; margin: 5px; display: inline-block; border: none; transition: all 0.3s; font-size: 14px; }
+        .btn-hero:hover { background: #ea6c0a; color: white; transform: translateY(-3px); box-shadow: 0 8px 25px rgba(249,115,22,0.4); }
+        .btn-hero-outline { background: transparent; color: white; padding: 13px 32px; border-radius: 10px; text-decoration: none; font-weight: 700; margin: 5px; display: inline-block; border: 2px solid rgba(255,255,255,0.6); transition: all 0.3s; font-size: 14px; }
+        .btn-hero-outline:hover { background: white; color: var(--primary); transform: translateY(-3px); }
+        @keyframes float { 0%,100% { transform: translateY(0px); } 50% { transform: translateY(-15px); } }
+        @keyframes rotate-border { 0%,100% { box-shadow: 0 0 0 4px var(--orange), 0 0 20px rgba(249,115,22,0.3); } 50% { box-shadow: 0 0 0 4px #f97316, 0 0 40px rgba(249,115,22,0.6); } }
+        .profile-img { animation: float 3s ease-in-out infinite, rotate-border 2s ease-in-out infinite; }
 
-  /* hero visual */
-  .hero-visual{position:relative; height:420px;}
-  .blob{
-    position:absolute; width:340px; height:340px; border-radius:50%; right:20px; top:10px;
-    background:radial-gradient(circle at 35% 30%, rgba(109,91,249,0.55), rgba(201,166,255,0.18) 55%, transparent 75%);
-    filter:blur(6px);
-  }
-  .dot-grid{
-    position:absolute; left:0; bottom:30px; width:110px; height:110px;
-    background-image:radial-gradient(rgba(255,255,255,0.14) 1.5px, transparent 1.5px);
-    background-size:14px 14px;
-  }
-  .code-card{
-    position:absolute; right:0; bottom:18px; width:300px;
-    background:var(--card); border:1px solid var(--line); border-radius:12px; overflow:hidden;
-    box-shadow:0 30px 60px -20px rgba(0,0,0,0.6);
-  }
-  .code-top{
-    display:flex; align-items:center; justify-content:space-between; padding:12px 16px;
-    border-bottom:1px solid var(--line); font-size:11.5px; color:var(--text-faint);
-  }
-  .code-top .dots{display:flex; gap:6px;}
-  .code-top .dots span{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.15);}
-  .code-body{padding:18px 18px 20px; font-size:12.5px; line-height:1.9;}
-  .code-body .k{color:var(--violet-soft);}
-  .code-body .s{color:var(--amber);}
-  .code-body .c{color:var(--text-faint);}
-  .float-card{
-    position:absolute; left:8px; top:34px; background:var(--card-2); border:1px solid var(--line);
-    border-radius:10px; padding:12px 16px; display:flex; align-items:center; gap:10px;
-    box-shadow:0 20px 40px -18px rgba(0,0,0,0.55);
-  }
-  .float-card .ic{
-    width:30px; height:30px; border-radius:8px; background:rgba(109,91,249,0.18); color:var(--violet-soft);
-    display:flex; align-items:center; justify-content:center; font-size:13px;
-  }
-  .float-card .t1{font-size:12.5px; font-weight:600;}
-  .float-card .t2{font-size:11px; color:var(--text-faint);}
+        /* Stats */
+        .stats { background: linear-gradient(135deg, var(--orange), #ea580c); padding: 35px 0; }
+        .stat-item { text-align: center; color: white; }
+        .stat-item h3 { font-size: 38px; font-weight: 800; }
+        .stat-item p { font-size: 13px; opacity: 0.9; font-weight: 500; }
 
-  /* ---------- SECTION SCAFFOLD ---------- */
-  section{padding:100px 0;}
-  section + section{border-top:1px solid var(--line-soft);}
-  .eyebrow{
-    font-size:12px; font-weight:700; letter-spacing:.06em; text-transform:uppercase;
-    color:var(--violet-soft); margin-bottom:14px;
-  }
-  .head-row{display:flex; justify-content:space-between; align-items:flex-end; gap:40px; margin-bottom:52px; flex-wrap:wrap;}
-  .head-row h2{font-size:32px; font-weight:700; color:#fff; letter-spacing:-0.01em;}
-  .head-row p{color:var(--text-dim); font-size:14.5px; max-width:36ch;}
+        /* Sections */
+        .section { padding: 90px 0; }
+        .section-title { font-size: 38px; font-weight: 800; color: var(--primary); margin-bottom: 10px; }
+        .section-title span { color: var(--orange); }
+        .section-line { width: 0; height: 4px; background: linear-gradient(90deg, var(--orange), #ea580c); border-radius: 2px; margin-bottom: 40px; transition: width 0.8s ease; }
+        .section-line.visible { width: 60px; }
+        .section-subtitle { color: #888; font-size: 15px; margin-bottom: 40px; }
 
-  /* ---------- ABOUT ---------- */
-  .about-grid{display:grid; grid-template-columns:1.1fr 0.9fr; gap:64px; align-items:start;}
-  .about-grid h2{font-size:28px; color:#fff; margin-bottom:20px; line-height:1.35;}
-  .about-grid p{color:var(--text-dim); font-size:15px; line-height:1.85; margin-bottom:16px; max-width:56ch;}
-  .about-grid strong{color:var(--text);}
-  .btn-outline{
-    margin-top:22px; padding:12px 22px; border-radius:9px; font-size:13.5px; font-weight:600;
-    border:1px solid var(--line); color:var(--text); display:inline-flex; align-items:center; gap:8px;
-  }
-  .btn-outline:hover{border-color:var(--violet-soft); color:var(--violet-soft);}
+        /* Skills */
+        .skill-card { background: white; border-radius: 14px; padding: 22px 25px; box-shadow: 0 4px 20px rgba(0,0,0,0.06); margin-bottom: 18px; border-left: 4px solid var(--orange); transition: all 0.3s; }
+        .skill-card:hover { transform: translateX(6px); box-shadow: 0 8px 30px rgba(249,115,22,0.15); }
+        .skill-bar { background: #e2e8f0; border-radius: 10px; height: 7px; margin-top: 10px; }
+        .skill-fill { background: linear-gradient(90deg, var(--primary), var(--orange)); border-radius: 10px; height: 7px; width: 0; transition: width 1.5s ease-in-out; }
 
-  .stat-grid{display:grid; grid-template-columns:1fr 1fr; gap:18px;}
-  .stat-card{
-    background:var(--card); border:1px solid var(--line); border-radius:12px; padding:22px;
-  }
-  .stat-card .num{font-family:'Sora',sans-serif; font-size:30px; font-weight:700; color:#fff;}
-  .stat-card .lab{font-size:13px; color:var(--text-dim); margin-top:4px;}
+        /* Project Cards */
+        .project-card { background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.08); margin-bottom: 25px; transition: all 0.3s; height: 100%; display: flex; flex-direction: column; }
+        .project-card:hover { transform: translateY(-8px); box-shadow: 0 15px 40px rgba(249,115,22,0.2); }
+        .project-header { padding: 30px; color: white; position: relative; overflow: hidden; }
+        .project-header::after { content: ''; position: absolute; bottom: -20px; right: -20px; width: 80px; height: 80px; background: rgba(255,255,255,0.08); border-radius: 50%; }
+        .project-header.blue { background: linear-gradient(135deg, #1a3c6e, #2d6abf); }
+        .project-header.orange { background: linear-gradient(135deg, #f97316, #ef4444); }
+        .project-header.green { background: linear-gradient(135deg, #059669, #0891b2); }
+        .project-header.purple { background: linear-gradient(135deg, #7c3aed, #4f46e5); }
+        .project-body { padding: 22px; flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
+        .project-tag { display: inline-block; background: #f0f4f8; color: var(--primary); padding: 4px 12px; border-radius: 20px; font-size: 11px; margin: 3px; font-weight: 600; }
+        .project-tag.orange { background: #fff3e0; color: #f97316; }
+        .visit-btn { display: inline-flex; align-items: center; gap: 6px; background: var(--primary); color: white; padding: 9px 20px; border-radius: 8px; text-decoration: none; font-size: 13px; font-weight: 600; margin-top: 15px; transition: all 0.3s; }
+        .visit-btn:hover { background: var(--orange); color: white; transform: translateX(3px); }
 
-  .rail{margin-top:34px; border-left:2px solid var(--line); padding-left:26px;}
-  .rail-item{position:relative; padding-bottom:26px;}
-  .rail-item:last-child{padding-bottom:0;}
-  .rail-item::before{
-    content:''; position:absolute; left:-31px; top:4px; width:10px; height:10px;
-    border-radius:50%; background:var(--bg); border:2px solid var(--violet-soft);
-  }
-  .rail-item .tag{font-size:11.5px; color:var(--violet-soft); font-weight:600;}
-  .rail-item h4{font-size:15.5px; margin:5px 0 3px; font-weight:600; color:#fff;}
-  .rail-item p{font-size:13px; color:var(--text-dim);}
+        /* Systems Section */
+        .systems-section { background: linear-gradient(135deg, #0d1b3e 0%, #1a2b5f 100%); padding: 90px 0; color: white; position: relative; overflow: hidden; }
+        .systems-section::before { content: ''; position: absolute; top: -100px; right: -100px; width: 400px; height: 400px; background: rgba(249,115,22,0.05); border-radius: 50%; }
+        .system-card { background: rgba(255,255,255,0.06); border-radius: 18px; overflow: hidden; border: 1px solid rgba(249,115,22,0.2); transition: all 0.3s; }
+        .system-card:hover { transform: translateY(-5px); box-shadow: 0 20px 50px rgba(0,0,0,0.3); border-color: rgba(249,115,22,0.5); }
+        .system-header { padding: 30px; text-align: center; }
+        .system-icon { width: 72px; height: 72px; background: rgba(249,115,22,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; border: 2px solid rgba(249,115,22,0.5); }
+        .sys-tag { background: rgba(249,115,22,0.15); color: var(--orange); padding: 3px 10px; border-radius: 20px; font-size: 11px; margin: 2px; display: inline-block; font-weight: 600; border: 1px solid rgba(249,115,22,0.3); }
+        .feature-tag { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.85); padding: 5px 10px; border-radius: 6px; font-size: 11px; font-weight: 500; }
+        .detail-item { background: rgba(255,255,255,0.04); border-radius: 10px; padding: 13px; margin-bottom: 8px; border-left: 3px solid var(--orange); }
+        .detail-item p { color: rgba(255,255,255,0.55); font-size: 12px; margin: 4px 0 0; }
+        .toggle-btn { width: 100%; background: linear-gradient(135deg, var(--orange), #ea580c); color: white; border: none; padding: 11px; border-radius: 10px; font-weight: 700; font-size: 13px; cursor: pointer; transition: all 0.3s; }
+        .toggle-btn:hover { opacity: 0.9; transform: scale(0.99); }
 
-  /* ---------- SKILLS ---------- */
-  .skill-groups{display:grid; grid-template-columns:repeat(3,1fr); gap:18px;}
-  .skill-group{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:26px;}
-  .skill-group h4{font-size:13px; color:var(--violet-soft); margin-bottom:20px; font-weight:600;}
-  .skill-line{margin-bottom:16px;}
-  .skill-line:last-child{margin-bottom:0;}
-  .skill-line .row{display:flex; justify-content:space-between; font-size:13.5px; margin-bottom:8px;}
-  .skill-line .row .pct{color:var(--text-faint); font-family:'JetBrains Mono',monospace; font-size:12px;}
-  .bar{height:6px; border-radius:4px; background:var(--card-2); overflow:hidden;}
-  .bar i{display:block; height:100%; border-radius:4px; background:linear-gradient(90deg,var(--violet),var(--pink));}
+        /* Contact */
+        .contact-card { background: white; border-radius: 16px; padding: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); text-align: center; margin-bottom: 20px; transition: all 0.3s; }
+        .contact-card:hover { transform: translateY(-6px); box-shadow: 0 15px 40px rgba(26,60,110,0.15); }
+        .contact-icon { width: 62px; height: 62px; background: linear-gradient(135deg, var(--primary), var(--orange)); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; color: white; font-size: 22px; }
 
-  /* ---------- PROJECTS ---------- */
-  .proj-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:22px;}
-  .proj-card{
-    background:var(--card); border:1px solid var(--line); border-radius:14px; overflow:hidden;
-    display:flex; flex-direction:column;
-  }
-  .proj-thumb{
-    height:150px; position:relative; display:flex; align-items:center; justify-content:center;
-    font-family:'Sora',sans-serif; font-weight:700; font-size:15px; color:rgba(255,255,255,0.9);
-  }
-  .proj-thumb .idx{position:absolute; top:14px; left:16px; font-size:12px; color:rgba(255,255,255,0.65); font-family:'JetBrains Mono',monospace;}
-  .proj-thumb .glyph{font-size:34px;}
-  .t1{background:linear-gradient(135deg,#6D5BF9,#2E2380);}
-  .t2{background:linear-gradient(135deg,#3AAE8F,#1B4B57);}
-  .t3{background:linear-gradient(135deg,#C9A6FF,#5B3FA8);}
-  .proj-body{padding:20px 22px 22px; flex:1; display:flex; flex-direction:column;}
-  .proj-body h4{font-size:16.5px; font-weight:600; color:#fff; margin-bottom:6px;}
-  .proj-body p{color:var(--text-dim); font-size:13.5px; line-height:1.7; flex:1;}
-  .proj-tags{margin:14px 0 16px; display:flex; gap:7px; flex-wrap:wrap;}
-  .chip{
-    font-size:11px; padding:4px 10px; border-radius:20px; border:1px solid var(--line);
-    color:var(--text-dim);
-  }
-  .proj-visit{font-size:13px; font-weight:600; color:var(--violet-soft); display:flex; align-items:center; gap:7px;}
-  .proj-visit i{transition:transform .2s;}
-  .proj-card:hover .proj-visit i{transform:translateX(3px);}
+        /* Footer */
+        footer { background: linear-gradient(135deg, #0d1b3e, var(--primary)); color: white; padding: 40px 0; text-align: center; }
+        footer span { color: var(--orange); }
+        .footer-links a { color: rgba(255,255,255,0.6); text-decoration: none; margin: 0 10px; font-size: 13px; transition: color 0.3s; }
+        .footer-links a:hover { color: var(--orange); }
 
-  /* ---------- SYSTEMS ---------- */
-  .systems{background:var(--bg-soft);}
-  .case{
-    border:1px solid var(--line); border-radius:14px; padding:32px;
-    margin-bottom:20px; background:var(--card);
-  }
-  .case:last-child{margin-bottom:0;}
-  .case-top{display:flex; justify-content:space-between; align-items:flex-start; gap:20px; flex-wrap:wrap; margin-bottom:16px;}
-  .case-top h3{font-size:21px; font-weight:700; color:#fff;}
-  .case-top .role{color:var(--text-faint); font-size:13px; margin-top:5px;}
-  .case-featured{
-    font-size:11.5px; color:#fff; background:linear-gradient(135deg,var(--violet),#4534C4);
-    padding:6px 12px; border-radius:20px; font-weight:600; white-space:nowrap;
-  }
-  .case p.desc{color:var(--text-dim); font-size:14.5px; max-width:74ch; line-height:1.85; margin-bottom:20px;}
-  .case-feats{display:flex; flex-wrap:wrap; gap:9px;}
-  .case-feats span{
-    font-size:12px; padding:7px 13px; border-radius:8px; background:var(--card-2);
-    color:var(--text-dim); border:1px solid var(--line);
-  }
-  .case-toggle{
-    margin-top:20px; background:none; border:1px solid var(--line); color:var(--violet-soft);
-    padding:10px 18px; border-radius:8px; font-size:13px; font-weight:600; cursor:pointer;
-  }
-  .case-toggle:hover{border-color:var(--violet-soft);}
-  .case-detail{display:none; margin-top:20px; padding-top:20px; border-top:1px solid var(--line);}
-  .case-detail-grid{display:grid; grid-template-columns:1fr 1fr; gap:14px;}
-  .case-detail-item{padding:15px; background:var(--card-2); border-radius:9px; border-left:2px solid var(--violet-soft);}
-  .case-detail-item strong{font-size:13.5px; display:block; margin-bottom:4px; color:#fff;}
-  .case-detail-item p{font-size:12.5px; color:var(--text-faint); margin:0;}
+        /* Animations */
+        .fade-in { opacity: 0; transform: translateY(30px); transition: all 0.7s ease; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+        .slide-left { opacity: 0; transform: translateX(-50px); transition: all 0.8s ease; }
+        .slide-left.visible { opacity: 1; transform: translateX(0); }
+        .slide-right { opacity: 0; transform: translateX(50px); transition: all 0.8s ease; }
+        .slide-right.visible { opacity: 1; transform: translateX(0); }
+        .zoom-in { opacity: 0; transform: scale(0.8); transition: all 0.6s ease; }
+        .zoom-in.visible { opacity: 1; transform: scale(1); }
 
-  .review-quote{
-    margin-top:22px; padding:20px 22px; background:rgba(109,91,249,0.06);
-    border:1px solid rgba(109,91,249,0.22); border-radius:10px;
-  }
-  .review-quote .stars{color:var(--amber); font-size:13px; margin-bottom:8px;}
-  .review-quote p{color:var(--text); font-size:14px; line-height:1.8; margin:0;}
-  .review-quote cite{display:block; margin-top:10px; font-size:12px; color:var(--text-faint); font-style:normal;}
+        /* Typing cursor */
+        .typed-cursor { color: var(--orange); animation: blink 0.7s infinite; }
+        @keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0; } }
 
-  /* ---------- TESTIMONIAL ---------- */
-  .testi-card{
-    border:1px solid var(--line); border-radius:14px; padding:34px; background:var(--card);
-  }
-  .testi-stars{color:var(--amber); font-size:14px; margin-bottom:16px;}
-  .testi-card blockquote{font-size:18px; line-height:1.75; font-weight:500; color:var(--text); max-width:72ch;}
-  .testi-meta{display:flex; align-items:center; gap:12px; margin-top:24px;}
-  .testi-avatar{
-    width:40px; height:40px; border-radius:50%;
-    background:linear-gradient(135deg,var(--violet),#4534C4); color:#fff;
-    display:flex; align-items:center; justify-content:center; font-family:'Sora',sans-serif; font-size:14px; font-weight:700;
-  }
-  .testi-meta .who{font-size:13.5px; font-weight:600; color:#fff;}
-  .testi-meta .what{font-size:12.5px; color:var(--text-faint);}
-
-  /* ---------- CONTACT ---------- */
-  .contact-wrap{display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center;}
-  .contact-wrap h2{font-size:28px; color:#fff; margin-bottom:26px; line-height:1.35;}
-  .contact-list a{
-    display:flex; align-items:center; justify-content:space-between;
-    padding:18px 4px; border-bottom:1px solid var(--line); font-size:15.5px; font-weight:500;
-  }
-  .contact-list a:first-child{border-top:1px solid var(--line);}
-  .contact-list a i.leading{color:var(--violet-soft); width:22px;}
-  .contact-list a i.trailing{color:var(--text-faint); transition:transform .2s;}
-  .contact-list a:hover i.trailing{transform:translateX(4px); color:var(--text);}
-  .contact-side{
-    background:linear-gradient(160deg,var(--card),var(--card-2)); border:1px solid var(--line);
-    border-radius:14px; padding:34px;
-  }
-  .contact-side h3{font-size:19px; margin-bottom:12px; color:#fff;}
-  .contact-side p{color:var(--text-dim); font-size:14px; line-height:1.8; margin-bottom:22px;}
-
-  /* ---------- FOOTER ---------- */
-  footer{padding:34px 0; border-top:1px solid var(--line-soft);}
-  footer .wrap{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;}
-  footer p{font-size:13px; color:var(--text-faint);}
-  .foot-social{display:flex; gap:14px;}
-  .foot-social a{
-    width:36px; height:36px; border-radius:8px; border:1px solid var(--line);
-    display:flex; align-items:center; justify-content:center; color:var(--text-dim); font-size:14px;
-  }
-  .foot-social a:hover{color:var(--violet-soft); border-color:var(--violet-soft);}
-
-  /* ---------- ENTRANCE (one orchestrated hero sequence only) ---------- */
-  .fx{opacity:0; transform:translateY(14px); animation:riseIn .7s ease forwards;}
-  .fx1{animation-delay:.05s;} .fx2{animation-delay:.18s;} .fx3{animation-delay:.3s;} .fx4{animation-delay:.42s;} .fx5{animation-delay:.5s;}
-  @keyframes riseIn{to{opacity:1; transform:none;}}
-
-  /* ---------- RESPONSIVE ---------- */
-  @media (max-width:960px){
-    .hero-grid{grid-template-columns:1fr; gap:44px;}
-    .hero-visual{height:300px;}
-    .hero h1{font-size:38px;}
-    .about-grid{grid-template-columns:1fr;}
-    .skill-groups{grid-template-columns:1fr;}
-    .proj-grid{grid-template-columns:1fr 1fr;}
-    .contact-wrap{grid-template-columns:1fr;}
-    .case-detail-grid{grid-template-columns:1fr;}
-    nav.links{display:none;}
-    .burger{display:block;}
-  }
-  @media (max-width:600px){
-    .wrap{padding:0 20px;}
-    .proj-grid{grid-template-columns:1fr;}
-    .stat-grid{grid-template-columns:1fr 1fr;}
-    .hero-cta{flex-direction:column; align-items:stretch;}
-  }
-</style>
+        /* Scroll top btn */
+        .scroll-top { position: fixed; bottom: 25px; right: 25px; width: 44px; height: 44px; background: var(--orange); color: white; border: none; border-radius: 50%; cursor: pointer; font-size: 16px; display: none; align-items: center; justify-content: center; z-index: 999; box-shadow: 0 5px 15px rgba(249,115,22,0.4); transition: all 0.3s; }
+        .scroll-top:hover { transform: translateY(-3px); }
+        .scroll-top.show { display: flex; }
+    </style>
 </head>
 <body>
 
-<header>
-  <div class="wrap nav">
-    <a href="#" class="brand"><span class="mark">AA</span> Ateeq Awan</a>
-    <nav class="links">
-      <a href="#about">About</a>
-      <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
-      <a href="#systems">Systems</a>
-      <a href="#contact">Contact</a>
-    </nav>
-    <a href="mailto:ateeqawan744@gmail.com" class="resume-btn">Hire Me <i class="fas fa-arrow-right"></i></a>
-    <button class="burger" id="burgerBtn" aria-label="Menu"><i class="fas fa-bars"></i></button>
-  </div>
-  <div class="wrap">
-    <div class="mobile-links" id="mobileLinks">
-      <a href="#about">About</a>
-      <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
-      <a href="#systems">Systems</a>
-      <a href="#contact">Contact</a>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg">
+    <div class="container">
+        <a class="navbar-brand" href="#"><span>Ateeq</span> Awan</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+            <span class="navbar-toggler-icon" style="filter:invert(1);"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navMenu">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+                <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                <li class="nav-item"><a class="nav-link" href="#systems">My Systems</a></li>
+                <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                <li class="nav-item ms-2">
+                    <a href="Ateeq_Awan_Resume.pdf" download class="btn btn-sm" style="background:var(--orange);color:white;border-radius:20px;padding:6px 16px;font-weight:600;font-size:13px;border:none;">
+                        <i class="fas fa-download me-1"></i> Resume
+                    </a>
+                </li>
+            </ul>
+        </div>
     </div>
-  </div>
-</header>
+</nav>
 
-<!-- HERO -->
+<!-- Hero -->
 <section class="hero">
-  <div class="wrap hero-grid">
-    <div>
-      <div class="kicker fx fx1"><span class="dot"></span> Open for new projects — Islamabad, PK</div>
-      <h1 class="fx fx2">Hi, I'm <span class="accent">Ateeq.</span><br>I build systems businesses run on.</h1>
-      <p class="lead fx fx3">Laravel developer and WordPress specialist. I design and ship POS platforms, inventory systems, and business websites — the software a shop, agency, or school actually opens every morning.</p>
-      <div class="hero-cta fx fx4">
-        <a href="#systems" class="btn-primary"><i class="fas fa-diagram-project"></i> View My Work</a>
-        <a href="Ateeq_Awan_Resume.pdf" download class="btn-ghost"><i class="fas fa-arrow-down"></i> Download CV</a>
-      </div>
-      <div class="fx fx5">
-        <div class="stack-label">TECHNOLOGIES I WORK WITH</div>
-        <div class="stack-icons">
-          <span><i class="fab fa-laravel"></i></span>
-          <span><i class="fab fa-php"></i></span>
-          <span><i class="fas fa-database"></i></span>
-          <span><i class="fab fa-wordpress"></i></span>
-          <span><i class="fab fa-css3-alt"></i></span>
-          <span><i class="fab fa-js"></i></span>
+    <div class="container" style="position:relative;z-index:1;">
+        <div class="row align-items-center">
+            <div class="col-lg-7 slide-left">
+                <p style="color:var(--orange);font-size:16px;margin-bottom:8px;font-weight:600;">
+                    <i class="fas fa-hand-sparkles me-2"></i>Hello, I'm
+                </p>
+                <h1>Ateeq <span>Awan</span></h1>
+                <p class="hero-sub">WordPress Developer &nbsp;|&nbsp; Digital Marketer &nbsp;|&nbsp; Laravel Developer</p>
+                <div class="my-3">
+                    <span class="hero-badge"><i class="fab fa-wordpress me-1"></i>WordPress</span>
+                    <span class="hero-badge"><i class="fas fa-search me-1"></i>SEO</span>
+                    <span class="hero-badge"><i class="fas fa-bullhorn me-1"></i>Digital Marketing</span>
+                    <span class="hero-badge"><i class="fab fa-laravel me-1"></i>Laravel</span>
+                    <span class="hero-badge"><i class="fas fa-database me-1"></i>MySQL</span>
+                    <span class="hero-badge"><i class="fas fa-shopping-cart me-1"></i>WooCommerce</span>
+                </div>
+                <div class="mt-4">
+                    <a href="#projects" class="btn-hero"><i class="fas fa-eye me-2"></i>View My Work</a>
+                    <a href="#contact" class="btn-hero-outline"><i class="fas fa-paper-plane me-2"></i>Hire Me</a>
+                    <a href="Ateeq_Awan_Resume.pdf" download class="btn-hero-outline" style="margin-top:8px;">
+                        <i class="fas fa-download me-2"></i>Download Resume
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-5 text-center mt-5 mt-lg-0 slide-right">
+                <div class="profile-img" style="width:210px;height:210px;border-radius:50%;margin:0 auto;border:4px solid var(--orange);overflow:hidden;">
+                    <img src="ateeq.jpg" alt="Ateeq Awan" style="width:100%;height:100%;object-fit:cover;object-position:top;">
+                </div>
+                <div class="mt-4" style="display:flex;flex-wrap:wrap;justify-content:center;gap:10px;">
+                    <div style="background:rgba(255,255,255,0.1);border-radius:10px;padding:12px 20px;text-align:center;border:1px solid rgba(255,255,255,0.1);">
+                        <div style="font-size:22px;font-weight:800;color:var(--orange);">2+</div>
+                        <div style="font-size:11px;color:rgba(255,255,255,0.7);">Years Exp</div>
+                    </div>
+                    <div style="background:rgba(255,255,255,0.1);border-radius:10px;padding:12px 20px;text-align:center;border:1px solid rgba(255,255,255,0.1);">
+                        <div style="font-size:22px;font-weight:800;color:var(--orange);">10+</div>
+                        <div style="font-size:11px;color:rgba(255,255,255,0.7);">Projects</div>
+                    </div>
+                    <div style="background:rgba(255,255,255,0.1);border-radius:10px;padding:12px 20px;text-align:center;border:1px solid rgba(255,255,255,0.1);">
+                        <div style="font-size:22px;font-weight:800;color:var(--orange);">3</div>
+                        <div style="font-size:11px;color:rgba(255,255,255,0.7);">Systems</div>
+                    </div>
+                </div>
+                <div class="mt-3">
+                    <p style="color:rgba(255,255,255,0.65);font-size:13px;">
+                        <i class="fas fa-map-marker-alt me-1" style="color:var(--orange);"></i>Margalla Town, Islamabad
+                    </p>
+                    <p style="color:rgba(255,255,255,0.65);font-size:13px;">
+                        <i class="fas fa-graduation-cap me-1" style="color:var(--orange);"></i>BS Computer Science (4th Semester)
+                    </p>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-
-    <div class="hero-visual fx fx3">
-      <div class="blob"></div>
-      <div class="dot-grid"></div>
-      <div class="float-card">
-        <span class="ic"><i class="fas fa-star"></i></span>
-        <div>
-          <div class="t1">5.0 rating</div>
-          <div class="t2">Fiverr client review</div>
-        </div>
-      </div>
-      <div class="code-card">
-        <div class="code-top">
-          <span>ateeq-awan / profile.php</span>
-          <div class="dots"><span></span><span></span><span></span></div>
-        </div>
-        <div class="code-body mono">
-          <div><span class="k">$developer</span> = [</div>
-          <div>&nbsp;&nbsp;<span class="c">'name'</span> => <span class="s">'Ateeq Awan'</span>,</div>
-          <div>&nbsp;&nbsp;<span class="c">'stack'</span> => [<span class="s">'Laravel'</span>, <span class="s">'MySQL'</span>],</div>
-          <div>&nbsp;&nbsp;<span class="c">'builds'</span> => <span class="s">'POS · ERP · SaaS'</span>,</div>
-          <div>&nbsp;&nbsp;<span class="c">'based_in'</span> => <span class="s">'Islamabad'</span>,</div>
-          <div>];</div>
-        </div>
-      </div>
-    </div>
-  </div>
 </section>
 
-<!-- ABOUT -->
-<section id="about">
-  <div class="wrap about-grid">
-    <div>
-      <div class="eyebrow">About Me</div>
-      <h2>A developer who finishes what shopkeepers actually need.</h2>
-      <p>I'm <strong>Ateeq Awan</strong>, a web developer and digital marketer based in Islamabad. I spent two years at <strong>Karwan Solution</strong> in Mansehra building WordPress sites and Laravel systems for real businesses — not demos.</p>
-      <p>What I like building most are the unglamorous, essential systems: point-of-sale software, inventory that doesn't lie to you, library systems that track every book. I pair that with WordPress and SEO work for clients who need a fast, clean web presence.</p>
-      <a href="#contact" class="btn-outline">Let's talk about your project <i class="fas fa-arrow-right"></i></a>
+<!-- Stats -->
+<section class="stats">
+    <div class="container">
+        <div class="row">
+            <div class="col-6 col-md-3"><div class="stat-item zoom-in"><h3>2+</h3><p>Years Experience</p></div></div>
+            <div class="col-6 col-md-3"><div class="stat-item zoom-in"><h3>10+</h3><p>Projects Completed</p></div></div>
+            <div class="col-6 col-md-3"><div class="stat-item zoom-in"><h3>3</h3><p>Full Systems Built</p></div></div>
+            <div class="col-6 col-md-3"><div class="stat-item zoom-in"><h3>100%</h3><p>Client Satisfaction</p></div></div>
+        </div>
     </div>
-
-    <div>
-      <div class="stat-grid">
-        <div class="stat-card"><div class="num">2+</div><div class="lab">Years Experience</div></div>
-        <div class="stat-card"><div class="num">10+</div><div class="lab">Projects Completed</div></div>
-        <div class="stat-card"><div class="num">4</div><div class="lab">Full Systems Built</div></div>
-        <div class="stat-card"><div class="num">5.0★</div><div class="lab">Client Rating</div></div>
-      </div>
-      <div class="rail">
-        <div class="rail-item">
-          <span class="tag">Ongoing</span>
-          <h4>BS Computer Science</h4>
-          <p>4th semester, currently studying</p>
-        </div>
-        <div class="rail-item">
-          <span class="tag">2023 – 2024</span>
-          <h4>WordPress Developer</h4>
-          <p>Karwan Solution IT Company, Mansehra</p>
-        </div>
-        <div class="rail-item">
-          <span class="tag">2023</span>
-          <h4>FSc Pre-Engineering</h4>
-          <p>BISE Abbottabad</p>
-        </div>
-      </div>
-    </div>
-  </div>
 </section>
 
-<!-- SKILLS -->
-<section id="skills">
-  <div class="wrap">
-    <div class="head-row">
-      <div>
-        <div class="eyebrow">My Skills</div>
-        <h2>Technologies I master</h2>
-      </div>
-      <p>Grouped by what I actually use them for, not just a buzzword list.</p>
+<!-- About -->
+<section class="section" id="about">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 slide-left">
+                <h2 class="section-title">About <span>Me</span></h2>
+                <div class="section-line"></div>
+                <p style="color:#555;line-height:1.9;font-size:15px;">
+                    I am <strong>Ateeq Awan</strong>, a passionate web developer and digital marketer from Islamabad, Pakistan.
+                    Currently pursuing BS Computer Science (4th Semester), I have hands-on experience in WordPress Development,
+                    Digital Marketing, SEO, and Laravel development.
+                </p>
+                <p style="color:#555;line-height:1.9;font-size:15px;margin-top:15px;">
+                    I have 2 years of experience in WordPress Development and worked at <strong>Karwan Solution</strong>
+                    IT company in Mansehra. I have built complete <strong>ERP System</strong>, <strong>Library Management System</strong>,
+                    <strong>SMM Panel</strong> and multiple <strong>WordPress & WooCommerce</strong> websites using Laravel & MySQL.
+                </p>
+                <div class="row mt-4">
+                    <div class="col-6">
+                        <p style="margin-bottom:10px;font-size:14px;"><i class="fas fa-user me-2" style="color:var(--orange);"></i><strong>Name:</strong> Ateeq Awan</p>
+                        <p style="margin-bottom:10px;font-size:14px;"><i class="fas fa-phone me-2" style="color:var(--orange);"></i><strong>Phone:</strong> 0334-0970941</p>
+                        <p style="margin-bottom:10px;font-size:14px;"><i class="fas fa-map-marker-alt me-2" style="color:var(--orange);"></i><strong>City:</strong> Islamabad</p>
+                    </div>
+                    <div class="col-6">
+                        <p style="margin-bottom:10px;font-size:14px;"><i class="fas fa-envelope me-2" style="color:var(--orange);"></i><strong>Email:</strong> ateeqawan744@gmail.com</p>
+                        <p style="margin-bottom:10px;font-size:14px;"><i class="fas fa-graduation-cap me-2" style="color:var(--orange);"></i><strong>Degree:</strong> BS CS</p>
+                        <p style="margin-bottom:10px;font-size:14px;"><i class="fas fa-circle me-2" style="color:#22c55e;font-size:10px;"></i><strong>Status:</strong> Available</p>
+                    </div>
+                </div>
+                <a href="mailto:ateeqawan744@gmail.com" class="btn-hero mt-3" style="display:inline-block;">
+                    <i class="fas fa-paper-plane me-2"></i>Hire Me
+                </a>
+            </div>
+            <div class="col-lg-6 mt-5 mt-lg-0 slide-right">
+                <h4 style="color:var(--primary);font-weight:700;margin-bottom:25px;">Education & Experience</h4>
+                <div style="border-left:3px solid var(--orange);padding-left:25px;">
+                    <div class="mb-4 fade-in">
+                        <span style="background:var(--orange);color:white;padding:3px 12px;border-radius:20px;font-size:11px;font-weight:600;">Ongoing</span>
+                        <h6 style="margin-top:10px;color:var(--primary);font-weight:700;">BS Computer Science</h6>
+                        <p style="color:#888;font-size:13px;">4th Semester | Currently Studying</p>
+                    </div>
+                    <div class="mb-4 fade-in">
+                        <span style="background:var(--primary);color:white;padding:3px 12px;border-radius:20px;font-size:11px;font-weight:600;">2023-2024</span>
+                        <h6 style="margin-top:10px;color:var(--primary);font-weight:700;">WordPress Developer</h6>
+                        <p style="color:#888;font-size:13px;">Karwan Solution IT Company, Mansehra</p>
+                    </div>
+                    <div class="mb-4 fade-in">
+                        <span style="background:#2d6abf;color:white;padding:3px 12px;border-radius:20px;font-size:11px;font-weight:600;">2023</span>
+                        <h6 style="margin-top:10px;color:var(--primary);font-weight:700;">FSC Pre-Engineering</h6>
+                        <p style="color:#888;font-size:13px;">BISE Abbottabad</p>
+                    </div>
+                    <div class="fade-in">
+                        <span style="background:#059669;color:white;padding:3px 12px;border-radius:20px;font-size:11px;font-weight:600;">2021</span>
+                        <h6 style="margin-top:10px;color:var(--primary);font-weight:700;">SSC (Matric)</h6>
+                        <p style="color:#888;font-size:13px;">BISE Abbottabad</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <div class="skill-groups">
-      <div class="skill-group">
-        <h4>SYSTEMS & BACKEND</h4>
-        <div class="skill-line"><div class="row"><span>Laravel</span><span class="pct">90%</span></div><div class="bar"><i style="width:90%"></i></div></div>
-        <div class="skill-line"><div class="row"><span>MySQL</span><span class="pct">88%</span></div><div class="bar"><i style="width:88%"></i></div></div>
-        <div class="skill-line"><div class="row"><span>PHP</span><span class="pct">85%</span></div><div class="bar"><i style="width:85%"></i></div></div>
-        <div class="skill-line"><div class="row"><span>REST APIs</span><span class="pct">75%</span></div><div class="bar"><i style="width:75%"></i></div></div>
-      </div>
-      <div class="skill-group">
-        <h4>WEB & FRONT END</h4>
-        <div class="skill-line"><div class="row"><span>WordPress</span><span class="pct">95%</span></div><div class="bar"><i style="width:95%"></i></div></div>
-        <div class="skill-line"><div class="row"><span>WooCommerce</span><span class="pct">88%</span></div><div class="bar"><i style="width:88%"></i></div></div>
-        <div class="skill-line"><div class="row"><span>HTML & CSS</span><span class="pct">90%</span></div><div class="bar"><i style="width:90%"></i></div></div>
-        <div class="skill-line"><div class="row"><span>Bootstrap / jQuery</span><span class="pct">85%</span></div><div class="bar"><i style="width:85%"></i></div></div>
-      </div>
-      <div class="skill-group">
-        <h4>GROWTH & MARKETING</h4>
-        <div class="skill-line"><div class="row"><span>Digital Marketing</span><span class="pct">85%</span></div><div class="bar"><i style="width:85%"></i></div></div>
-        <div class="skill-line"><div class="row"><span>Off-Page SEO</span><span class="pct">80%</span></div><div class="bar"><i style="width:80%"></i></div></div>
-        <div class="skill-line"><div class="row"><span>Social Media Marketing</span><span class="pct">85%</span></div><div class="bar"><i style="width:85%"></i></div></div>
-      </div>
-    </div>
-  </div>
 </section>
 
-<!-- PROJECTS -->
-<section id="projects">
-  <div class="wrap">
-    <div class="head-row">
-      <div>
-        <div class="eyebrow">Featured Projects</div>
-        <h2>WordPress builds, in production</h2>
-      </div>
-      <p>Client websites currently live and running.</p>
+<!-- Skills -->
+<section class="section" id="skills" style="background:#f0f4f8;">
+    <div class="container">
+        <h2 class="section-title text-center">My <span>Skills</span></h2>
+        <div class="section-line mx-auto"></div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="skill-card fade-in">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span style="font-weight:600;font-size:14px;"><i class="fab fa-wordpress me-2" style="color:var(--orange);"></i>WordPress Development</span>
+                        <span style="color:var(--orange);font-weight:700;">90%</span>
+                    </div>
+                    <div class="skill-bar"><div class="skill-fill" data-width="90%"></div></div>
+                </div>
+                <div class="skill-card fade-in">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span style="font-weight:600;font-size:14px;"><i class="fas fa-search me-2" style="color:var(--orange);"></i>Off Page SEO</span>
+                        <span style="color:var(--orange);font-weight:700;">80%</span>
+                    </div>
+                    <div class="skill-bar"><div class="skill-fill" data-width="80%"></div></div>
+                </div>
+                <div class="skill-card fade-in">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span style="font-weight:600;font-size:14px;"><i class="fas fa-bullhorn me-2" style="color:var(--orange);"></i>Digital Marketing</span>
+                        <span style="color:var(--orange);font-weight:700;">85%</span>
+                    </div>
+                    <div class="skill-bar"><div class="skill-fill" data-width="85%"></div></div>
+                </div>
+                <div class="skill-card fade-in">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span style="font-weight:600;font-size:14px;"><i class="fas fa-share-alt me-2" style="color:var(--orange);"></i>Social Media Marketing</span>
+                        <span style="color:var(--orange);font-weight:700;">85%</span>
+                    </div>
+                    <div class="skill-bar"><div class="skill-fill" data-width="85%"></div></div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="skill-card fade-in">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span style="font-weight:600;font-size:14px;"><i class="fab fa-html5 me-2" style="color:var(--orange);"></i>HTML & CSS</span>
+                        <span style="color:var(--orange);font-weight:700;">75%</span>
+                    </div>
+                    <div class="skill-bar"><div class="skill-fill" data-width="75%"></div></div>
+                </div>
+                <div class="skill-card fade-in">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span style="font-weight:600;font-size:14px;"><i class="fab fa-bootstrap me-2" style="color:var(--orange);"></i>Bootstrap & jQuery</span>
+                        <span style="color:var(--orange);font-weight:700;">70%</span>
+                    </div>
+                    <div class="skill-bar"><div class="skill-fill" data-width="70%"></div></div>
+                </div>
+                <div class="skill-card fade-in">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span style="font-weight:600;font-size:14px;"><i class="fab fa-php me-2" style="color:var(--orange);"></i>PHP & Laravel</span>
+                        <span style="color:var(--orange);font-weight:700;">65%</span>
+                    </div>
+                    <div class="skill-bar"><div class="skill-fill" data-width="65%"></div></div>
+                </div>
+                <div class="skill-card fade-in">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span style="font-weight:600;font-size:14px;"><i class="fas fa-database me-2" style="color:var(--orange);"></i>MySQL Database</span>
+                        <span style="color:var(--orange);font-weight:700;">70%</span>
+                    </div>
+                    <div class="skill-bar"><div class="skill-fill" data-width="70%"></div></div>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <div class="proj-grid">
-      <a href="https://emarkingsolution.com/" target="_blank" class="proj-card">
-        <div class="proj-thumb t1"><span class="idx">01</span><span class="glyph"><i class="fas fa-bullhorn"></i></span></div>
-        <div class="proj-body">
-          <h4>eMarketing Solution</h4>
-          <p>Digital marketing agency site, built for speed and SEO from the ground up.</p>
-          <div class="proj-tags"><span class="chip">WordPress</span><span class="chip">Elementor</span><span class="chip">SEO</span></div>
-          <span class="proj-visit">Visit site <i class="fas fa-arrow-right"></i></span>
-        </div>
-      </a>
-      <a href="https://urwatulemaan.com/" target="_blank" class="proj-card">
-        <div class="proj-thumb t2"><span class="idx">02</span><span class="glyph"><i class="fas fa-book-open"></i></span></div>
-        <div class="proj-body">
-          <h4>Urwatulemaan</h4>
-          <p>Islamic content and community website with articles and event pages.</p>
-          <div class="proj-tags"><span class="chip">WordPress</span><span class="chip">Web Design</span></div>
-          <span class="proj-visit">Visit site <i class="fas fa-arrow-right"></i></span>
-        </div>
-      </a>
-      <a href="https://alsibghahub.com/" target="_blank" class="proj-card">
-        <div class="proj-thumb t3"><span class="idx">03</span><span class="glyph"><i class="fas fa-store"></i></span></div>
-        <div class="proj-body">
-          <h4>Al Sibgha Hub</h4>
-          <p>Full WooCommerce store for herbal products, with product and order management.</p>
-          <div class="proj-tags"><span class="chip">WooCommerce</span><span class="chip">eCommerce</span></div>
-          <span class="proj-visit">Visit site <i class="fas fa-arrow-right"></i></span>
-        </div>
-      </a>
-    </div>
-  </div>
 </section>
 
-<!-- SYSTEMS -->
-<section id="systems" class="systems">
-  <div class="wrap">
-    <div class="head-row">
-      <div>
-        <div class="eyebrow">Systems</div>
-        <h2>Full platforms, built from scratch</h2>
-      </div>
-      <p>Laravel + MySQL applications running real business operations.</p>
-    </div>
+<!-- Projects -->
+<section class="section" id="projects">
+    <div class="container">
+        <h2 class="section-title text-center">My <span>Projects</span></h2>
+        <div class="section-line mx-auto"></div>
+        <p class="text-center section-subtitle">Live websites I have built for clients</p>
+        <div class="row align-items-stretch">
 
-    <div class="case">
-      <div class="case-top">
-        <div>
-          <h3>RS Factura — Multi-Branch POS & Inventory Platform</h3>
-          <div class="role">Fiverr client project · Dominican Republic · Delivered & in active support</div>
-        </div>
-        <span class="case-featured">Fiverr order · $100 · 5.0★</span>
-      </div>
-      <p class="desc">A complete point-of-sale and inventory system for a multi-branch retail business, later extended into a multi-tenant SaaS. Handles billing, NCF fiscal invoicing for the Dominican Republic, cost-based profit tracking, and a fully responsive mobile experience — built and iterated through direct client collaboration from first release through ongoing support.</p>
-      <div class="case-feats">
-        <span><i class="fas fa-cash-register"></i> POS billing</span>
-        <span><i class="fas fa-boxes"></i> Independent inventory</span>
-        <span><i class="fas fa-file-invoice"></i> NCF fiscal invoicing</span>
-        <span><i class="fas fa-chart-line"></i> Cost-based profit reports</span>
-        <span><i class="fas fa-building"></i> Multi-branch & multi-tenant</span>
-        <span><i class="fas fa-mobile-alt"></i> Mobile-first redesign</span>
-      </div>
-      <button onclick="toggleDetail('rsf-detail','rsf-icon')" class="case-toggle">View project details <i class="fas fa-chevron-down" id="rsf-icon"></i></button>
-      <div id="rsf-detail" class="case-detail">
-        <div class="case-detail-grid">
-          <div class="case-detail-item"><strong>Inventory built for accuracy</strong><p>Stock moves independently of invoices, with a full adjustment history and cost-price tracking per product.</p></div>
-          <div class="case-detail-item"><strong>Real fiscal compliance</strong><p>NCF sequence management for Dominican tax invoicing, with low-balance alerts and PDF generation.</p></div>
-          <div class="case-detail-item"><strong>Profit that's actually correct</strong><p>Reports and dashboard both calculate profit from the true cost of goods sold, and always match.</p></div>
-          <div class="case-detail-item"><strong>Multi-tenant SaaS layer</strong><p>Converted the original single-business build into a licensed, multi-tenant platform for reselling.</p></div>
-        </div>
-        <div class="review-quote">
-          <div class="stars">★★★★★ 5.0</div>
-          <p>Outstanding work — very happy with the work and professionalism of this developer. Dedicated, responsive, and attentive to ideas and requests throughout the project, with excellent quality and a willingness to keep improving. Highly recommended.</p>
-          <cite>— Client review, Fiverr order #FO114FCBB5DC5</cite>
-        </div>
-      </div>
-    </div>
+            <!-- eMarketing -->
+            <div class="col-md-4">
+                <div class="project-card fade-in">
+                    <div class="project-header blue">
+                        <i class="fas fa-globe fa-2x mb-3"></i>
+                        <h5 style="font-weight:700;">eMarketing Solution</h5>
+                        <p style="opacity:0.8;font-size:13px;">Digital Marketing Agency</p>
+                    </div>
+                    <div class="project-body">
+                        <div>
+                            <p style="color:#666;font-size:14px;line-height:1.7;">Professional digital marketing agency website built with WordPress. Clean, fast and SEO optimized.</p>
+                            <div class="mt-3">
+                                <span class="project-tag">WordPress</span>
+                                <span class="project-tag">Elementor</span>
+                                <span class="project-tag">SEO</span>
+                                <span class="project-tag orange">Live Site</span>
+                            </div>
+                        </div>
+                        <a href="https://emarkingsolution.com/" target="_blank" class="visit-btn">
+                            <i class="fas fa-external-link-alt"></i> Visit Site
+                        </a>
+                    </div>
+                </div>
+            </div>
 
-    <div class="case">
-      <div class="case-top">
-        <div><h3>ERP System</h3><div class="role">Enterprise resource planning · Laravel + MySQL</div></div>
-      </div>
-      <p class="desc">An operations platform covering inventory, HR, POS and reporting in one place, built so a business doesn't need five separate tools.</p>
-      <div class="case-feats">
-        <span><i class="fas fa-box"></i> Inventory</span>
-        <span><i class="fas fa-users"></i> HR & payroll</span>
-        <span><i class="fas fa-cash-register"></i> POS</span>
-        <span><i class="fas fa-file-invoice-dollar"></i> Invoicing</span>
-        <span><i class="fas fa-chart-bar"></i> Reports</span>
-        <span><i class="fas fa-clock"></i> Attendance</span>
-      </div>
-      <button onclick="toggleDetail('erp-detail','erp-icon')" class="case-toggle">View project details <i class="fas fa-chevron-down" id="erp-icon"></i></button>
-      <div id="erp-detail" class="case-detail">
-        <div class="case-detail-grid">
-          <div class="case-detail-item"><strong>Inventory management</strong><p>Stock tracking, low-stock alerts, category structure.</p></div>
-          <div class="case-detail-item"><strong>HR & employees</strong><p>Records, attendance, PDF salary slips.</p></div>
-          <div class="case-detail-item"><strong>POS & sales</strong><p>Point of sale, orders, PDF invoices, purchases.</p></div>
-          <div class="case-detail-item"><strong>CRM & projects</strong><p>Lead tracking, project budgets, notifications.</p></div>
-        </div>
-      </div>
-    </div>
+            <!-- Urwatulemaan -->
+            <div class="col-md-4">
+                <div class="project-card fade-in">
+                    <div class="project-header orange">
+                        <i class="fas fa-moon fa-2x mb-3"></i>
+                        <h5 style="font-weight:700;">Urwatulemaan</h5>
+                        <p style="opacity:0.8;font-size:13px;">Islamic / Religious Website</p>
+                    </div>
+                    <div class="project-body">
+                        <div>
+                            <p style="color:#666;font-size:14px;line-height:1.7;">Professional Islamic website built with WordPress for religious content, articles and community engagement.</p>
+                            <div class="mt-3">
+                                <span class="project-tag">WordPress</span>
+                                <span class="project-tag">Web Design</span>
+                                <span class="project-tag orange">Islamic</span>
+                                <span class="project-tag orange">Live Site</span>
+                            </div>
+                        </div>
+                        <a href="https://urwatulemaan.com/" target="_blank" class="visit-btn">
+                            <i class="fas fa-external-link-alt"></i> Visit Site
+                        </a>
+                    </div>
+                </div>
+            </div>
 
-    <div class="case">
-      <div class="case-top">
-        <div><h3>Library Management System</h3><div class="role">Laravel 12 · MySQL · DataTables</div></div>
-      </div>
-      <p class="desc">Book, member and circulation management with automatic fines and reservations, replacing a paper register.</p>
-      <div class="case-feats">
-        <span><i class="fas fa-book"></i> Books</span>
-        <span><i class="fas fa-user-graduate"></i> Students</span>
-        <span><i class="fas fa-hand-holding-heart"></i> Issue / return</span>
-        <span><i class="fas fa-receipt"></i> Auto fines</span>
-        <span><i class="fas fa-calendar-check"></i> Reservations</span>
-      </div>
-      <button onclick="toggleDetail('lms-detail','lms-icon')" class="case-toggle">View project details <i class="fas fa-chevron-down" id="lms-icon"></i></button>
-      <div id="lms-detail" class="case-detail">
-        <div class="case-detail-grid">
-          <div class="case-detail-item"><strong>Book records</strong><p>Cover image, PDF, ISBN, rack location.</p></div>
-          <div class="case-detail-item"><strong>Student accounts</strong><p>Auto ID generation, membership, borrow history.</p></div>
-          <div class="case-detail-item"><strong>Issue & return</strong><p>One-click flow with due dates and auto quantity.</p></div>
-          <div class="case-detail-item"><strong>Fines & reports</strong><p>Rs.10/day auto fine, paid status, four report types.</p></div>
-        </div>
-      </div>
-    </div>
+            <!-- Al Sibgha Hub -->
+            <div class="col-md-4">
+                <div class="project-card fade-in">
+                    <div class="project-header green">
+                        <i class="fas fa-shopping-bag fa-2x mb-3"></i>
+                        <h5 style="font-weight:700;">Al Sibgha Hub</h5>
+                        <p style="opacity:0.8;font-size:13px;">Herbal Products eCommerce Store</p>
+                    </div>
+                    <div class="project-body">
+                        <div>
+                            <p style="color:#666;font-size:14px;line-height:1.7;">Complete WooCommerce online store for herbal products — Hair Oil, Honey, Soaps & more. Full eCommerce with product management.</p>
+                            <div class="mt-3">
+                                <span class="project-tag">WordPress</span>
+                                <span class="project-tag">WooCommerce</span>
+                                <span class="project-tag orange">eCommerce</span>
+                                <span class="project-tag orange">Live Site</span>
+                            </div>
+                        </div>
+                        <a href="https://alsibghahub.com/" target="_blank" class="visit-btn">
+                            <i class="fas fa-external-link-alt"></i> Visit Site
+                        </a>
+                    </div>
+                </div>
+            </div>
 
-    <div class="case">
-      <div class="case-top">
-        <div><h3>SMM Panel</h3><div class="role">Social media marketing panel · Laravel · REST API</div></div>
-      </div>
-      <p class="desc">An order and wallet platform for reselling social growth services across four platforms.</p>
-      <div class="case-feats">
-        <span><i class="fab fa-facebook"></i> Facebook</span>
-        <span><i class="fab fa-instagram"></i> Instagram</span>
-        <span><i class="fab fa-youtube"></i> YouTube</span>
-        <span><i class="fab fa-tiktok"></i> TikTok</span>
-        <span><i class="fas fa-wallet"></i> Wallet</span>
-      </div>
-      <button onclick="toggleDetail('smm-detail','smm-icon')" class="case-toggle">View project details <i class="fas fa-chevron-down" id="smm-icon"></i></button>
-      <div id="smm-detail" class="case-detail">
-        <div class="case-detail-grid">
-          <div class="case-detail-item"><strong>Order management</strong><p>Live status tracking, from pending through completed.</p></div>
-          <div class="case-detail-item"><strong>Wallet & payments</strong><p>Add funds, auto-deduct, full transaction history.</p></div>
-          <div class="case-detail-item"><strong>API integration</strong><p>External provider API, auto-processing, reseller support.</p></div>
-          <div class="case-detail-item"><strong>Admin dashboard</strong><p>Orders, revenue, users and sales in one view.</p></div>
         </div>
-      </div>
     </div>
-  </div>
 </section>
 
-<!-- TESTIMONIAL -->
-<section>
-  <div class="wrap">
-    <div class="head-row">
-      <div>
-        <div class="eyebrow">Client Feedback</div>
-        <h2>What it's like to work together</h2>
-      </div>
-    </div>
-    <div class="testi-card">
-      <div class="testi-stars">★★★★★</div>
-      <blockquote>Very happy with the work and professionalism of this developer — dedicated, responsive, and attentive to ideas and requests throughout the project. Highly recommended, and looking forward to continuing to work together.</blockquote>
-      <div class="testi-meta">
-        <div class="testi-avatar">R</div>
-        <div>
-          <div class="who">Fiverr client, RS Factura project</div>
-          <div class="what">POS & inventory system · Order #FO114FCBB5DC5</div>
+<!-- My Systems -->
+<section class="systems-section" id="systems">
+    <div class="container" style="position:relative;z-index:1;">
+        <h2 class="section-title text-center" style="color:white;">My <span>Systems</span></h2>
+        <div class="section-line mx-auto"></div>
+        <p class="text-center mb-5" style="color:rgba(255,255,255,0.6);font-size:15px;">Complete systems built from scratch using Laravel & MySQL</p>
+
+        <div class="row g-4">
+
+            <!-- ERP -->
+            <div class="col-md-4">
+                <div class="system-card fade-in">
+                    <div class="system-header" style="background:linear-gradient(135deg,#1a3c6e,#2d6abf);">
+                        <div class="system-icon"><i class="fas fa-building fa-2x" style="color:var(--orange);"></i></div>
+                        <h5 style="color:white;font-weight:700;margin:0;">ERP System</h5>
+                        <p style="color:rgba(255,255,255,0.55);font-size:12px;margin:6px 0 12px;">Enterprise Resource Planning</p>
+                        <span class="sys-tag">Laravel</span>
+                        <span class="sys-tag">MySQL</span>
+                        <span class="sys-tag">Bootstrap 5</span>
+                    </div>
+                    <div style="padding:18px;">
+                        <div style="display:flex;flex-wrap:wrap;gap:7px;margin-bottom:15px;">
+                            <span class="feature-tag"><i class="fas fa-box me-1" style="color:var(--orange);"></i>Inventory</span>
+                            <span class="feature-tag"><i class="fas fa-users me-1" style="color:var(--orange);"></i>HR & Payroll</span>
+                            <span class="feature-tag"><i class="fas fa-cash-register me-1" style="color:var(--orange);"></i>POS</span>
+                            <span class="feature-tag"><i class="fas fa-file-invoice-dollar me-1" style="color:var(--orange);"></i>Invoices</span>
+                            <span class="feature-tag"><i class="fas fa-chart-bar me-1" style="color:var(--orange);"></i>Reports</span>
+                            <span class="feature-tag"><i class="fas fa-clock me-1" style="color:var(--orange);"></i>Attendance</span>
+                        </div>
+                        <button onclick="toggleDetail('erp-detail','erp-icon')" class="toggle-btn">
+                            <i class="fas fa-eye me-2"></i>View Full Details <i class="fas fa-chevron-down ms-1" id="erp-icon"></i>
+                        </button>
+                    </div>
+                    <div id="erp-detail" style="display:none;padding:0 18px 18px;">
+                        <div style="border-top:1px solid rgba(255,255,255,0.08);padding-top:15px;">
+                            <div class="detail-item"><i class="fas fa-box me-2" style="color:var(--orange);"></i><strong>Inventory Management</strong><p>Stock tracking, low stock alerts, categories</p></div>
+                            <div class="detail-item"><i class="fas fa-users me-2" style="color:var(--orange);"></i><strong>HR & Employee Management</strong><p>Employee records, attendance, salary slips PDF</p></div>
+                            <div class="detail-item"><i class="fas fa-cash-register me-2" style="color:var(--orange);"></i><strong>POS & Sales System</strong><p>Point of sale, orders, invoices PDF, purchases</p></div>
+                            <div class="detail-item"><i class="fas fa-funnel-dollar me-2" style="color:var(--orange);"></i><strong>CRM & Project Management</strong><p>Lead tracking, project budgets, notifications</p></div>
+                            <div class="detail-item"><i class="fas fa-chart-bar me-2" style="color:var(--orange);"></i><strong>Reports & Analytics</strong><p>Business analytics, PDF reports, charts</p></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LMS -->
+            <div class="col-md-4">
+                <div class="system-card fade-in">
+                    <div class="system-header" style="background:linear-gradient(135deg,#0d2447,#1a3c6e);">
+                        <div class="system-icon"><i class="fas fa-book-open fa-2x" style="color:var(--orange);"></i></div>
+                        <h5 style="color:white;font-weight:700;margin:0;">Library Management</h5>
+                        <p style="color:rgba(255,255,255,0.55);font-size:12px;margin:6px 0 12px;">LMS System — Laravel 12</p>
+                        <span class="sys-tag">Laravel 12</span>
+                        <span class="sys-tag">MySQL</span>
+                        <span class="sys-tag">DataTables</span>
+                    </div>
+                    <div style="padding:18px;">
+                        <div style="display:flex;flex-wrap:wrap;gap:7px;margin-bottom:15px;">
+                            <span class="feature-tag"><i class="fas fa-book me-1" style="color:var(--orange);"></i>Books</span>
+                            <span class="feature-tag"><i class="fas fa-user-graduate me-1" style="color:var(--orange);"></i>Students</span>
+                            <span class="feature-tag"><i class="fas fa-hand-holding-heart me-1" style="color:var(--orange);"></i>Issue/Return</span>
+                            <span class="feature-tag"><i class="fas fa-receipt me-1" style="color:var(--orange);"></i>Auto Fines</span>
+                            <span class="feature-tag"><i class="fas fa-calendar-check me-1" style="color:var(--orange);"></i>Reservations</span>
+                            <span class="feature-tag"><i class="fas fa-chart-bar me-1" style="color:var(--orange);"></i>Reports</span>
+                        </div>
+                        <button onclick="toggleDetail('lms-detail','lms-icon')" class="toggle-btn">
+                            <i class="fas fa-eye me-2"></i>View Full Details <i class="fas fa-chevron-down ms-1" id="lms-icon"></i>
+                        </button>
+                    </div>
+                    <div id="lms-detail" style="display:none;padding:0 18px 18px;">
+                        <div style="border-top:1px solid rgba(255,255,255,0.08);padding-top:15px;">
+                            <div class="detail-item"><i class="fas fa-book me-2" style="color:var(--orange);"></i><strong>Complete Book Management</strong><p>Add/edit books, image, PDF, ISBN, rack location</p></div>
+                            <div class="detail-item"><i class="fas fa-user-graduate me-2" style="color:var(--orange);"></i><strong>Student Management</strong><p>Auto ID generation, membership, profile, history</p></div>
+                            <div class="detail-item"><i class="fas fa-hand-holding-heart me-2" style="color:var(--orange);"></i><strong>Issue & Return System</strong><p>One-click issue/return, due date, auto quantity</p></div>
+                            <div class="detail-item"><i class="fas fa-receipt me-2" style="color:var(--orange);"></i><strong>Automatic Fine System</strong><p>Rs.10/day auto fine, paid/unpaid, fine reports</p></div>
+                            <div class="detail-item"><i class="fas fa-calendar-check me-2" style="color:var(--orange);"></i><strong>Reservation & Reports</strong><p>Book reservations, approve/cancel, 4 reports</p></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SMM -->
+            <div class="col-md-4">
+                <div class="system-card fade-in">
+                    <div class="system-header" style="background:linear-gradient(135deg,#0a1628,#1a2b5f);">
+                        <div class="system-icon"><i class="fas fa-share-alt fa-2x" style="color:var(--orange);"></i></div>
+                        <h5 style="color:white;font-weight:700;margin:0;">SMM Panel</h5>
+                        <p style="color:rgba(255,255,255,0.55);font-size:12px;margin:6px 0 12px;">Social Media Marketing Panel</p>
+                        <span class="sys-tag">Laravel</span>
+                        <span class="sys-tag">REST API</span>
+                        <span class="sys-tag">MySQL</span>
+                    </div>
+                    <div style="padding:18px;">
+                        <div style="display:flex;flex-wrap:wrap;gap:7px;margin-bottom:15px;">
+                            <span class="feature-tag"><i class="fab fa-facebook me-1" style="color:#5b9cf6;"></i>Facebook</span>
+                            <span class="feature-tag"><i class="fab fa-instagram me-1" style="color:#f472b6;"></i>Instagram</span>
+                            <span class="feature-tag"><i class="fab fa-youtube me-1" style="color:#f87171;"></i>YouTube</span>
+                            <span class="feature-tag"><i class="fab fa-tiktok me-1" style="color:white;"></i>TikTok</span>
+                            <span class="feature-tag"><i class="fas fa-wallet me-1" style="color:var(--orange);"></i>Wallet</span>
+                            <span class="feature-tag"><i class="fas fa-plug me-1" style="color:var(--orange);"></i>API</span>
+                        </div>
+                        <button onclick="toggleDetail('smm-detail','smm-icon')" class="toggle-btn">
+                            <i class="fas fa-eye me-2"></i>View Full Details <i class="fas fa-chevron-down ms-1" id="smm-icon"></i>
+                        </button>
+                    </div>
+                    <div id="smm-detail" style="display:none;padding:0 18px 18px;">
+                        <div style="border-top:1px solid rgba(255,255,255,0.08);padding-top:15px;">
+                            <div class="detail-item"><i class="fas fa-share-alt me-2" style="color:var(--orange);"></i><strong>SMM Services</strong><p>Followers, Likes, Views — Facebook, Instagram, YouTube, TikTok</p></div>
+                            <div class="detail-item"><i class="fas fa-shopping-cart me-2" style="color:var(--orange);"></i><strong>Order Management</strong><p>Place orders, live tracking — Pending, Processing, Completed</p></div>
+                            <div class="detail-item"><i class="fas fa-wallet me-2" style="color:var(--orange);"></i><strong>Wallet & Payment</strong><p>User wallet, add funds, auto-deduct, transaction history</p></div>
+                            <div class="detail-item"><i class="fas fa-plug me-2" style="color:var(--orange);"></i><strong>API Integration</strong><p>External provider API, auto-process, reseller support</p></div>
+                            <div class="detail-item"><i class="fas fa-chart-line me-2" style="color:var(--orange);"></i><strong>Admin Dashboard</strong><p>Total orders, revenue, users, sales analytics</p></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
-      </div>
     </div>
-  </div>
 </section>
 
-<!-- CONTACT -->
-<section id="contact">
-  <div class="wrap contact-wrap">
-    <div>
-      <div class="eyebrow">Get In Touch</div>
-      <h2>Need a system built or a site launched?</h2>
-      <div class="contact-list">
-        <a href="tel:03340970941"><span><i class="fas fa-phone leading"></i> 0334-0970941</span><i class="fas fa-arrow-right trailing"></i></a>
-        <a href="mailto:ateeqawan744@gmail.com"><span><i class="fas fa-envelope leading"></i> ateeqawan744@gmail.com</span><i class="fas fa-arrow-right trailing"></i></a>
-        <a href="https://wa.me/923340970941" target="_blank"><span><i class="fab fa-whatsapp leading"></i> WhatsApp</span><i class="fas fa-arrow-right trailing"></i></a>
-        <a href="https://maps.google.com/?q=Margalla+Town+Islamabad" target="_blank"><span><i class="fas fa-map-marker-alt leading"></i> Margalla Town, Islamabad</span><i class="fas fa-arrow-right trailing"></i></a>
-      </div>
+<!-- Contact -->
+<section class="section" id="contact" style="background:#f0f4f8;">
+    <div class="container">
+        <h2 class="section-title text-center">Get In <span>Touch</span></h2>
+        <div class="section-line mx-auto"></div>
+        <p class="text-center section-subtitle">Need a website, ERP, LMS or SMM Panel? Let's talk!</p>
+        <div class="row justify-content-center">
+            <div class="col-md-3">
+                <div class="contact-card fade-in">
+                    <div class="contact-icon"><i class="fas fa-phone"></i></div>
+                    <h6 style="color:var(--primary);font-weight:700;">Phone</h6>
+                    <p style="color:#666;font-size:14px;">0334-0970941</p>
+                    <a href="tel:03340970941" class="btn-hero" style="font-size:13px;padding:8px 20px;">Call Now</a>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="contact-card fade-in">
+                    <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                    <h6 style="color:var(--primary);font-weight:700;">Email</h6>
+                    <p style="color:#666;font-size:13px;">ateeqawan744@gmail.com</p>
+                    <a href="mailto:ateeqawan744@gmail.com" class="btn-hero" style="font-size:13px;padding:8px 20px;">Email Me</a>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="contact-card fade-in">
+                    <div class="contact-icon"><i class="fab fa-whatsapp"></i></div>
+                    <h6 style="color:var(--primary);font-weight:700;">WhatsApp</h6>
+                    <p style="color:#666;font-size:14px;">0334-0970941</p>
+                    <a href="https://wa.me/923340970941" target="_blank" class="btn-hero" style="font-size:13px;padding:8px 20px;">WhatsApp</a>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="contact-card fade-in">
+                    <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <h6 style="color:var(--primary);font-weight:700;">Location</h6>
+                    <p style="color:#666;font-size:14px;">Margalla Town, Islamabad</p>
+                    <a href="https://maps.google.com/?q=Margalla+Town+Islamabad" target="_blank" class="btn-hero" style="font-size:13px;padding:8px 20px;">View Map</a>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="contact-side">
-      <h3>Currently available</h3>
-      <p>Taking on new Laravel systems and WordPress builds. Usually reply within a few hours.</p>
-      <a href="mailto:ateeqawan744@gmail.com" class="btn-primary">Email Me <i class="fas fa-paper-plane"></i></a>
-    </div>
-  </div>
 </section>
 
+<!-- Footer -->
 <footer>
-  <div class="wrap">
-    <p>© 2026 Ateeq Awan. Built in Islamabad.</p>
-    <div class="foot-social">
-      <a href="mailto:ateeqawan744@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
-      <a href="https://wa.me/923340970941" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-      <a href="tel:03340970941" aria-label="Phone"><i class="fas fa-phone"></i></a>
+    <div class="container">
+        <h4 style="font-weight:800;font-size:22px;"><span>Ateeq</span> Awan</h4>
+        <p style="color:rgba(255,255,255,0.6);margin:10px 0;font-size:13px;">WordPress Developer &nbsp;|&nbsp; Digital Marketer &nbsp;|&nbsp; Laravel Developer</p>
+        <div class="footer-links my-3">
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#systems">Systems</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <p style="color:rgba(255,255,255,0.35);font-size:12px;">&copy; 2026 Ateeq Awan. All Rights Reserved. Made with <span>♥</span> in Pakistan</p>
     </div>
-    <p>Laravel · WordPress · Digital Marketing</p>
-  </div>
 </footer>
 
+<!-- Scroll Top -->
+<button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    <i class="fas fa-arrow-up"></i>
+</button>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-function toggleDetail(id, iconId){
-  const d = document.getElementById(id);
-  const icon = document.getElementById(iconId);
-  const open = d.style.display === 'block';
-  d.style.display = open ? 'none' : 'block';
-  icon.className = open ? 'fas fa-chevron-down' : 'fas fa-chevron-up';
-}
-const burger = document.getElementById('burgerBtn');
-const mobileLinks = document.getElementById('mobileLinks');
-burger.addEventListener('click', () => {
-  mobileLinks.classList.toggle('open');
-  burger.innerHTML = mobileLinks.classList.contains('open') ? '<i class="fas fa-xmark"></i>' : '<i class="fas fa-bars"></i>';
+// Intersection Observer
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-in,.slide-left,.slide-right,.zoom-in,.section-line').forEach(el => observer.observe(el));
+
+// Skill bars
+const skillObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if(entry.isIntersecting) {
+            entry.target.querySelectorAll('.skill-fill').forEach(bar => {
+                bar.style.width = bar.getAttribute('data-width');
+            });
+        }
+    });
+}, { threshold: 0.3 });
+document.querySelectorAll('.skill-card').forEach(el => skillObserver.observe(el));
+
+// Navbar scroll
+window.addEventListener('scroll', () => {
+    document.querySelector('.navbar').classList.toggle('scrolled', window.scrollY > 50);
+    document.getElementById('scrollTop').classList.toggle('show', window.scrollY > 300);
 });
-mobileLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-  mobileLinks.classList.remove('open');
-  burger.innerHTML = '<i class="fas fa-bars"></i>';
-}));
+
+// Counter animation
+const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if(entry.isIntersecting) {
+            entry.target.querySelectorAll('h3').forEach(counter => {
+                const text = counter.innerText;
+                const target = parseFloat(text.replace(/[^0-9.]/g,''));
+                const suffix = text.includes('+') ? '+' : text.includes('%') ? '%' : '';
+                let count = 0;
+                const inc = target / 40;
+                const timer = setInterval(() => {
+                    count += inc;
+                    if(count >= target) { counter.innerText = target + suffix; clearInterval(timer); }
+                    else counter.innerText = Math.floor(count) + suffix;
+                }, 40);
+            });
+        }
+    });
+}, { threshold: 0.5 });
+const stats = document.querySelector('.stats');
+if(stats) counterObserver.observe(stats);
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', function(e) {
+        e.preventDefault();
+        const t = document.querySelector(this.getAttribute('href'));
+        if(t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+});
+
+// Toggle detail
+function toggleDetail(id, iconId) {
+    const detail = document.getElementById(id);
+    const icon = document.getElementById(iconId);
+    const isOpen = detail.style.display !== 'none';
+    detail.style.display = isOpen ? 'none' : 'block';
+    if(icon) {
+        icon.className = isOpen ? 'fas fa-chevron-down ms-1' : 'fas fa-chevron-up ms-1';
+    }
+}
 </script>
 </body>
 </html>
