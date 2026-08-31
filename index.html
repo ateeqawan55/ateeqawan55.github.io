@@ -3,279 +3,333 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ateeq Awan — Full-Stack &amp; Systems Developer</title>
+<title>Ateeq Awan — Web Developer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 <style>
   :root{
-    --ink:#0B1220;
-    --ink-soft:#151F30;
-    --paper:#F7F6F2;
-    --paper-dim:#EDEBE4;
-    --amber:#F5A623;
-    --amber-deep:#C9821A;
-    --slate:#5B6472;
-    --line:rgba(11,18,32,0.12);
-    --line-dark:rgba(247,246,242,0.14);
-    --ok:#1E9E6B;
+    --bg:#0A0B14;
+    --bg-soft:#10121F;
+    --card:#141728;
+    --card-2:#1B1E33;
+    --line:rgba(255,255,255,0.08);
+    --line-soft:rgba(255,255,255,0.05);
+    --text:#EDEDF3;
+    --text-dim:#9498B3;
+    --text-faint:#5D6180;
+    --violet:#6D5BF9;
+    --violet-soft:#8B7BFB;
+    --pink:#C9A6FF;
+    --green:#3DD68C;
+    --amber:#F5B94D;
   }
   *{margin:0;padding:0;box-sizing:border-box;}
   html{scroll-behavior:smooth;}
   body{
     font-family:'Inter',sans-serif;
-    background:var(--paper);
-    color:var(--ink);
+    background:var(--bg);
+    color:var(--text);
     font-size:16px;
-    line-height:1.6;
+    line-height:1.65;
   }
-  h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif;}
+  h1,h2,h3,h4{font-family:'Sora',sans-serif;}
   .mono{font-family:'JetBrains Mono',monospace;}
   a{color:inherit;text-decoration:none;}
   img{max-width:100%;display:block;}
   .wrap{max-width:1180px;margin:0 auto;padding:0 32px;}
-  ::selection{background:var(--amber);color:var(--ink);}
-
-  /* focus visibility */
-  a:focus-visible, button:focus-visible{outline:2px solid var(--amber-deep);outline-offset:3px;}
-
-  @media (prefers-reduced-motion: reduce){
-    *{animation:none !important; transition:none !important;}
-  }
+  ::selection{background:var(--violet);color:#fff;}
+  a:focus-visible, button:focus-visible{outline:2px solid var(--violet-soft);outline-offset:3px;}
+  @media (prefers-reduced-motion: reduce){ *{animation:none !important; transition:none !important;} }
 
   /* ---------- NAV ---------- */
   header{
     position:sticky; top:0; z-index:50;
-    background:rgba(247,246,242,0.88);
-    backdrop-filter:blur(10px);
-    border-bottom:1px solid var(--line);
+    background:rgba(10,11,20,0.82);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--line-soft);
   }
-  .nav{display:flex; align-items:center; justify-content:space-between; height:74px;}
-  .brand{display:flex; align-items:center; gap:10px; font-weight:600; font-size:17px;}
+  .nav{display:flex; align-items:center; justify-content:space-between; height:76px;}
+  .brand{display:flex; align-items:center; gap:11px; font-weight:700; font-size:17px; font-family:'Sora',sans-serif;}
   .brand .mark{
-    width:34px; height:34px; border-radius:8px; background:var(--ink);
-    color:var(--amber); display:flex; align-items:center; justify-content:center;
-    font-family:'JetBrains Mono',monospace; font-size:13px; font-weight:500;
+    width:36px; height:36px; border-radius:10px;
+    background:linear-gradient(135deg,var(--violet),#4534C4);
+    color:#fff; display:flex; align-items:center; justify-content:center;
+    font-family:'Sora',sans-serif; font-size:14px; font-weight:700;
   }
-  nav.links{display:flex; align-items:center; gap:30px;}
-  nav.links a{font-size:14px; color:var(--slate); font-weight:500; position:relative; padding:4px 0;}
-  nav.links a:hover{color:var(--ink);}
-  nav.links a::after{content:'';position:absolute;left:0;bottom:0;width:0;height:2px;background:var(--amber);transition:width .25s;}
+  nav.links{display:flex; align-items:center; gap:34px;}
+  nav.links a{font-size:14.5px; color:var(--text-dim); font-weight:500; position:relative; padding:6px 0;}
+  nav.links a:hover{color:var(--text);}
+  nav.links a::after{content:'';position:absolute;left:0;bottom:0;width:0;height:2px;background:var(--violet-soft);transition:width .25s;}
   nav.links a:hover::after{width:100%;}
   .resume-btn{
-    background:var(--ink); color:var(--paper); padding:9px 18px; border-radius:6px;
-    font-size:13px; font-weight:600; display:flex; align-items:center; gap:8px;
-    border:1px solid var(--ink);
+    background:var(--violet); color:#fff; padding:10px 20px; border-radius:8px;
+    font-size:13.5px; font-weight:600; display:flex; align-items:center; gap:8px;
+    border:1px solid var(--violet);
   }
-  .resume-btn:hover{background:transparent; color:var(--ink);}
-  .burger{display:none; font-size:20px; background:none; border:none; color:var(--ink); cursor:pointer;}
+  .resume-btn:hover{background:#5847E0; border-color:#5847E0;}
+  .burger{display:none; font-size:20px; background:none; border:none; color:var(--text); cursor:pointer;}
+  .mobile-links{display:none; flex-direction:column; gap:2px; padding:10px 0 18px; border-top:1px solid var(--line-soft);}
+  .mobile-links.open{display:flex;}
+  .mobile-links a{padding:12px 4px; font-size:15px; color:var(--text-dim); border-bottom:1px solid var(--line-soft);}
 
   /* ---------- HERO ---------- */
-  .hero{padding:72px 0 88px; border-bottom:1px solid var(--line);}
-  .hero-grid{display:grid; grid-template-columns:1.15fr 0.85fr; gap:64px; align-items:start;}
+  .hero{padding:88px 0 100px; position:relative; overflow:hidden;}
+  .hero-grid{display:grid; grid-template-columns:1.05fr 0.95fr; gap:60px; align-items:center; position:relative; z-index:2;}
   .kicker{
-    font-family:'JetBrains Mono',monospace; font-size:13px; color:var(--amber-deep);
-    display:flex; align-items:center; gap:10px; margin-bottom:22px;
+    display:inline-flex; align-items:center; gap:9px;
+    font-size:12.5px; font-weight:600; color:var(--violet-soft);
+    background:rgba(109,91,249,0.1); border:1px solid rgba(109,91,249,0.25);
+    padding:7px 14px; border-radius:20px; margin-bottom:26px;
   }
-  .kicker .dot{width:7px;height:7px;border-radius:50%;background:var(--ok); box-shadow:0 0 0 3px rgba(30,158,107,0.18);}
+  .kicker .dot{width:6px;height:6px;border-radius:50%;background:var(--green); box-shadow:0 0 0 3px rgba(61,214,140,0.18);}
   .hero h1{
-    font-size:56px; font-weight:600; line-height:1.06; letter-spacing:-0.02em; color:var(--ink);
+    font-size:52px; font-weight:700; line-height:1.12; letter-spacing:-0.01em; color:#fff;
   }
-  .hero h1 em{font-style:normal; color:var(--amber-deep);}
-  .hero p.lead{font-size:17px; color:var(--slate); max-width:46ch; margin:22px 0 30px; line-height:1.75;}
-  .hero-cta{display:flex; gap:14px; flex-wrap:wrap;}
+  .hero h1 .accent{color:var(--violet-soft);}
+  .hero p.lead{font-size:16.5px; color:var(--text-dim); max-width:48ch; margin:24px 0 34px; line-height:1.8;}
+  .hero-cta{display:flex; gap:14px; flex-wrap:wrap; margin-bottom:44px;}
   .btn-primary{
-    background:var(--ink); color:var(--paper); padding:14px 26px; border-radius:6px;
+    background:var(--violet); color:#fff; padding:14px 26px; border-radius:9px;
     font-weight:600; font-size:14px; display:inline-flex; align-items:center; gap:9px;
-    border:1px solid var(--ink);
+    border:1px solid var(--violet);
   }
-  .btn-primary:hover{background:var(--amber-deep); border-color:var(--amber-deep); color:var(--ink);}
+  .btn-primary:hover{background:#5847E0; border-color:#5847E0;}
   .btn-ghost{
-    padding:14px 26px; border-radius:6px; font-weight:600; font-size:14px;
-    border:1px solid var(--line); color:var(--ink); display:inline-flex; align-items:center; gap:9px;
+    padding:14px 26px; border-radius:9px; font-weight:600; font-size:14px;
+    border:1px solid var(--line); color:var(--text); display:inline-flex; align-items:center; gap:9px;
   }
-  .btn-ghost:hover{border-color:var(--ink);}
+  .btn-ghost:hover{border-color:var(--violet-soft); color:var(--violet-soft);}
+  .stack-label{font-size:12px; color:var(--text-faint); font-weight:600; letter-spacing:.02em; margin-bottom:14px;}
+  .stack-icons{display:flex; gap:12px; flex-wrap:wrap;}
+  .stack-icons span{
+    width:42px; height:42px; border-radius:9px; background:var(--card); border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center; font-size:16px; color:var(--text-dim);
+  }
 
-  /* status panel — the signature element */
-  .panel{
-    background:var(--ink); color:var(--paper); border-radius:12px; overflow:hidden;
-    border:1px solid var(--ink-soft);
+  /* hero visual */
+  .hero-visual{position:relative; height:420px;}
+  .blob{
+    position:absolute; width:340px; height:340px; border-radius:50%; right:20px; top:10px;
+    background:radial-gradient(circle at 35% 30%, rgba(109,91,249,0.55), rgba(201,166,255,0.18) 55%, transparent 75%);
+    filter:blur(6px);
   }
-  .panel-top{
-    display:flex; align-items:center; justify-content:space-between;
-    padding:16px 20px; border-bottom:1px solid var(--line-dark);
-    font-family:'JetBrains Mono',monospace; font-size:12px; color:rgba(247,246,242,0.55);
+  .dot-grid{
+    position:absolute; left:0; bottom:30px; width:110px; height:110px;
+    background-image:radial-gradient(rgba(255,255,255,0.14) 1.5px, transparent 1.5px);
+    background-size:14px 14px;
   }
-  .panel-top .dots{display:flex; gap:6px;}
-  .panel-top .dots span{width:8px;height:8px;border-radius:50%;background:rgba(247,246,242,0.2);}
-  .panel-body{padding:22px 20px 8px;}
-  .panel-row{
-    display:flex; justify-content:space-between; align-items:baseline;
-    padding:14px 0; border-bottom:1px solid var(--line-dark);
+  .code-card{
+    position:absolute; right:0; bottom:18px; width:300px;
+    background:var(--card); border:1px solid var(--line); border-radius:12px; overflow:hidden;
+    box-shadow:0 30px 60px -20px rgba(0,0,0,0.6);
   }
-  .panel-row:last-child{border-bottom:none;}
-  .panel-row .label{font-size:13px; color:rgba(247,246,242,0.55);}
-  .panel-row .value{font-family:'JetBrains Mono',monospace; font-size:20px; font-weight:500; color:var(--amber);}
-  .panel-foot{
-    padding:16px 20px; background:var(--ink-soft); font-size:12.5px; color:rgba(247,246,242,0.6);
-    display:flex; gap:8px; align-items:flex-start;
+  .code-top{
+    display:flex; align-items:center; justify-content:space-between; padding:12px 16px;
+    border-bottom:1px solid var(--line); font-size:11.5px; color:var(--text-faint);
   }
-  .panel-foot i{color:var(--amber); margin-top:2px;}
+  .code-top .dots{display:flex; gap:6px;}
+  .code-top .dots span{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.15);}
+  .code-body{padding:18px 18px 20px; font-size:12.5px; line-height:1.9;}
+  .code-body .k{color:var(--violet-soft);}
+  .code-body .s{color:var(--amber);}
+  .code-body .c{color:var(--text-faint);}
+  .float-card{
+    position:absolute; left:8px; top:34px; background:var(--card-2); border:1px solid var(--line);
+    border-radius:10px; padding:12px 16px; display:flex; align-items:center; gap:10px;
+    box-shadow:0 20px 40px -18px rgba(0,0,0,0.55);
+  }
+  .float-card .ic{
+    width:30px; height:30px; border-radius:8px; background:rgba(109,91,249,0.18); color:var(--violet-soft);
+    display:flex; align-items:center; justify-content:center; font-size:13px;
+  }
+  .float-card .t1{font-size:12.5px; font-weight:600;}
+  .float-card .t2{font-size:11px; color:var(--text-faint);}
 
   /* ---------- SECTION SCAFFOLD ---------- */
-  section{padding:96px 0;}
-  section + section{border-top:1px solid var(--line);}
+  section{padding:100px 0;}
+  section + section{border-top:1px solid var(--line-soft);}
   .eyebrow{
-    font-family:'JetBrains Mono',monospace; font-size:13px; color:var(--amber-deep);
-    margin-bottom:14px;
+    font-size:12px; font-weight:700; letter-spacing:.06em; text-transform:uppercase;
+    color:var(--violet-soft); margin-bottom:14px;
   }
-  .head-row{display:flex; justify-content:space-between; align-items:flex-end; gap:40px; margin-bottom:48px;}
-  .head-row h2{font-size:34px; font-weight:600; letter-spacing:-0.01em;}
-  .head-row p{color:var(--slate); font-size:15px; max-width:38ch;}
+  .head-row{display:flex; justify-content:space-between; align-items:flex-end; gap:40px; margin-bottom:52px; flex-wrap:wrap;}
+  .head-row h2{font-size:32px; font-weight:700; color:#fff; letter-spacing:-0.01em;}
+  .head-row p{color:var(--text-dim); font-size:14.5px; max-width:36ch;}
 
   /* ---------- ABOUT ---------- */
-  .about-grid{display:grid; grid-template-columns:1fr 1fr; gap:64px;}
-  .about-grid p{color:#333; font-size:15.5px; line-height:1.85; margin-bottom:16px; max-width:56ch;}
-  .about-grid strong{color:var(--ink);}
-  .contact-facts{margin-top:28px; display:grid; grid-template-columns:1fr 1fr; gap:14px 24px;}
-  .contact-facts div{font-size:14px;}
-  .contact-facts span{display:block; color:var(--slate); font-size:12px; margin-bottom:2px;}
+  .about-grid{display:grid; grid-template-columns:1.1fr 0.9fr; gap:64px; align-items:start;}
+  .about-grid h2{font-size:28px; color:#fff; margin-bottom:20px; line-height:1.35;}
+  .about-grid p{color:var(--text-dim); font-size:15px; line-height:1.85; margin-bottom:16px; max-width:56ch;}
+  .about-grid strong{color:var(--text);}
+  .btn-outline{
+    margin-top:22px; padding:12px 22px; border-radius:9px; font-size:13.5px; font-weight:600;
+    border:1px solid var(--line); color:var(--text); display:inline-flex; align-items:center; gap:8px;
+  }
+  .btn-outline:hover{border-color:var(--violet-soft); color:var(--violet-soft);}
 
-  .rail{border-left:2px solid var(--line); padding-left:26px; position:relative;}
-  .rail-item{position:relative; padding-bottom:32px;}
+  .stat-grid{display:grid; grid-template-columns:1fr 1fr; gap:18px;}
+  .stat-card{
+    background:var(--card); border:1px solid var(--line); border-radius:12px; padding:22px;
+  }
+  .stat-card .num{font-family:'Sora',sans-serif; font-size:30px; font-weight:700; color:#fff;}
+  .stat-card .lab{font-size:13px; color:var(--text-dim); margin-top:4px;}
+
+  .rail{margin-top:34px; border-left:2px solid var(--line); padding-left:26px;}
+  .rail-item{position:relative; padding-bottom:26px;}
   .rail-item:last-child{padding-bottom:0;}
   .rail-item::before{
     content:''; position:absolute; left:-31px; top:4px; width:10px; height:10px;
-    border-radius:50%; background:var(--paper); border:2px solid var(--amber-deep);
+    border-radius:50%; background:var(--bg); border:2px solid var(--violet-soft);
   }
-  .rail-item .tag{font-family:'JetBrains Mono',monospace; font-size:11.5px; color:var(--amber-deep);}
-  .rail-item h4{font-size:16px; margin:6px 0 3px; font-weight:600;}
-  .rail-item p{font-size:13.5px; color:var(--slate);}
+  .rail-item .tag{font-size:11.5px; color:var(--violet-soft); font-weight:600;}
+  .rail-item h4{font-size:15.5px; margin:5px 0 3px; font-weight:600; color:#fff;}
+  .rail-item p{font-size:13px; color:var(--text-dim);}
 
   /* ---------- SKILLS ---------- */
-  .skill-groups{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:10px; overflow:hidden;}
-  .skill-group{background:var(--paper); padding:28px 26px;}
-  .skill-group h4{font-size:13px; color:var(--amber-deep); font-family:'JetBrains Mono',monospace; margin-bottom:20px;}
-  .skill-line{display:flex; justify-content:space-between; align-items:center; padding:11px 0; border-bottom:1px solid var(--line);}
-  .skill-line:last-child{border-bottom:none;}
-  .skill-line .name{font-size:14.5px; font-weight:500;}
-  .dots5{display:flex; gap:4px;}
-  .dots5 i{width:6px; height:6px; border-radius:50%; background:var(--line);}
-  .dots5 i.on{background:var(--amber-deep);}
+  .skill-groups{display:grid; grid-template-columns:repeat(3,1fr); gap:18px;}
+  .skill-group{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:26px;}
+  .skill-group h4{font-size:13px; color:var(--violet-soft); margin-bottom:20px; font-weight:600;}
+  .skill-line{margin-bottom:16px;}
+  .skill-line:last-child{margin-bottom:0;}
+  .skill-line .row{display:flex; justify-content:space-between; font-size:13.5px; margin-bottom:8px;}
+  .skill-line .row .pct{color:var(--text-faint); font-family:'JetBrains Mono',monospace; font-size:12px;}
+  .bar{height:6px; border-radius:4px; background:var(--card-2); overflow:hidden;}
+  .bar i{display:block; height:100%; border-radius:4px; background:linear-gradient(90deg,var(--violet),var(--pink));}
 
-  /* ---------- PROJECTS (WP sites list) ---------- */
-  .proj-list{border-top:1px solid var(--line);}
-  .proj-item{
-    display:grid; grid-template-columns:70px 1fr auto; gap:24px; align-items:center;
-    padding:26px 0; border-bottom:1px solid var(--line); transition:padding-left .2s;
+  /* ---------- PROJECTS ---------- */
+  .proj-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:22px;}
+  .proj-card{
+    background:var(--card); border:1px solid var(--line); border-radius:14px; overflow:hidden;
+    display:flex; flex-direction:column;
   }
-  .proj-item:hover{padding-left:10px; background:var(--paper-dim);}
-  .proj-num{font-family:'JetBrains Mono',monospace; color:var(--slate); font-size:13px;}
-  .proj-main h4{font-size:19px; font-weight:600; margin-bottom:5px;}
-  .proj-main p{color:var(--slate); font-size:14px; max-width:56ch;}
-  .proj-tags{margin-top:10px; display:flex; gap:8px; flex-wrap:wrap;}
+  .proj-thumb{
+    height:150px; position:relative; display:flex; align-items:center; justify-content:center;
+    font-family:'Sora',sans-serif; font-weight:700; font-size:15px; color:rgba(255,255,255,0.9);
+  }
+  .proj-thumb .idx{position:absolute; top:14px; left:16px; font-size:12px; color:rgba(255,255,255,0.65); font-family:'JetBrains Mono',monospace;}
+  .proj-thumb .glyph{font-size:34px;}
+  .t1{background:linear-gradient(135deg,#6D5BF9,#2E2380);}
+  .t2{background:linear-gradient(135deg,#3AAE8F,#1B4B57);}
+  .t3{background:linear-gradient(135deg,#C9A6FF,#5B3FA8);}
+  .proj-body{padding:20px 22px 22px; flex:1; display:flex; flex-direction:column;}
+  .proj-body h4{font-size:16.5px; font-weight:600; color:#fff; margin-bottom:6px;}
+  .proj-body p{color:var(--text-dim); font-size:13.5px; line-height:1.7; flex:1;}
+  .proj-tags{margin:14px 0 16px; display:flex; gap:7px; flex-wrap:wrap;}
   .chip{
-    font-size:11.5px; padding:4px 10px; border-radius:20px; border:1px solid var(--line);
-    color:var(--slate); font-family:'JetBrains Mono',monospace;
+    font-size:11px; padding:4px 10px; border-radius:20px; border:1px solid var(--line);
+    color:var(--text-dim);
   }
-  .proj-visit{
-    font-size:13.5px; font-weight:600; display:flex; align-items:center; gap:8px; white-space:nowrap;
-  }
+  .proj-visit{font-size:13px; font-weight:600; color:var(--violet-soft); display:flex; align-items:center; gap:7px;}
   .proj-visit i{transition:transform .2s;}
-  .proj-item:hover .proj-visit i{transform:translateX(3px);}
+  .proj-card:hover .proj-visit i{transform:translateX(3px);}
 
-  /* ---------- SYSTEMS (case studies) ---------- */
-  .systems{background:var(--ink); color:var(--paper);}
-  .systems .eyebrow{color:var(--amber);}
-  .systems .head-row p{color:rgba(247,246,242,0.55);}
+  /* ---------- SYSTEMS ---------- */
+  .systems{background:var(--bg-soft);}
   .case{
-    border:1px solid var(--line-dark); border-radius:14px; padding:36px;
-    margin-bottom:22px; background:rgba(255,255,255,0.02);
+    border:1px solid var(--line); border-radius:14px; padding:32px;
+    margin-bottom:20px; background:var(--card);
   }
   .case:last-child{margin-bottom:0;}
-  .case-top{display:flex; justify-content:space-between; align-items:flex-start; gap:24px; flex-wrap:wrap; margin-bottom:18px;}
-  .case-top h3{font-size:24px; font-weight:600;}
-  .case-top .role{color:rgba(247,246,242,0.5); font-size:13.5px; margin-top:4px;}
+  .case-top{display:flex; justify-content:space-between; align-items:flex-start; gap:20px; flex-wrap:wrap; margin-bottom:16px;}
+  .case-top h3{font-size:21px; font-weight:700; color:#fff;}
+  .case-top .role{color:var(--text-faint); font-size:13px; margin-top:5px;}
   .case-featured{
-    font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--ink); background:var(--amber);
-    padding:5px 11px; border-radius:20px; font-weight:600;
+    font-size:11.5px; color:#fff; background:linear-gradient(135deg,var(--violet),#4534C4);
+    padding:6px 12px; border-radius:20px; font-weight:600; white-space:nowrap;
   }
-  .case p.desc{color:rgba(247,246,242,0.72); font-size:14.5px; max-width:74ch; line-height:1.8; margin-bottom:20px;}
-  .case-feats{display:flex; flex-wrap:wrap; gap:9px; margin-bottom:8px;}
+  .case p.desc{color:var(--text-dim); font-size:14.5px; max-width:74ch; line-height:1.85; margin-bottom:20px;}
+  .case-feats{display:flex; flex-wrap:wrap; gap:9px;}
   .case-feats span{
-    font-size:12px; padding:6px 12px; border-radius:6px; background:rgba(255,255,255,0.06);
-    color:rgba(247,246,242,0.85); border:1px solid var(--line-dark);
+    font-size:12px; padding:7px 13px; border-radius:8px; background:var(--card-2);
+    color:var(--text-dim); border:1px solid var(--line);
   }
   .case-toggle{
-    margin-top:18px; background:none; border:1px solid var(--line-dark); color:var(--amber);
-    padding:10px 18px; border-radius:6px; font-size:13px; font-weight:600; cursor:pointer;
+    margin-top:20px; background:none; border:1px solid var(--line); color:var(--violet-soft);
+    padding:10px 18px; border-radius:8px; font-size:13px; font-weight:600; cursor:pointer;
   }
-  .case-toggle:hover{border-color:var(--amber);}
-  .case-detail{display:none; margin-top:20px; padding-top:20px; border-top:1px solid var(--line-dark);}
+  .case-toggle:hover{border-color:var(--violet-soft);}
+  .case-detail{display:none; margin-top:20px; padding-top:20px; border-top:1px solid var(--line);}
   .case-detail-grid{display:grid; grid-template-columns:1fr 1fr; gap:14px;}
-  .case-detail-item{padding:14px; background:rgba(255,255,255,0.03); border-radius:8px; border-left:2px solid var(--amber);}
-  .case-detail-item strong{font-size:13.5px; display:block; margin-bottom:4px;}
-  .case-detail-item p{font-size:12.5px; color:rgba(247,246,242,0.5); margin:0;}
+  .case-detail-item{padding:15px; background:var(--card-2); border-radius:9px; border-left:2px solid var(--violet-soft);}
+  .case-detail-item strong{font-size:13.5px; display:block; margin-bottom:4px; color:#fff;}
+  .case-detail-item p{font-size:12.5px; color:var(--text-faint); margin:0;}
 
   .review-quote{
-    margin-top:22px; padding:20px 22px; background:rgba(245,166,35,0.07);
-    border:1px solid rgba(245,166,35,0.25); border-radius:10px;
+    margin-top:22px; padding:20px 22px; background:rgba(109,91,249,0.06);
+    border:1px solid rgba(109,91,249,0.22); border-radius:10px;
   }
   .review-quote .stars{color:var(--amber); font-size:13px; margin-bottom:8px;}
-  .review-quote p{color:rgba(247,246,242,0.85); font-size:14.5px; font-style:normal; line-height:1.75; margin:0;}
-  .review-quote cite{display:block; margin-top:10px; font-size:12.5px; color:rgba(247,246,242,0.45); font-style:normal;}
+  .review-quote p{color:var(--text); font-size:14px; line-height:1.8; margin:0;}
+  .review-quote cite{display:block; margin-top:10px; font-size:12px; color:var(--text-faint); font-style:normal;}
 
-  /* ---------- TESTIMONIAL STRIP ---------- */
-  .testi-strip{padding:80px 0;}
-  .testi-strip .head-row{margin-bottom:32px;}
+  /* ---------- TESTIMONIAL ---------- */
   .testi-card{
-    border:1px solid var(--line); border-radius:12px; padding:32px; background:var(--paper);
+    border:1px solid var(--line); border-radius:14px; padding:34px; background:var(--card);
   }
-  .testi-stars{color:var(--amber-deep); font-size:14px; margin-bottom:14px;}
-  .testi-card blockquote{font-size:18px; line-height:1.7; font-weight:500; color:var(--ink); max-width:70ch;}
-  .testi-meta{display:flex; align-items:center; gap:12px; margin-top:22px;}
+  .testi-stars{color:var(--amber); font-size:14px; margin-bottom:16px;}
+  .testi-card blockquote{font-size:18px; line-height:1.75; font-weight:500; color:var(--text); max-width:72ch;}
+  .testi-meta{display:flex; align-items:center; gap:12px; margin-top:24px;}
   .testi-avatar{
-    width:38px; height:38px; border-radius:50%; background:var(--ink); color:var(--amber);
-    display:flex; align-items:center; justify-content:center; font-family:'JetBrains Mono',monospace; font-size:14px;
+    width:40px; height:40px; border-radius:50%;
+    background:linear-gradient(135deg,var(--violet),#4534C4); color:#fff;
+    display:flex; align-items:center; justify-content:center; font-family:'Sora',sans-serif; font-size:14px; font-weight:700;
   }
-  .testi-meta .who{font-size:13.5px; font-weight:600;}
-  .testi-meta .what{font-size:12.5px; color:var(--slate);}
+  .testi-meta .who{font-size:13.5px; font-weight:600; color:#fff;}
+  .testi-meta .what{font-size:12.5px; color:var(--text-faint);}
 
   /* ---------- CONTACT ---------- */
   .contact-wrap{display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center;}
+  .contact-wrap h2{font-size:28px; color:#fff; margin-bottom:26px; line-height:1.35;}
   .contact-list a{
     display:flex; align-items:center; justify-content:space-between;
-    padding:20px 0; border-bottom:1px solid var(--line); font-size:16px; font-weight:500;
+    padding:18px 4px; border-bottom:1px solid var(--line); font-size:15.5px; font-weight:500;
   }
   .contact-list a:first-child{border-top:1px solid var(--line);}
-  .contact-list a i.leading{color:var(--amber-deep); width:22px;}
-  .contact-list a i.trailing{color:var(--slate); transition:transform .2s;}
-  .contact-list a:hover i.trailing{transform:translateX(4px); color:var(--ink);}
-  .contact-side{background:var(--ink); color:var(--paper); border-radius:12px; padding:34px;}
-  .contact-side h3{font-size:20px; margin-bottom:12px;}
-  .contact-side p{color:rgba(247,246,242,0.65); font-size:14px; line-height:1.75; margin-bottom:22px;}
+  .contact-list a i.leading{color:var(--violet-soft); width:22px;}
+  .contact-list a i.trailing{color:var(--text-faint); transition:transform .2s;}
+  .contact-list a:hover i.trailing{transform:translateX(4px); color:var(--text);}
+  .contact-side{
+    background:linear-gradient(160deg,var(--card),var(--card-2)); border:1px solid var(--line);
+    border-radius:14px; padding:34px;
+  }
+  .contact-side h3{font-size:19px; margin-bottom:12px; color:#fff;}
+  .contact-side p{color:var(--text-dim); font-size:14px; line-height:1.8; margin-bottom:22px;}
 
   /* ---------- FOOTER ---------- */
-  footer{padding:34px 0; border-top:1px solid var(--line);}
-  footer .wrap{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;}
-  footer p{font-size:13px; color:var(--slate);}
+  footer{padding:34px 0; border-top:1px solid var(--line-soft);}
+  footer .wrap{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;}
+  footer p{font-size:13px; color:var(--text-faint);}
+  .foot-social{display:flex; gap:14px;}
+  .foot-social a{
+    width:36px; height:36px; border-radius:8px; border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center; color:var(--text-dim); font-size:14px;
+  }
+  .foot-social a:hover{color:var(--violet-soft); border-color:var(--violet-soft);}
 
-  /* ---------- REVEAL ---------- */
-  .reveal{opacity:0; transform:translateY(16px); transition:opacity .6s ease, transform .6s ease;}
-  .reveal.visible{opacity:1; transform:none;}
+  /* ---------- ENTRANCE (one orchestrated hero sequence only) ---------- */
+  .fx{opacity:0; transform:translateY(14px); animation:riseIn .7s ease forwards;}
+  .fx1{animation-delay:.05s;} .fx2{animation-delay:.18s;} .fx3{animation-delay:.3s;} .fx4{animation-delay:.42s;} .fx5{animation-delay:.5s;}
+  @keyframes riseIn{to{opacity:1; transform:none;}}
 
   /* ---------- RESPONSIVE ---------- */
-  @media (max-width:900px){
-    .hero-grid{grid-template-columns:1fr; gap:40px;}
-    .hero h1{font-size:40px;}
+  @media (max-width:960px){
+    .hero-grid{grid-template-columns:1fr; gap:44px;}
+    .hero-visual{height:300px;}
+    .hero h1{font-size:38px;}
     .about-grid{grid-template-columns:1fr;}
     .skill-groups{grid-template-columns:1fr;}
+    .proj-grid{grid-template-columns:1fr 1fr;}
     .contact-wrap{grid-template-columns:1fr;}
     .case-detail-grid{grid-template-columns:1fr;}
     nav.links{display:none;}
     .burger{display:block;}
-    .proj-item{grid-template-columns:1fr; gap:10px;}
-    .proj-num{display:none;}
+  }
+  @media (max-width:600px){
+    .wrap{padding:0 20px;}
+    .proj-grid{grid-template-columns:1fr;}
+    .stat-grid{grid-template-columns:1fr 1fr;}
+    .hero-cta{flex-direction:column; align-items:stretch;}
   }
 </style>
 </head>
@@ -287,40 +341,72 @@
     <nav class="links">
       <a href="#about">About</a>
       <a href="#skills">Skills</a>
-      <a href="#projects">Sites</a>
+      <a href="#projects">Projects</a>
       <a href="#systems">Systems</a>
       <a href="#contact">Contact</a>
     </nav>
-    <a href="Ateeq_Awan_Resume.pdf" download class="resume-btn"><i class="fas fa-arrow-down"></i> Resume</a>
-    <button class="burger" aria-label="Menu"><i class="fas fa-bars"></i></button>
+    <a href="mailto:ateeqawan744@gmail.com" class="resume-btn">Hire Me <i class="fas fa-arrow-right"></i></a>
+    <button class="burger" id="burgerBtn" aria-label="Menu"><i class="fas fa-bars"></i></button>
+  </div>
+  <div class="wrap">
+    <div class="mobile-links" id="mobileLinks">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#systems">Systems</a>
+      <a href="#contact">Contact</a>
+    </div>
   </div>
 </header>
 
 <!-- HERO -->
 <section class="hero">
   <div class="wrap hero-grid">
-    <div class="reveal">
-      <div class="kicker"><span class="dot"></span> Open for new projects — Islamabad, PK</div>
-      <h1>I build the systems<br>businesses run <em>on.</em></h1>
-      <p class="lead">Laravel developer and WordPress specialist. I design and ship POS platforms, inventory systems, and business websites — the software a shop, agency, or school actually opens every morning.</p>
-      <div class="hero-cta">
-        <a href="#systems" class="btn-primary"><i class="fas fa-terminal"></i> See a live system</a>
-        <a href="#contact" class="btn-ghost"><i class="fas fa-paper-plane"></i> Start a project</a>
+    <div>
+      <div class="kicker fx fx1"><span class="dot"></span> Open for new projects — Islamabad, PK</div>
+      <h1 class="fx fx2">Hi, I'm <span class="accent">Ateeq.</span><br>I build systems businesses run on.</h1>
+      <p class="lead fx fx3">Laravel developer and WordPress specialist. I design and ship POS platforms, inventory systems, and business websites — the software a shop, agency, or school actually opens every morning.</p>
+      <div class="hero-cta fx fx4">
+        <a href="#systems" class="btn-primary"><i class="fas fa-diagram-project"></i> View My Work</a>
+        <a href="Ateeq_Awan_Resume.pdf" download class="btn-ghost"><i class="fas fa-arrow-down"></i> Download CV</a>
+      </div>
+      <div class="fx fx5">
+        <div class="stack-label">TECHNOLOGIES I WORK WITH</div>
+        <div class="stack-icons">
+          <span><i class="fab fa-laravel"></i></span>
+          <span><i class="fab fa-php"></i></span>
+          <span><i class="fas fa-database"></i></span>
+          <span><i class="fab fa-wordpress"></i></span>
+          <span><i class="fab fa-css3-alt"></i></span>
+          <span><i class="fab fa-js"></i></span>
+        </div>
       </div>
     </div>
 
-    <div class="panel reveal">
-      <div class="panel-top">
-        <span>ateeq-awan / profile.status</span>
-        <div class="dots"><span></span><span></span><span></span></div>
+    <div class="hero-visual fx fx3">
+      <div class="blob"></div>
+      <div class="dot-grid"></div>
+      <div class="float-card">
+        <span class="ic"><i class="fas fa-star"></i></span>
+        <div>
+          <div class="t1">5.0 rating</div>
+          <div class="t2">Fiverr client review</div>
+        </div>
       </div>
-      <div class="panel-body">
-        <div class="panel-row"><span class="label">Experience</span><span class="value">2+ yrs</span></div>
-        <div class="panel-row"><span class="label">Projects shipped</span><span class="value">10+</span></div>
-        <div class="panel-row"><span class="label">Full systems built</span><span class="value">4</span></div>
-        <div class="panel-row"><span class="label">Client rating</span><span class="value">5.0 ★</span></div>
+      <div class="code-card">
+        <div class="code-top">
+          <span>ateeq-awan / profile.php</span>
+          <div class="dots"><span></span><span></span><span></span></div>
+        </div>
+        <div class="code-body mono">
+          <div><span class="k">$developer</span> = [</div>
+          <div>&nbsp;&nbsp;<span class="c">'name'</span> => <span class="s">'Ateeq Awan'</span>,</div>
+          <div>&nbsp;&nbsp;<span class="c">'stack'</span> => [<span class="s">'Laravel'</span>, <span class="s">'MySQL'</span>],</div>
+          <div>&nbsp;&nbsp;<span class="c">'builds'</span> => <span class="s">'POS · ERP · SaaS'</span>,</div>
+          <div>&nbsp;&nbsp;<span class="c">'based_in'</span> => <span class="s">'Islamabad'</span>,</div>
+          <div>];</div>
+        </div>
       </div>
-      <div class="panel-foot"><i class="fas fa-graduation-cap"></i> BS Computer Science, 4th semester — currently studying while building client work.</div>
     </div>
   </div>
 </section>
@@ -328,22 +414,21 @@
 <!-- ABOUT -->
 <section id="about">
   <div class="wrap about-grid">
-    <div class="reveal">
-      <div class="eyebrow">About</div>
-      <h2 style="font-size:30px; margin-bottom:22px;">A developer who finishes what shopkeepers actually need.</h2>
+    <div>
+      <div class="eyebrow">About Me</div>
+      <h2>A developer who finishes what shopkeepers actually need.</h2>
       <p>I'm <strong>Ateeq Awan</strong>, a web developer and digital marketer based in Islamabad. I spent two years at <strong>Karwan Solution</strong> in Mansehra building WordPress sites and Laravel systems for real businesses — not demos.</p>
       <p>What I like building most are the unglamorous, essential systems: point-of-sale software, inventory that doesn't lie to you, library systems that track every book. I pair that with WordPress and SEO work for clients who need a fast, clean web presence.</p>
-      <div class="contact-facts">
-        <div><span>Name</span>Ateeq Awan</div>
-        <div><span>Based in</span>Islamabad, Pakistan</div>
-        <div><span>Phone</span>0334-0970941</div>
-        <div><span>Email</span>ateeqawan744@gmail.com</div>
-        <div><span>Study</span>BS Computer Science</div>
-        <div><span>Availability</span>Open now</div>
-      </div>
+      <a href="#contact" class="btn-outline">Let's talk about your project <i class="fas fa-arrow-right"></i></a>
     </div>
 
-    <div class="reveal">
+    <div>
+      <div class="stat-grid">
+        <div class="stat-card"><div class="num">2+</div><div class="lab">Years Experience</div></div>
+        <div class="stat-card"><div class="num">10+</div><div class="lab">Projects Completed</div></div>
+        <div class="stat-card"><div class="num">4</div><div class="lab">Full Systems Built</div></div>
+        <div class="stat-card"><div class="num">5.0★</div><div class="lab">Client Rating</div></div>
+      </div>
       <div class="rail">
         <div class="rail-item">
           <span class="tag">Ongoing</span>
@@ -360,11 +445,6 @@
           <h4>FSc Pre-Engineering</h4>
           <p>BISE Abbottabad</p>
         </div>
-        <div class="rail-item">
-          <span class="tag">2021</span>
-          <h4>Matriculation</h4>
-          <p>BISE Abbottabad</p>
-        </div>
       </div>
     </div>
   </div>
@@ -373,34 +453,34 @@
 <!-- SKILLS -->
 <section id="skills">
   <div class="wrap">
-    <div class="head-row reveal">
+    <div class="head-row">
       <div>
-        <div class="eyebrow">Capabilities</div>
-        <h2>What I actually work in</h2>
+        <div class="eyebrow">My Skills</div>
+        <h2>Technologies I master</h2>
       </div>
-      <p>Grouped by what I use them for, not just a list of buzzwords.</p>
+      <p>Grouped by what I actually use them for, not just a buzzword list.</p>
     </div>
 
-    <div class="skill-groups reveal">
+    <div class="skill-groups">
       <div class="skill-group">
-        <h4>Systems &amp; backend</h4>
-        <div class="skill-line"><span class="name">Laravel</span><span class="dots5"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span></div>
-        <div class="skill-line"><span class="name">MySQL</span><span class="dots5"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span></div>
-        <div class="skill-line"><span class="name">PHP</span><span class="dots5"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span></div>
-        <div class="skill-line"><span class="name">REST APIs</span><span class="dots5"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span></div>
+        <h4>SYSTEMS & BACKEND</h4>
+        <div class="skill-line"><div class="row"><span>Laravel</span><span class="pct">90%</span></div><div class="bar"><i style="width:90%"></i></div></div>
+        <div class="skill-line"><div class="row"><span>MySQL</span><span class="pct">88%</span></div><div class="bar"><i style="width:88%"></i></div></div>
+        <div class="skill-line"><div class="row"><span>PHP</span><span class="pct">85%</span></div><div class="bar"><i style="width:85%"></i></div></div>
+        <div class="skill-line"><div class="row"><span>REST APIs</span><span class="pct">75%</span></div><div class="bar"><i style="width:75%"></i></div></div>
       </div>
       <div class="skill-group">
-        <h4>Web &amp; front end</h4>
-        <div class="skill-line"><span class="name">WordPress</span><span class="dots5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></div>
-        <div class="skill-line"><span class="name">WooCommerce</span><span class="dots5"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span></div>
-        <div class="skill-line"><span class="name">HTML &amp; CSS</span><span class="dots5"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span></div>
-        <div class="skill-line"><span class="name">Bootstrap / jQuery</span><span class="dots5"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span></div>
+        <h4>WEB & FRONT END</h4>
+        <div class="skill-line"><div class="row"><span>WordPress</span><span class="pct">95%</span></div><div class="bar"><i style="width:95%"></i></div></div>
+        <div class="skill-line"><div class="row"><span>WooCommerce</span><span class="pct">88%</span></div><div class="bar"><i style="width:88%"></i></div></div>
+        <div class="skill-line"><div class="row"><span>HTML & CSS</span><span class="pct">90%</span></div><div class="bar"><i style="width:90%"></i></div></div>
+        <div class="skill-line"><div class="row"><span>Bootstrap / jQuery</span><span class="pct">85%</span></div><div class="bar"><i style="width:85%"></i></div></div>
       </div>
       <div class="skill-group">
-        <h4>Growth &amp; marketing</h4>
-        <div class="skill-line"><span class="name">Digital marketing</span><span class="dots5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></div>
-        <div class="skill-line"><span class="name">Off-page SEO</span><span class="dots5"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span></div>
-        <div class="skill-line"><span class="name">Social media marketing</span><span class="dots5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></div>
+        <h4>GROWTH & MARKETING</h4>
+        <div class="skill-line"><div class="row"><span>Digital Marketing</span><span class="pct">85%</span></div><div class="bar"><i style="width:85%"></i></div></div>
+        <div class="skill-line"><div class="row"><span>Off-Page SEO</span><span class="pct">80%</span></div><div class="bar"><i style="width:80%"></i></div></div>
+        <div class="skill-line"><div class="row"><span>Social Media Marketing</span><span class="pct">85%</span></div><div class="bar"><i style="width:85%"></i></div></div>
       </div>
     </div>
   </div>
@@ -409,42 +489,42 @@
 <!-- PROJECTS -->
 <section id="projects">
   <div class="wrap">
-    <div class="head-row reveal">
+    <div class="head-row">
       <div>
-        <div class="eyebrow">Live sites</div>
+        <div class="eyebrow">Featured Projects</div>
         <h2>WordPress builds, in production</h2>
       </div>
       <p>Client websites currently live and running.</p>
     </div>
 
-    <div class="proj-list reveal">
-      <div class="proj-item">
-        <div class="proj-num">01</div>
-        <div class="proj-main">
+    <div class="proj-grid">
+      <a href="https://emarkingsolution.com/" target="_blank" class="proj-card">
+        <div class="proj-thumb t1"><span class="idx">01</span><span class="glyph"><i class="fas fa-bullhorn"></i></span></div>
+        <div class="proj-body">
           <h4>eMarketing Solution</h4>
-          <p>Digital marketing agency site — built for speed and SEO from the ground up.</p>
+          <p>Digital marketing agency site, built for speed and SEO from the ground up.</p>
           <div class="proj-tags"><span class="chip">WordPress</span><span class="chip">Elementor</span><span class="chip">SEO</span></div>
+          <span class="proj-visit">Visit site <i class="fas fa-arrow-right"></i></span>
         </div>
-        <a href="https://emarkingsolution.com/" target="_blank" class="proj-visit">Visit <i class="fas fa-arrow-right"></i></a>
-      </div>
-      <div class="proj-item">
-        <div class="proj-num">02</div>
-        <div class="proj-main">
+      </a>
+      <a href="https://urwatulemaan.com/" target="_blank" class="proj-card">
+        <div class="proj-thumb t2"><span class="idx">02</span><span class="glyph"><i class="fas fa-book-open"></i></span></div>
+        <div class="proj-body">
           <h4>Urwatulemaan</h4>
           <p>Islamic content and community website with articles and event pages.</p>
-          <div class="proj-tags"><span class="chip">WordPress</span><span class="chip">Web design</span></div>
+          <div class="proj-tags"><span class="chip">WordPress</span><span class="chip">Web Design</span></div>
+          <span class="proj-visit">Visit site <i class="fas fa-arrow-right"></i></span>
         </div>
-        <a href="https://urwatulemaan.com/" target="_blank" class="proj-visit">Visit <i class="fas fa-arrow-right"></i></a>
-      </div>
-      <div class="proj-item">
-        <div class="proj-num">03</div>
-        <div class="proj-main">
+      </a>
+      <a href="https://alsibghahub.com/" target="_blank" class="proj-card">
+        <div class="proj-thumb t3"><span class="idx">03</span><span class="glyph"><i class="fas fa-store"></i></span></div>
+        <div class="proj-body">
           <h4>Al Sibgha Hub</h4>
-          <p>Full WooCommerce store for herbal products — hair oil, honey, soaps — with product and order management.</p>
-          <div class="proj-tags"><span class="chip">WordPress</span><span class="chip">WooCommerce</span><span class="chip">eCommerce</span></div>
+          <p>Full WooCommerce store for herbal products, with product and order management.</p>
+          <div class="proj-tags"><span class="chip">WooCommerce</span><span class="chip">eCommerce</span></div>
+          <span class="proj-visit">Visit site <i class="fas fa-arrow-right"></i></span>
         </div>
-        <a href="https://alsibghahub.com/" target="_blank" class="proj-visit">Visit <i class="fas fa-arrow-right"></i></a>
-      </div>
+      </a>
     </div>
   </div>
 </section>
@@ -452,7 +532,7 @@
 <!-- SYSTEMS -->
 <section id="systems" class="systems">
   <div class="wrap">
-    <div class="head-row reveal">
+    <div class="head-row">
       <div>
         <div class="eyebrow">Systems</div>
         <h2>Full platforms, built from scratch</h2>
@@ -460,12 +540,11 @@
       <p>Laravel + MySQL applications running real business operations.</p>
     </div>
 
-    <!-- RS Factura -->
-    <div class="case reveal">
+    <div class="case">
       <div class="case-top">
         <div>
-          <h3>RS Factura — Multi-Branch POS &amp; Inventory Platform</h3>
-          <div class="role">Fiverr client project · Dominican Republic · Delivered &amp; in active support</div>
+          <h3>RS Factura — Multi-Branch POS & Inventory Platform</h3>
+          <div class="role">Fiverr client project · Dominican Republic · Delivered & in active support</div>
         </div>
         <span class="case-featured">Fiverr order · $100 · 5.0★</span>
       </div>
@@ -475,7 +554,7 @@
         <span><i class="fas fa-boxes"></i> Independent inventory</span>
         <span><i class="fas fa-file-invoice"></i> NCF fiscal invoicing</span>
         <span><i class="fas fa-chart-line"></i> Cost-based profit reports</span>
-        <span><i class="fas fa-building"></i> Multi-branch &amp; multi-tenant</span>
+        <span><i class="fas fa-building"></i> Multi-branch & multi-tenant</span>
         <span><i class="fas fa-mobile-alt"></i> Mobile-first redesign</span>
       </div>
       <button onclick="toggleDetail('rsf-detail','rsf-icon')" class="case-toggle">View project details <i class="fas fa-chevron-down" id="rsf-icon"></i></button>
@@ -483,26 +562,25 @@
         <div class="case-detail-grid">
           <div class="case-detail-item"><strong>Inventory built for accuracy</strong><p>Stock moves independently of invoices, with a full adjustment history and cost-price tracking per product.</p></div>
           <div class="case-detail-item"><strong>Real fiscal compliance</strong><p>NCF sequence management for Dominican tax invoicing, with low-balance alerts and PDF generation.</p></div>
-          <div class="case-detail-item"><strong>Profit that's actually correct</strong><p>Reports and dashboard both calculate profit from the true cost of goods sold — not just totals — and always match.</p></div>
+          <div class="case-detail-item"><strong>Profit that's actually correct</strong><p>Reports and dashboard both calculate profit from the true cost of goods sold, and always match.</p></div>
           <div class="case-detail-item"><strong>Multi-tenant SaaS layer</strong><p>Converted the original single-business build into a licensed, multi-tenant platform for reselling.</p></div>
         </div>
         <div class="review-quote">
           <div class="stars">★★★★★ 5.0</div>
-          <p>"Outstanding work! I'm very happy with the work and professionalism of this developer. He has been dedicated, responsive, and very attentive to my ideas and requests throughout the project. The quality of the work has been excellent, and he has always been willing to make improvements and find the best solutions. Highly recommended!"</p>
+          <p>Outstanding work — very happy with the work and professionalism of this developer. Dedicated, responsive, and attentive to ideas and requests throughout the project, with excellent quality and a willingness to keep improving. Highly recommended.</p>
           <cite>— Client review, Fiverr order #FO114FCBB5DC5</cite>
         </div>
       </div>
     </div>
 
-    <!-- ERP -->
-    <div class="case reveal">
+    <div class="case">
       <div class="case-top">
         <div><h3>ERP System</h3><div class="role">Enterprise resource planning · Laravel + MySQL</div></div>
       </div>
-      <p class="desc">An operations platform covering inventory, HR, POS and reporting in one place — built so a business doesn't need five separate tools.</p>
+      <p class="desc">An operations platform covering inventory, HR, POS and reporting in one place, built so a business doesn't need five separate tools.</p>
       <div class="case-feats">
         <span><i class="fas fa-box"></i> Inventory</span>
-        <span><i class="fas fa-users"></i> HR &amp; payroll</span>
+        <span><i class="fas fa-users"></i> HR & payroll</span>
         <span><i class="fas fa-cash-register"></i> POS</span>
         <span><i class="fas fa-file-invoice-dollar"></i> Invoicing</span>
         <span><i class="fas fa-chart-bar"></i> Reports</span>
@@ -512,19 +590,18 @@
       <div id="erp-detail" class="case-detail">
         <div class="case-detail-grid">
           <div class="case-detail-item"><strong>Inventory management</strong><p>Stock tracking, low-stock alerts, category structure.</p></div>
-          <div class="case-detail-item"><strong>HR &amp; employees</strong><p>Records, attendance, PDF salary slips.</p></div>
-          <div class="case-detail-item"><strong>POS &amp; sales</strong><p>Point of sale, orders, PDF invoices, purchases.</p></div>
-          <div class="case-detail-item"><strong>CRM &amp; projects</strong><p>Lead tracking, project budgets, notifications.</p></div>
+          <div class="case-detail-item"><strong>HR & employees</strong><p>Records, attendance, PDF salary slips.</p></div>
+          <div class="case-detail-item"><strong>POS & sales</strong><p>Point of sale, orders, PDF invoices, purchases.</p></div>
+          <div class="case-detail-item"><strong>CRM & projects</strong><p>Lead tracking, project budgets, notifications.</p></div>
         </div>
       </div>
     </div>
 
-    <!-- LMS -->
-    <div class="case reveal">
+    <div class="case">
       <div class="case-top">
         <div><h3>Library Management System</h3><div class="role">Laravel 12 · MySQL · DataTables</div></div>
       </div>
-      <p class="desc">Book, member and circulation management with automatic fines and reservations — replacing a paper register.</p>
+      <p class="desc">Book, member and circulation management with automatic fines and reservations, replacing a paper register.</p>
       <div class="case-feats">
         <span><i class="fas fa-book"></i> Books</span>
         <span><i class="fas fa-user-graduate"></i> Students</span>
@@ -537,14 +614,13 @@
         <div class="case-detail-grid">
           <div class="case-detail-item"><strong>Book records</strong><p>Cover image, PDF, ISBN, rack location.</p></div>
           <div class="case-detail-item"><strong>Student accounts</strong><p>Auto ID generation, membership, borrow history.</p></div>
-          <div class="case-detail-item"><strong>Issue &amp; return</strong><p>One-click flow with due dates and auto quantity.</p></div>
-          <div class="case-detail-item"><strong>Fines &amp; reports</strong><p>Rs.10/day auto fine, paid status, four report types.</p></div>
+          <div class="case-detail-item"><strong>Issue & return</strong><p>One-click flow with due dates and auto quantity.</p></div>
+          <div class="case-detail-item"><strong>Fines & reports</strong><p>Rs.10/day auto fine, paid status, four report types.</p></div>
         </div>
       </div>
     </div>
 
-    <!-- SMM -->
-    <div class="case reveal">
+    <div class="case">
       <div class="case-top">
         <div><h3>SMM Panel</h3><div class="role">Social media marketing panel · Laravel · REST API</div></div>
       </div>
@@ -559,8 +635,8 @@
       <button onclick="toggleDetail('smm-detail','smm-icon')" class="case-toggle">View project details <i class="fas fa-chevron-down" id="smm-icon"></i></button>
       <div id="smm-detail" class="case-detail">
         <div class="case-detail-grid">
-          <div class="case-detail-item"><strong>Order management</strong><p>Live status tracking — pending, processing, completed.</p></div>
-          <div class="case-detail-item"><strong>Wallet &amp; payments</strong><p>Add funds, auto-deduct, full transaction history.</p></div>
+          <div class="case-detail-item"><strong>Order management</strong><p>Live status tracking, from pending through completed.</p></div>
+          <div class="case-detail-item"><strong>Wallet & payments</strong><p>Add funds, auto-deduct, full transaction history.</p></div>
           <div class="case-detail-item"><strong>API integration</strong><p>External provider API, auto-processing, reseller support.</p></div>
           <div class="case-detail-item"><strong>Admin dashboard</strong><p>Orders, revenue, users and sales in one view.</p></div>
         </div>
@@ -570,22 +646,22 @@
 </section>
 
 <!-- TESTIMONIAL -->
-<section class="testi-strip">
+<section>
   <div class="wrap">
-    <div class="head-row reveal">
+    <div class="head-row">
       <div>
-        <div class="eyebrow">Client feedback</div>
+        <div class="eyebrow">Client Feedback</div>
         <h2>What it's like to work together</h2>
       </div>
     </div>
-    <div class="testi-card reveal">
+    <div class="testi-card">
       <div class="testi-stars">★★★★★</div>
-      <blockquote>"I'm very happy with the work and professionalism of this developer. He has been dedicated, responsive, and very attentive to my ideas and requests throughout the project. Highly recommended — I'm looking forward to continuing working together."</blockquote>
+      <blockquote>Very happy with the work and professionalism of this developer — dedicated, responsive, and attentive to ideas and requests throughout the project. Highly recommended, and looking forward to continuing to work together.</blockquote>
       <div class="testi-meta">
         <div class="testi-avatar">R</div>
         <div>
           <div class="who">Fiverr client, RS Factura project</div>
-          <div class="what">POS &amp; inventory system · Order #FO114FCBB5DC5</div>
+          <div class="what">POS & inventory system · Order #FO114FCBB5DC5</div>
         </div>
       </div>
     </div>
@@ -595,9 +671,9 @@
 <!-- CONTACT -->
 <section id="contact">
   <div class="wrap contact-wrap">
-    <div class="reveal">
-      <div class="eyebrow">Get in touch</div>
-      <h2 style="font-size:30px; margin-bottom:26px;">Need a system built or a site launched?</h2>
+    <div>
+      <div class="eyebrow">Get In Touch</div>
+      <h2>Need a system built or a site launched?</h2>
       <div class="contact-list">
         <a href="tel:03340970941"><span><i class="fas fa-phone leading"></i> 0334-0970941</span><i class="fas fa-arrow-right trailing"></i></a>
         <a href="mailto:ateeqawan744@gmail.com"><span><i class="fas fa-envelope leading"></i> ateeqawan744@gmail.com</span><i class="fas fa-arrow-right trailing"></i></a>
@@ -605,10 +681,10 @@
         <a href="https://maps.google.com/?q=Margalla+Town+Islamabad" target="_blank"><span><i class="fas fa-map-marker-alt leading"></i> Margalla Town, Islamabad</span><i class="fas fa-arrow-right trailing"></i></a>
       </div>
     </div>
-    <div class="contact-side reveal">
+    <div class="contact-side">
       <h3>Currently available</h3>
       <p>Taking on new Laravel systems and WordPress builds. Usually reply within a few hours.</p>
-      <a href="mailto:ateeqawan744@gmail.com" class="btn-primary" style="background:var(--amber); border-color:var(--amber); color:var(--ink);">Email me <i class="fas fa-paper-plane"></i></a>
+      <a href="mailto:ateeqawan744@gmail.com" class="btn-primary">Email Me <i class="fas fa-paper-plane"></i></a>
     </div>
   </div>
 </section>
@@ -616,14 +692,16 @@
 <footer>
   <div class="wrap">
     <p>© 2026 Ateeq Awan. Built in Islamabad.</p>
+    <div class="foot-social">
+      <a href="mailto:ateeqawan744@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+      <a href="https://wa.me/923340970941" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+      <a href="tel:03340970941" aria-label="Phone"><i class="fas fa-phone"></i></a>
+    </div>
     <p>Laravel · WordPress · Digital Marketing</p>
   </div>
 </footer>
 
 <script>
-const io = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); }), {threshold:0.12});
-document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-
 function toggleDetail(id, iconId){
   const d = document.getElementById(id);
   const icon = document.getElementById(iconId);
@@ -631,6 +709,16 @@ function toggleDetail(id, iconId){
   d.style.display = open ? 'none' : 'block';
   icon.className = open ? 'fas fa-chevron-down' : 'fas fa-chevron-up';
 }
+const burger = document.getElementById('burgerBtn');
+const mobileLinks = document.getElementById('mobileLinks');
+burger.addEventListener('click', () => {
+  mobileLinks.classList.toggle('open');
+  burger.innerHTML = mobileLinks.classList.contains('open') ? '<i class="fas fa-xmark"></i>' : '<i class="fas fa-bars"></i>';
+});
+mobileLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  mobileLinks.classList.remove('open');
+  burger.innerHTML = '<i class="fas fa-bars"></i>';
+}));
 </script>
 </body>
 </html>
